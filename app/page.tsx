@@ -21,7 +21,7 @@ const programs = [
   {
     image: "/images/program-card-tang-soo-do-youth.png",
     title: "Tang Soo Do",
-    ages: "Ages 8+ · All Levels",
+    ages: "Ages 8+",
     desc: "Traditional Tang Soo Do for kids and teens. Students learn forms, self-defense, and sparring while developing focus, respect, and the discipline that carries into every area of life.",
   },
   {
@@ -182,12 +182,12 @@ export default function HomePage() {
 
                 {/* Card body */}
                 <div className="p-5 bg-white">
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-extrabold text-lg" style={{ color: "#003B6F" }}>
+                  <div className="mb-2">
+                    <h3 className="font-extrabold text-lg leading-tight" style={{ color: "#003B6F" }}>
                       {program.title}
                     </h3>
                     <span
-                      className="text-xs font-bold px-2 py-1 rounded-full text-white flex-shrink-0"
+                      className="text-xs font-bold px-2 py-1 rounded-full text-white inline-block mt-1"
                       style={{ backgroundColor: "#E22D33" }}
                     >
                       {program.ages}
@@ -329,8 +329,8 @@ export default function HomePage() {
             style={{ backgroundColor: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)" }}
           >
             <p className="text-white font-semibold">
-              🎂 <strong>Birthday Parties</strong> available Saturdays 1–3 PM &nbsp;·&nbsp;
-              🥋 <strong>Private Lessons</strong> available Fri, Sat &amp; Sun — $30 / 30 min
+              🎂 <strong>Birthday Parties</strong>{" "}available Saturdays 1–3 PM &nbsp;·&nbsp;
+              🥋 <strong>Private Lessons</strong>{" "}available Fri, Sat &amp; Sun — $30 / 30 min
             </p>
             <p className="text-blue-200 text-sm mt-1">Contact us to check instructor availability.</p>
           </div>
