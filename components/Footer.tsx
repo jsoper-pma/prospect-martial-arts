@@ -4,9 +4,29 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer style={{ backgroundColor: "#003B6F" }} className="text-white mt-auto">
+
+      {/* ── QUOTE BAND ────────────────────────────────────────── */}
+      <div style={{ backgroundColor: "#002a52" }} className="px-4 py-8">
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="text-white text-xl md:text-2xl font-semibold italic leading-relaxed mb-1">
+            &ldquo;Everyone has greatness in them.
+          </p>
+          <p className="text-white text-xl md:text-2xl font-semibold italic leading-relaxed mb-3">
+            It just takes the right teacher to help bring it out.&rdquo;
+          </p>
+          <div className="flex items-center justify-center gap-3">
+            <div className="h-px w-10" style={{ backgroundColor: "#E22D33" }} />
+            <p className="text-blue-200 text-sm font-semibold tracking-wide">
+              Mr. Soper &nbsp;·&nbsp; Owner, Prospect Martial Arts
+            </p>
+            <div className="h-px w-10" style={{ backgroundColor: "#E22D33" }} />
+          </div>
+        </div>
+      </div>
+
       <div className="max-w-6xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
 
-        {/* Logo + Tagline */}
+        {/* Logo */}
         <div className="flex flex-col items-center md:items-start gap-3">
           <Image
             src="/images/logo.png"
@@ -15,11 +35,6 @@ export default function Footer() {
             height={80}
             className="rounded-full"
           />
-          <p className="text-blue-200 text-sm text-center md:text-left leading-relaxed">
-            Everyone has greatness in them.<br />
-            It just takes the right teacher<br />
-            to help bring it out.
-          </p>
         </div>
 
         {/* Quick Links */}

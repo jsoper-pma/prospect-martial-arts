@@ -27,7 +27,7 @@ export default function ContactPage() {
         <div className="max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">Contact &amp; Location</h1>
           <p className="text-blue-200 text-lg max-w-xl mx-auto">
-            We&apos;d love to hear from you. Stop by, give us a call, or send us a message — we&apos;re always happy to help.
+            We&apos;d love to hear from you. Stop by, send us a text, or shoot us an email — we&apos;re always happy to help.
           </p>
         </div>
       </section>

@@ -142,20 +142,20 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── DOJO PHOTO ────────────────────────────────────────── */}
+      {/* ── DOJANG PHOTO ───────────────────────────────────────── */}
       <section className="py-16 px-4" style={{ backgroundColor: "#f4f7fb" }}>
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-3xl font-extrabold mb-4" style={{ color: "#003B6F" }}>
             Come See for Yourself
           </h2>
           <p className="text-gray-600 mb-8 max-w-xl mx-auto text-lg">
-            Our dojo is a welcoming, energetic space where students of all ages train together.
+            Our school is a welcoming, energetic space where students of all ages train together.
             We invite you to come in, watch a class, and meet the team.
           </p>
           <div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl mb-8">
             <Image
               src="/images/gallery/20250717_194421.jpg"
-              alt="Students training at Prospect Martial Arts dojo"
+              alt="Students training at Prospect Martial Arts"
               fill
               className="object-cover"
             />

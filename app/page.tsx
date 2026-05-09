@@ -11,24 +11,36 @@ const programs = [
     title: "Little Tigers",
     ages: "Ages 3–4",
     desc: "A fun, high-energy introduction to martial arts built for our youngest students. Little Tigers develop coordination, listening skills, and confidence in a safe, nurturing environment.",
+    href: BOOKING_URL,
+    cta: "Book a Free Trial →",
+    external: true,
   },
   {
     image: "/images/program-card-little-dragons.png",
     title: "Little Dragons",
     ages: "Ages 5–7",
     desc: "Our Little Dragons program builds on the basics with more structure, discipline, and exciting techniques. Students earn belts and grow their confidence with every class.",
+    href: BOOKING_URL,
+    cta: "Book a Free Trial →",
+    external: true,
   },
   {
     image: "/images/program-card-tang-soo-do-youth.png",
     title: "Tang Soo Do",
     ages: "Ages 8+",
     desc: "Traditional Tang Soo Do for kids and teens. Students learn forms, self-defense, and sparring while developing focus, respect, and the discipline that carries into every area of life.",
+    href: BOOKING_URL,
+    cta: "Book a Free Trial →",
+    external: true,
   },
   {
     image: "/images/program-card-adult-tang-soo-do.png",
     title: "Adult Tang Soo Do",
     ages: "Ages 17+",
-    desc: "Whether you're a complete beginner or returning to the mat, our adult program offers a welcoming community, great fitness, and authentic Tang Soo Do training at every level.",
+    desc: "Our adult program launches June 2026. Founding members lock in a special rate — guaranteed for as long as you hold an active membership. Classes starting now.",
+    href: "/founders",
+    cta: "See the Founders Offer →",
+    external: false,
   },
 ];
 
@@ -165,9 +177,8 @@ export default function HomePage() {
             {programs.map((program) => (
               <a
                 key={program.title}
-                href={BOOKING_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={program.href}
+                {...(program.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="group block rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
               >
                 {/* Card image */}
@@ -200,7 +211,7 @@ export default function HomePage() {
                     className="text-center text-sm font-bold py-2 rounded-full text-white transition-opacity group-hover:opacity-90"
                     style={{ backgroundColor: "#003B6F" }}
                   >
-                    Book a Free Trial →
+                    {program.cta}
                   </div>
                 </div>
               </a>
@@ -393,7 +404,7 @@ export default function HomePage() {
           Ready to Start Your Journey?
         </h2>
         <p className="text-red-100 text-lg mb-8 max-w-xl mx-auto">
-          Your first class is free. Come meet the team, see the dojo, and discover why so many
+          Your first class is free. Come meet the team, see the dojang, and discover why so many
           families call Prospect Martial Arts their second home.
         </p>
         <a
