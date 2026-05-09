@@ -27,6 +27,12 @@ const instructors = [
     bio: "Mr. Tovar is a martial arts instructor with unmatched technical precision that most martial artists aspire to reach. Training for around five years, he brings a sunny disposition to every class and is always upbeat and excited with the students. Loud and energetic when teaching, Mr. Tovar always has a smile on his face and keeps the energy high for everyone on the mat.",
   },
   {
+    name: "Mrs. Krystal Soper",
+    title: "Instructor",
+    photo: "/images/instructors/krystal-soper.png",
+    bio: "Mrs. Soper is a martial arts instructor who has been training Tang Soo Do since 2016, and also brings her expertise as a Krav Maga coach to the mat. Her dual background gives students a richer understanding of both traditional technique and practical self-defense. Fierce in her approach and caring in her heart, she holds her students to a high standard while making sure every one of them feels genuinely seen and supported. Whether drilling forms or pushing through a tough class, Mrs. Soper's intensity is always matched by her warmth.",
+  },
+  {
     name: "Mr. Blaine Johnson",
     title: "Instructor",
     photo: "/images/instructors/blaine-johnson.png",
