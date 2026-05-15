@@ -53,6 +53,12 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+          <a
+            href="tel:2034415358"
+            className="text-blue-200 hover:text-white text-sm font-semibold tracking-wide transition-colors duration-200"
+          >
+            (203) 441-5358
+          </a>
           <Link
             href="/#trial"
             style={{ backgroundColor: "#E22D33" }}
@@ -95,6 +101,13 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+          <a
+            href="tel:2034415358"
+            onClick={() => setMenuOpen(false)}
+            className="text-sm font-semibold py-2 border-b border-blue-800 text-blue-200 hover:text-white transition-colors"
+          >
+            📞 (203) 441-5358
+          </a>
           <Link
             href="/#trial"
             onClick={() => setMenuOpen(false)}

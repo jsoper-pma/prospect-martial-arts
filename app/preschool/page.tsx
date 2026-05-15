@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import GymDeskWidget from "@/components/GymDeskWidget";
+
+export const metadata: Metadata = {
+  title: "Little Tigers & Little Dragons | Preschool Martial Arts Ages 3–7 | Prospect Martial Arts",
+  description: "Tang Soo Do classes for children ages 3–7 in Prospect, CT. Little Tigers (3-4) and Little Dragons (5-7) programs build confidence, focus, and coordination in a fun, nurturing environment.",
+};
 
 const BOOKING_URL = "https://prospect-martial-arts.gymdesk.com/book/v/Ayw2q";
 

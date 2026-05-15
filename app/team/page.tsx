@@ -1,54 +1,68 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Meet Our Instructors | Prospect Martial Arts",
+  description: "Meet the Prospect Martial Arts instructor team. Tang Soo Do black belts with years of experience teaching kids, teens, and adults in Prospect, CT.",
+};
 
 const instructors = [
   {
     name: "Master Gail Capolupo",
     title: "Master Instructor",
+    rank: "5th Degree Black Belt — TSDMA",
     photo: "/images/instructors/gail-capolupo.png",
-    bio: "Master Capolupo is an experienced martial arts instructor who has been practicing for well over two decades, including training in Kuntao. She has toured the country on demo teams and brings a vast library of knowledge to share with her black belts. With a calm demeanor, she is approachable and caring, always focused on supporting her students. Master Capolupo genuinely cares about each student's progress and wants to see both the school and all its students succeed.",
+    bio: "Master Capolupo is an experienced martial arts instructor who has been practicing for well over two decades, including training in Kuntao. She earned her black belt under Kwanjinim Garth Charland at the Charland Institute of Karate and Fitness in Watertown — a lineage she continues to honor in every class she teaches. She has toured the country on demo teams and brings a vast library of knowledge to share with her black belts. With a calm demeanor, she is approachable and caring, always focused on supporting her students. Master Capolupo genuinely cares about each student's progress and wants to see both the school and all its students succeed.",
   },
   {
     name: "Mr. Sean Downey",
     title: "Head Instructor",
+    rank: "3rd Degree Black Belt — TSDMA",
     photo: "/images/instructors/sean-downey.png",
-    bio: "Mr. Downey is an experienced martial arts instructor who brings years of dedicated training and teaching experience to the mat. As Head Instructor, he leads with calm authority and a genuine passion for Tang Soo Do that inspires students at every level. He started his martial arts journey over a decade ago with his two sons, who also earned their black belts. Committed to the art and his students, Mr. Downey is always developing new ways to challenge and excite them, helping set the standard for everything at PMA.",
+    bio: "Mr. Downey is an experienced martial arts instructor who brings over a decade of dedicated training and teaching experience to the mat. He earned his black belt under the guidance of Master Capolupo and has continued developing his craft ever since. As Head Instructor, he leads with calm authority and a genuine passion for Tang Soo Do that inspires students at every level. He started his martial arts journey with his two sons, who also earned their black belts. Committed to the art and his students, Mr. Downey is always developing new ways to challenge and excite them, helping set the standard for everything at PMA.",
   },
   {
     name: "Mr. David Davidson",
     title: "Assistant Head Instructor",
+    rank: "2nd Degree Black Belt — TSDMA",
     photo: "/images/instructors/david-davidson.png",
     bio: "Mr. Davidson is the Assistant Head Instructor and one of the most passionate members of the instructor team. He earned his second-degree black belt in his late teens and has returned to his passion for teaching Tang Soo Do. He dedicates himself to improving the PMA program and ensuring every student gets the most out of their training. Busy both on the mats and behind the scenes, he single-handedly developed the school's self-defense curriculum and brings a never-quit attitude to everything he does.",
   },
   {
     name: "Mrs. Krystal Soper",
     title: "Instructor",
+    rank: "2nd Degree Black Belt — TSDMA",
     photo: "/images/instructors/krystal-soper.png",
     bio: "Mrs. Soper is a martial arts instructor who has been training Tang Soo Do since 2016, and also brings her expertise as a Krav Maga coach to the mat. Her dual background gives students a richer understanding of both traditional technique and practical self-defense. Fierce in her approach and caring in her heart, she holds her students to a high standard while making sure every one of them feels genuinely seen and supported. Whether drilling forms or pushing through a tough class, Mrs. Soper's intensity is always matched by her warmth.",
   },
   {
     name: "Mr. Brian Tovar",
     title: "Instructor",
+    rank: "2nd Degree Black Belt — TSDMA",
     photo: "/images/instructors/brian-tovar.png",
-    bio: "Mr. Tovar is a martial arts instructor with unmatched technical precision that most martial artists aspire to reach. Training for around five years, he brings a sunny disposition to every class and is always upbeat and excited with the students. Loud and energetic when teaching, Mr. Tovar always has a smile on his face and keeps the energy high for everyone on the mat.",
+    bio: "Mr. Tovar is a martial arts instructor with unmatched technical precision that most martial artists aspire to reach. He brings a sunny disposition to every class and is always upbeat and excited with the students. Loud and energetic when teaching, Mr. Tovar always has a smile on his face and keeps the energy high for everyone on the mat.",
   },
   {
     name: "Mr. Blaine Johnson",
     title: "Instructor",
+    rank: "1st Degree Black Belt — TSDMA",
     photo: "/images/instructors/blaine-johnson.png",
     bio: "Mr. Johnson is the energetic and quick-witted martial arts instructor who brings fun and excitement to every class. Practicing since 2021, he overcame his own timidity through martial arts, gaining lasting confidence and friendships while now empowering his students to do the same. His favorite part of teaching is building strong bonds with the kids — being the upbeat mentor they can look up to, joke around with, or talk to about their day. Funny, caring, and genuinely invested, Mr. Johnson helps every student grow both on the mat and off.",
   },
   {
     name: "Ms. Aaliyah Smyth",
     title: "Instructor",
+    rank: "Cho Dan Bo (Apprentice Black Belt) — TSDMA",
     photo: "/images/instructors/aaliyah-smyth.png",
-    bio: "Ms. Smyth is a martial arts instructor with a bubbly personality who has been training for about two years. As the youngest and newest member of the instructor core, she brings fantastic dedication and strong technical ability to every class. With a soft and approachable demeanor, she works especially well with younger students while maintaining the technical precision that inspires students of all ages.",
+    bio: "Ms. Smyth is a martial arts instructor with a bubbly personality and strong technical ability. As the youngest and newest member of the instructor team, she brings fantastic dedication and precision to every class. With a soft and approachable demeanor, she works especially well with younger students while maintaining the technical standard that inspires students of all ages.",
   },
   {
     name: "Mr. Jason Soper",
     title: "Owner",
+    rank: "3rd Degree Black Belt — TSDMA",
     photo: "/images/instructors/jason-soper.png",
-    bio: "Mr. Soper is a martial arts instructor who has been training since 2016. In 2025, he purchased Prospect Martial Arts and united two martial arts communities under one roof. While he prefers to keep the spotlight on his team and students, his leadership shapes the school's direction — creating a place where every person is valued, every effort is recognized, and everyone belongs. Approachable and supportive, Mr. Soper wants to see his students succeed in every aspect of their lives.",
+    bio: "Mr. Soper has been training in Tang Soo Do since 2016. In 2025, he purchased Prospect Martial Arts and united two martial arts communities under one roof. While he prefers to keep the spotlight on his team and students, his leadership shapes the school's direction — creating a place where every person is valued, every effort is recognized, and everyone belongs. Approachable and supportive, Mr. Soper wants to see his students succeed in every aspect of their lives.",
   },
 ];
 
@@ -111,6 +125,7 @@ export default function TeamPage() {
                   <p className="font-semibold text-sm mt-0.5" style={{ color: "#E22D33" }}>
                     {instructor.title}
                   </p>
+                  <p className="text-xs text-gray-500 mt-1 font-medium">{instructor.rank}</p>
                 </div>
                 <p className="text-gray-600 text-sm leading-relaxed flex-1">{instructor.bio}</p>
               </div>

@@ -46,6 +46,8 @@ export default function Footer() {
             { href: "/", label: "Home" },
             { href: "/about", label: "About Us" },
             { href: "/team", label: "Our Team" },
+            { href: "/kids", label: "Kids & Teen Program" },
+            { href: "/faq", label: "FAQ" },
             { href: "/contact", label: "Contact & Location" },
             { href: "/#trial", label: "Book a Free Trial" },
           ].map((link) => (

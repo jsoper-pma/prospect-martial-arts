@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import ContactForm from "./ContactForm";
+
+export const metadata: Metadata = {
+  title: "Contact & Location | Prospect Martial Arts — Prospect, CT",
+  description: "Contact Prospect Martial Arts at 73 Waterbury Road, Prospect, CT. Text or email us and we'll respond within 24 hours. Get directions, class schedule, and more.",
+};
 
 const weekdaySchedule = [
   { time: "4:30 – 5:00 PM", monWed: "Little Tigers", tuesThu: "Little Tigers" },
@@ -147,15 +154,30 @@ export default function ContactPage() {
                 </div>
               </div>
 
+              {/* Response time note */}
+              <div
+                className="rounded-2xl p-5 mt-2"
+                style={{ backgroundColor: "#fff8e1", border: "1px solid #ffe082" }}
+              >
+                <p className="font-bold text-gray-900 mb-1">💬 Best Way to Reach Us</p>
+                <p className="text-gray-700 text-sm">
+                  Text <strong>(203) 441-5358</strong> or email{" "}
+                  <a href="mailto:info@prospectma.com" className="underline" style={{ color: "#003B6F" }}>
+                    info@prospectma.com
+                  </a>{" "}
+                  — we respond to all messages within 24 hours.
+                </p>
+              </div>
+
               {/* Private Lessons */}
               <div
-                className="rounded-2xl p-5 mt-4"
+                className="rounded-2xl p-5"
                 style={{ backgroundColor: "#f4f7fb", border: "1px solid #e2e8f0" }}
               >
                 <p className="font-bold text-gray-900 mb-1">🥋 Private Lessons Available</p>
                 <p className="text-gray-600 text-sm">
                   Available Friday, Saturday, and Sunday — $30 per 30 minutes.
-                  Contact us or check with an instructor for availability.
+                  Text or email us to check instructor availability.
                 </p>
               </div>
             </div>
@@ -241,14 +263,27 @@ export default function ContactPage() {
         </div>
       </section>
 
+      {/* ── SEND A MESSAGE ────────────────────────────────────── */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-3xl font-extrabold mb-3 text-center" style={{ color: "#003B6F" }}>
+            Send Us a Message
+          </h2>
+          <p className="text-gray-500 text-center mb-10">
+            Have a question? Fill out the form below and we&apos;ll get back to you within 24 hours.
+          </p>
+          <ContactForm />
+        </div>
+      </section>
+
       {/* ── FREE TRIAL CTA ────────────────────────────────────── */}
-      <section className="py-16 px-4 bg-white text-center">
+      <section className="py-16 px-4 text-center" style={{ backgroundColor: "#f4f7fb" }}>
         <div className="max-w-2xl mx-auto">
           <h2 className="text-3xl font-extrabold mb-4" style={{ color: "#003B6F" }}>
             Ready to Try a Free Class?
           </h2>
           <p className="text-gray-600 text-lg mb-8">
-            Head back to our home page to book your free trial class — no commitment, no experience needed.
+            No commitment, no experience needed — just come see what we&apos;re all about.
           </p>
           <Link
             href="/#trial"

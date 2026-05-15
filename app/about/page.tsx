@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "About Us | Prospect Martial Arts",
+  description: "Learn the story behind Prospect Martial Arts — a Tang Soo Do school in Prospect, CT serving the community since 2013. Our mission, our lineage, and our values.",
+};
 
 const values = [
   {
@@ -50,9 +56,9 @@ export default function AboutPage() {
             <div className="space-y-4 text-gray-700 text-base leading-relaxed">
               <p>
                 Prospect Martial Arts was born from a union of two proud martial arts communities.
-                In the summer of 2025, Jason Soper purchased Prospect Martial Arts and merged it
-                with Bunker Hill Karate — a school with its own deep history and dedicated students —
-                bringing both families together under one name and one roof.
+                In the summer of 2025, Jason Soper purchased Prospect Martial Arts — founded in
+                2013 — and merged it with Bunker Hill Karate, a school with roots going back to
+                1988, bringing both families together under one name and one roof.
               </p>
               <p>
                 The result is a school that carries the heart of two communities: the tradition,
@@ -62,7 +68,8 @@ export default function AboutPage() {
               <p>
                 Named after the town we call home, Prospect Martial Arts is a school by the
                 community, for the community. We are proud to serve Prospect and the surrounding
-                towns of Connecticut.
+                towns of Connecticut — and proud to be home to over 140 students who train with us
+                every week.
               </p>
             </div>
           </div>
@@ -110,6 +117,61 @@ export default function AboutPage() {
                 has the potential to grow.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── AFFILIATION & LINEAGE ─────────────────────────────── */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+          {/* Affiliation */}
+          <div
+            className="rounded-2xl p-8 shadow-sm"
+            style={{ backgroundColor: "#f4f7fb", border: "1px solid #e2e8f0" }}
+          >
+            <h3 className="text-xl font-extrabold mb-4" style={{ color: "#003B6F" }}>
+              Our Affiliation
+            </h3>
+            <p className="text-gray-700 text-sm leading-relaxed">
+              Prospect Martial Arts is a proud member of the <strong>Tang Soo Do Martial Arts
+              Association (TSDMA)</strong>. Our affiliation connects our students to a recognized
+              national federation with a shared commitment to the authentic practice and
+              preservation of traditional Tang Soo Do.
+            </p>
+          </div>
+
+          {/* Lineage */}
+          <div
+            className="rounded-2xl p-8 shadow-sm"
+            style={{ backgroundColor: "#f4f7fb", border: "1px solid #e2e8f0" }}
+          >
+            <h3 className="text-xl font-extrabold mb-4" style={{ color: "#003B6F" }}>
+              Our Lineage
+            </h3>
+            <p className="text-gray-700 text-sm leading-relaxed">
+              Our lineage traces back to <strong>Kwanjinim Garth Charland</strong> of the Charland
+              Institute of Karate and Fitness in Watertown, CT — a foundational figure in
+              Connecticut&apos;s Tang Soo Do community. Master Capolupo, who earned her black belt
+              under Kwanjinim Charland, has carried that tradition forward and passed it on to our
+              instructors and students at PMA.
+            </p>
+          </div>
+
+          {/* Instructor Credentials */}
+          <div
+            className="rounded-2xl p-8 shadow-sm md:col-span-2"
+            style={{ backgroundColor: "#f4f7fb", border: "1px solid #e2e8f0" }}
+          >
+            <h3 className="text-xl font-extrabold mb-4" style={{ color: "#003B6F" }}>
+              Instructor Credentials & Safety
+            </h3>
+            <p className="text-gray-700 text-sm leading-relaxed">
+              All PMA instructors are <strong>First Aid trained</strong> and hold TSDMA-recognized
+              black belt certifications in Tang Soo Do. The safety and well-being of every student
+              — especially our youngest — is our top priority. Multiple instructors are present on
+              the floor at all times, and our classes are structured to be both challenging and safe
+              for every age and skill level.
+            </p>
           </div>
         </div>
       </section>

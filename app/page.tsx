@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import GymDeskWidget from "@/components/GymDeskWidget";
+
+export const metadata: Metadata = {
+  title: "Kids & Adult Martial Arts in Prospect, CT | Prospect Martial Arts",
+  description: "Prospect Martial Arts teaches traditional Tang Soo Do in Prospect, CT. Classes for all ages — Little Tigers (3-4), Little Dragons (5-7), Kids & Teens (8+), and Adults. Book your free trial class today!",
+};
 
 // ── Program cards data ────────────────────────────────────────────
 const BOOKING_URL = "https://prospect-martial-arts.gymdesk.com/book/v/Ayw2q";
@@ -29,9 +35,9 @@ const programs = [
     title: "Tang Soo Do",
     ages: "Ages 8+",
     desc: "Traditional Tang Soo Do for kids and teens. Students learn forms, self-defense, and sparring while developing focus, respect, and the discipline that carries into every area of life.",
-    href: BOOKING_URL,
-    cta: "Book a Free Trial →",
-    external: true,
+    href: "/kids",
+    cta: "Learn More →",
+    external: false,
   },
   {
     image: "/images/program-card-adult-tang-soo-do.png",
@@ -143,8 +149,11 @@ export default function HomePage() {
             Where Everyone<br />
             <span style={{ color: "#E22D33" }}>Belongs on the Mat</span>
           </h1>
-          <p className="text-lg md:text-xl text-blue-100 mb-8 max-w-xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-blue-100 mb-4 max-w-xl mx-auto leading-relaxed">
             Traditional Tang Soo Do in Prospect, CT. Classes for kids, teens, and adults — all skill levels welcome.
+          </p>
+          <p className="text-sm text-blue-300 mb-8 font-medium">
+            Join our community of 140+ students in Prospect, CT
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -404,7 +413,7 @@ export default function HomePage() {
           Ready to Start Your Journey?
         </h2>
         <p className="text-red-100 text-lg mb-8 max-w-xl mx-auto">
-          Your first class is free. Come meet the team, see the dojang, and discover why so many
+          Your first class is free. Come meet the team, see the school, and discover why so many
           families call Prospect Martial Arts their second home.
         </p>
         <a
