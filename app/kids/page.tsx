@@ -97,6 +97,48 @@ export default function KidsPage() {
         </div>
       </section>
 
+      {/* ── SUMMER OFFER ──────────────────────────────────────── */}
+      <section className="py-12 px-4" style={{ backgroundColor: "#003B6F" }}>
+        <div className="max-w-2xl mx-auto text-center">
+          <span
+            className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-5 text-white"
+            style={{ backgroundColor: "#E22D33" }}
+          >
+            Summer Special · 10 Spots Available
+          </span>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-3">
+            Summer Kickoff Special
+          </h2>
+          <p className="text-blue-200 text-lg mb-8 max-w-lg mx-auto">
+            Get your child started this summer with 10 weeks of classes, a free uniform, and no registration fee.
+          </p>
+          <div className="bg-white rounded-2xl shadow-xl p-8 max-w-sm mx-auto">
+            <p className="text-6xl font-extrabold mb-1" style={{ color: "#003B6F" }}>$169</p>
+            <p className="text-gray-500 text-sm mb-6">for 10 weeks of classes</p>
+            <ul className="space-y-3 text-left mb-8">
+              {[
+                "No registration fee",
+                "Free uniform included",
+                "10 weeks from your first class",
+                "Available through July 31",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-2 text-sm text-gray-700">
+                  <span style={{ color: "#E22D33" }}>✓</span> {item}
+                </li>
+              ))}
+            </ul>
+            <a
+              href="#trial"
+              className="block text-white font-bold py-3 rounded-full shadow hover:opacity-90 transition-opacity"
+              style={{ backgroundColor: "#E22D33" }}
+            >
+              Book a Free Class →
+            </a>
+            <p className="text-gray-400 text-xs mt-3">Only 10 spots available this summer.</p>
+          </div>
+        </div>
+      </section>
+
       {/* ── PROGRAM INTRO ─────────────────────────────────────── */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">

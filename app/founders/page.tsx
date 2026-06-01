@@ -3,9 +3,9 @@ import Image from "next/image";
 import GymDeskWidget from "@/components/GymDeskWidget";
 
 export const metadata: Metadata = {
-  title: "Adult Tang Soo Do — Founders Membership | Prospect Martial Arts",
+  title: "Adult Tang Soo Do — Beginners | Prospect Martial Arts",
   description:
-    "Be one of the first. Lock in the Founders rate of $139/month — guaranteed for as long as you hold an active membership. Adult Tang Soo Do classes start June 2026.",
+    "Try adult Tang Soo Do at Prospect Martial Arts in Prospect, CT. Traditional Korean martial arts for adults ages 17+. Book your first class free — no experience needed.",
 };
 
 const features = [
@@ -51,10 +51,6 @@ const faqs = [
     a: "Comfortable athletic clothing — shorts or sweatpants and a t-shirt work perfectly. No uniform or equipment needed to walk in the door.",
   },
   {
-    q: "How long does the Founders rate last?",
-    a: "For as long as you hold an active membership — period. Lock it in now and your rate never goes up.",
-  },
-  {
     q: "How do I sign up?",
     a: "Book your free trial class using the form below. Come in, meet the team, and try a class. If you love it — and we think you will — we will get you set up from there.",
   },
@@ -83,81 +79,64 @@ export default function FoundersPage() {
             className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6"
             style={{ backgroundColor: "#E22D33" }}
           >
-            Founders Membership — Now Open
+            Adult Tang Soo Do · Ages 17+
           </span>
           <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4 drop-shadow-lg">
             Adult Tang Soo Do<br />
             <span style={{ color: "#E22D33" }}>Starts June 2026</span>
           </h1>
           <p className="text-lg md:text-xl text-blue-100 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Be one of the first. Lock in the Founders rate of{" "}
-            <strong className="text-white">$139/month</strong> — guaranteed for as long as
-            you hold an active membership. No long-term contracts. No gimmicks.
+            Begin your Tang Soo Do journey this summer. No experience needed — our instructors will meet you exactly where you are and build you up from there.
           </p>
           <a
-            href="#trial"
+            href="#offer"
             style={{ backgroundColor: "#E22D33" }}
             className="text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:opacity-90 transition-opacity inline-block mb-4"
           >
-            Claim Your Founders Rate
+            See Our Summer Offer
           </a>
-          <p className="text-white text-lg font-semibold mt-3">
-            First 10 members only —{" "}
-            <span className="font-bold" style={{ color: "#E22D33" }}>8 spots remaining</span>
-          </p>
         </div>
       </section>
 
-      {/* ── THE OFFER ─────────────────────────────────────────── */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-4" style={{ color: "#003B6F" }}>
-            What Is the Founders Membership?
+      {/* ── SUMMER OFFER ─────────────────────────────────────────── */}
+      <section id="offer" className="py-12 px-4" style={{ backgroundColor: "#003B6F" }}>
+        <div className="max-w-2xl mx-auto text-center">
+          <span
+            className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-5 text-white"
+            style={{ backgroundColor: "#E22D33" }}
+          >
+            Summer Special · 10 Spots Available
+          </span>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-3">
+            Summer Kickoff Special
           </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-4">
-            When we launch our adult program, the first members to sign up lock in our
-            lowest rate — permanently. No grandfathering games. No rate hikes down the road.
+          <p className="text-blue-200 text-lg mb-8 max-w-lg mx-auto">
+            This summer, new adult students can get started with 10 weeks of classes, a free uniform, and no registration fee.
           </p>
-          <p className="text-gray-500 text-base max-w-2xl mx-auto mb-12">
-            Both options below are our <strong className="text-gray-700">Gold Tier membership</strong> — our top-of-the-line plan with unlimited classes and no additional fees. The only difference is when you sign up.
-          </p>
-
-          <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-            {/* Founders card */}
-            <div
-              className="rounded-2xl p-8 text-center shadow-xl relative"
-              style={{ backgroundColor: "#003B6F" }}
+          <div className="bg-white rounded-2xl shadow-xl p-8 max-w-sm mx-auto">
+            <p className="text-6xl font-extrabold mb-1" style={{ color: "#003B6F" }}>$169</p>
+            <p className="text-gray-500 text-sm mb-6">for 10 weeks of classes</p>
+            <ul className="space-y-3 text-left mb-8">
+              {[
+                "No registration fee",
+                "Free uniform included",
+                "10 weeks from your first class",
+                "Available through July 31",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-2 text-sm text-gray-700">
+                  <span style={{ color: "#E22D33" }}>✓</span> {item}
+                </li>
+              ))}
+            </ul>
+            <a
+              href="#trial"
+              className="block text-white font-bold py-3 rounded-full shadow hover:opacity-90 transition-opacity"
+              style={{ backgroundColor: "#E22D33" }}
             >
-              <div
-                className="absolute -top-4 left-1/2 -translate-x-1/2 text-white text-xs font-bold px-4 py-1.5 rounded-full whitespace-nowrap"
-                style={{ backgroundColor: "#E22D33" }}
-              >
-                FOUNDERS RATE
-              </div>
-              <p className="text-blue-200 text-sm uppercase tracking-widest mb-2 mt-2">Lock It In</p>
-              <p className="text-white text-6xl font-extrabold">$139</p>
-              <p className="text-blue-200 text-sm mb-4">/ month — yours for life</p>
-              <div className="h-px w-16 mx-auto mb-4" style={{ backgroundColor: "#E22D33" }} />
-              <p className="text-blue-100 text-sm leading-relaxed">
-                Unlimited classes. Locked in at $139/month for as long as you remain an active member.
-              </p>
-            </div>
-
-            {/* Regular card */}
-            <div className="rounded-2xl p-8 text-center shadow-md border border-gray-200 opacity-60">
-              <p className="text-gray-500 text-sm uppercase tracking-widest mb-2 mt-2">Regular Rate</p>
-              <p className="text-gray-400 text-6xl font-extrabold">$189</p>
-              <p className="text-gray-400 text-sm mb-4">/ month</p>
-              <div className="h-px w-16 mx-auto mb-4 bg-gray-200" />
-              <p className="text-gray-500 text-sm leading-relaxed">
-                Standard unlimited membership for adult students who join after the Founders period closes.
-              </p>
-            </div>
+              Book a Free Class →
+            </a>
+            <p className="text-gray-400 text-xs mt-3">Only 10 spots available this summer.</p>
           </div>
-
-          <p className="text-gray-400 text-xs mt-6">
-            Founders rate is available for a limited time during our initial launch period.
-          </p>
         </div>
       </section>
 
