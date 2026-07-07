@@ -189,7 +189,7 @@ export default function AdultsPage() {
       {/* ── PRICING ──────────────────────────────────────────── */}
       <PricingSection
         title="Adult Membership Pricing"
-        subtitle="Straightforward monthly membership — no long-term contracts to start, no hidden fees."
+        subtitle="The $139/month rate is a limited-time offer — lock it in while spots last. No long-term contracts to start, no hidden fees."
         tiers={adultTiers}
       />
 
