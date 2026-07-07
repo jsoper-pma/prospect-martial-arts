@@ -37,16 +37,3 @@ export const REVIEWS = {
   rating: "5.0",
   count: 64,
 };
-
-// ── Limited-time offer (single place to update or disable) ─────────
-// Set `active: false` to hide the offer sections on the program pages.
-export const SUMMER_OFFER = {
-  active: true,
-  label: "Summer Special · 10 Spots Available",
-  title: "Summer Kickoff Special",
-  deadline: "August 31",
-  weeks: 10,
-  preschoolPrice: "$149",
-  youthPrice: "$169",
-  adultPrice: "$169",
-};

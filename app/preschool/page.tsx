@@ -6,7 +6,7 @@ import PricingSection from "@/components/PricingSection";
 import JsonLd from "@/components/JsonLd";
 import { preschoolTiers } from "@/lib/pricing";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
-import { BOOKING_URL, EMAIL, PHONE_DISPLAY, SITE_URL, SUMMER_OFFER } from "@/lib/site";
+import { BOOKING_URL, EMAIL, PHONE_DISPLAY, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Preschool Martial Arts Ages 3–7 | Little Tigers & Little Dragons",
@@ -166,48 +166,6 @@ export default function PreschoolPage() {
           ))}
         </div>
       </section>
-
-      {/* ── SUMMER OFFER ──────────────────────────────────────────── */}
-      {SUMMER_OFFER.active && (
-        <section className="py-12 px-4 bg-pma-navy">
-          <div className="max-w-2xl mx-auto text-center">
-            <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-5 text-white bg-pma-red">
-              {SUMMER_OFFER.label}
-            </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-3">
-              {SUMMER_OFFER.title}
-            </h2>
-            <p className="text-blue-200 text-lg mb-8 max-w-lg mx-auto">
-              Get your little one started this summer with {SUMMER_OFFER.weeks} weeks of classes, a free uniform, and no registration fee.
-            </p>
-            <div className="bg-white rounded-2xl shadow-xl p-8 max-w-sm mx-auto">
-              <p className="text-6xl font-extrabold mb-1 text-pma-navy">{SUMMER_OFFER.preschoolPrice}</p>
-              <p className="text-gray-500 text-sm mb-6">for {SUMMER_OFFER.weeks} weeks of classes</p>
-              <ul className="space-y-3 text-left mb-8">
-                {[
-                  "No registration fee",
-                  "Free uniform included",
-                  `${SUMMER_OFFER.weeks} weeks from your first class`,
-                  `Available through ${SUMMER_OFFER.deadline}`,
-                ].map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-sm text-gray-700">
-                    <Check className="w-4 h-4 text-pma-red" aria-hidden /> {item}
-                  </li>
-                ))}
-              </ul>
-              <a
-                href={BOOKING_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-white font-bold py-3 rounded-full shadow hover:opacity-90 transition-opacity bg-pma-red"
-              >
-                Book a Free Class →
-              </a>
-              <p className="text-gray-400 text-xs mt-3">Only 10 spots available this summer.</p>
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* ── PROGRAM CARDS ──────────────────────────────────────────── */}
       <section id="programs" className="py-16 px-4 bg-white">

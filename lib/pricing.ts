@@ -17,7 +17,6 @@ export const preschoolTiers: PricingTier[] = [
     highlighted: false,
     includes: [
       "Belt testing fee: $35",
-      "One-time registration fee: $100",
       "Uniform: $50",
     ],
   },
@@ -28,7 +27,6 @@ export const preschoolTiers: PricingTier[] = [
     highlighted: true,
     includes: [
       "No belt testing fees (saves $35/test)",
-      "No registration fee (saves $100)",
       "Free uniform (saves $50)",
       "20% off school events & gear",
     ],
@@ -43,7 +41,6 @@ export const youthTiers: PricingTier[] = [
     highlighted: false,
     includes: [
       "Belt testing fee: $50",
-      "One-time registration fee: $100",
       "Uniform: $50",
     ],
   },
@@ -54,7 +51,6 @@ export const youthTiers: PricingTier[] = [
     highlighted: true,
     includes: [
       "No belt testing fees (saves $50/test)",
-      "No registration fee (saves $100)",
       "Free uniform (saves $50)",
       "20% off school events & gear",
     ],
