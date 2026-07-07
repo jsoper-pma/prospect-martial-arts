@@ -1,13 +1,24 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Check, HeartHandshake, Medal, PersonStanding, Target } from "lucide-react";
 import GymDeskWidget from "@/components/GymDeskWidget";
+import PricingSection from "@/components/PricingSection";
+import JsonLd from "@/components/JsonLd";
+import { preschoolTiers } from "@/lib/pricing";
+import { getBreadcrumbSchema } from "@/lib/structured-data";
+import { BOOKING_URL, EMAIL, PHONE_DISPLAY, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Little Tigers & Little Dragons | Preschool Martial Arts Ages 3–7 | Prospect Martial Arts",
-  description: "Tang Soo Do classes for children ages 3–7 in Prospect, CT. Little Tigers (3-4) and Little Dragons (5-7) programs build confidence, focus, and coordination in a fun, nurturing environment.",
+  title: "Preschool Martial Arts Ages 3–7 | Little Tigers & Little Dragons",
+  description:
+    "Tang Soo Do classes for children ages 3–7 in Prospect, CT. Little Tigers (3-4) and Little Dragons (5-7) programs build confidence, focus, and coordination in a fun, nurturing environment.",
+  alternates: { canonical: "/preschool" },
+  openGraph: {
+    title: "Preschool Martial Arts — Prospect Martial Arts",
+    description:
+      "Little Tigers (ages 3–4) and Little Dragons (ages 5–7) in Prospect, CT. First class free.",
+  },
 };
-
-const BOOKING_URL = "https://prospect-martial-arts.gymdesk.com/book/v/Ayw2q";
 
 const programs = [
   {
@@ -50,22 +61,22 @@ const programs = [
 
 const benefits = [
   {
-    emoji: "💪",
+    icon: Medal,
     title: "Confidence That Shows",
     desc: "Students leave every class standing taller. We celebrate every small win — because they all add up.",
   },
   {
-    emoji: "🎯",
+    icon: Target,
     title: "Focus and Listening Skills",
     desc: "Following directions, paying attention, taking turns — skills that directly benefit them in school.",
   },
   {
-    emoji: "🤸",
+    icon: PersonStanding,
     title: "Coordination and Fitness",
     desc: "Classes are active and age-appropriate, building balance, coordination, and a love of movement.",
   },
   {
-    emoji: "👨‍👩‍👧‍👦",
+    icon: HeartHandshake,
     title: "A Community of Their Own",
     desc: "Friendships form fast on the mat. Our students cheer each other on from day one.",
   },
@@ -89,6 +100,12 @@ const reviews = [
 export default function PreschoolPage() {
   return (
     <>
+      <JsonLd
+        data={getBreadcrumbSchema([
+          { name: "Home", url: SITE_URL },
+          { name: "Preschool Programs", url: `${SITE_URL}/preschool` },
+        ])}
+      />
       {/* ── HERO ───────────────────────────────────────────────────── */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
         <Image
@@ -98,17 +115,16 @@ export default function PreschoolPage() {
           className="object-cover object-top"
           priority
         />
-        <div className="absolute inset-0" style={{ backgroundColor: "rgba(0,59,111,0.78)" }} />
+        <div className="absolute inset-0 bg-pma-navy/80" />
         <div className="relative z-10 text-center text-white px-4 max-w-3xl mx-auto">
           <span
-            className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6"
-            style={{ backgroundColor: "#E22D33" }}
+            className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6 bg-pma-red"
           >
             Preschool Programs · Ages 3–7
           </span>
           <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-5 drop-shadow-lg">
             The Best Thing<br />
-            <span style={{ color: "#fbbf24" }}>You Did All Week.</span>
+            <span className="text-yellow-400">You Did All Week.</span>
           </h1>
           <p className="text-lg md:text-xl text-blue-100 mb-8 max-w-xl mx-auto leading-relaxed">
             Little Tigers and Little Dragons are built for kids ages 3–7 — where every class builds confidence, coordination, and a love of learning that lasts.
@@ -118,8 +134,7 @@ export default function PreschoolPage() {
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              style={{ backgroundColor: "#E22D33" }}
-              className="text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:opacity-90 transition-opacity"
+              className="text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:opacity-90 transition-opacity bg-pma-red"
             >
               Book a Free Trial Class →
             </a>
@@ -137,7 +152,7 @@ export default function PreschoolPage() {
       </section>
 
       {/* ── QUICK REASSURANCE BAR ──────────────────────────────────── */}
-      <section className="py-5 px-4" style={{ backgroundColor: "#003B6F" }}>
+      <section className="py-5 px-4 bg-pma-navy">
         <div className="max-w-4xl mx-auto flex flex-wrap justify-center gap-x-8 gap-y-2 text-center">
           {[
             "✓  No uniform required for your first class",
@@ -152,54 +167,10 @@ export default function PreschoolPage() {
         </div>
       </section>
 
-      {/* ── JUNE SUMMER OFFER ─────────────────────────────────────── */}
-      <section className="py-12 px-4" style={{ backgroundColor: "#003B6F" }}>
-        <div className="max-w-2xl mx-auto text-center">
-          <span
-            className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-5 text-white"
-            style={{ backgroundColor: "#E22D33" }}
-          >
-            Summer Special · 10 Spots Available
-          </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-3">
-            Summer Kickoff Special
-          </h2>
-          <p className="text-blue-200 text-lg mb-8 max-w-lg mx-auto">
-            Get your little one started this summer with 10 weeks of classes, a free uniform, and no registration fee.
-          </p>
-          <div className="bg-white rounded-2xl shadow-xl p-8 max-w-sm mx-auto">
-            <p className="text-6xl font-extrabold mb-1" style={{ color: "#003B6F" }}>$149</p>
-            <p className="text-gray-500 text-sm mb-6">for 10 weeks of classes</p>
-            <ul className="space-y-3 text-left mb-8">
-              {[
-                "No registration fee",
-                "Free uniform included",
-                "10 weeks from your first class",
-                "Available through July 31",
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-2 text-sm text-gray-700">
-                  <span style={{ color: "#E22D33" }}>✓</span> {item}
-                </li>
-              ))}
-            </ul>
-            <a
-              href={BOOKING_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block text-white font-bold py-3 rounded-full shadow hover:opacity-90 transition-opacity"
-              style={{ backgroundColor: "#E22D33" }}
-            >
-              Book a Free Class →
-            </a>
-            <p className="text-gray-400 text-xs mt-3">Only 10 spots available this summer.</p>
-          </div>
-        </div>
-      </section>
-
       {/* ── PROGRAM CARDS ──────────────────────────────────────────── */}
       <section id="programs" className="py-16 px-4 bg-white">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3" style={{ color: "#003B6F" }}>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3 text-pma-navy">
             Two Programs. One Great School.
           </h2>
           <p className="text-center text-gray-500 mb-12 max-w-xl mx-auto">
@@ -233,7 +204,7 @@ export default function PreschoolPage() {
 
                 {/* Body */}
                 <div className="p-7 flex flex-col flex-1">
-                  <h3 className="text-2xl font-extrabold mb-1" style={{ color: "#003B6F" }}>
+                  <h3 className="text-2xl font-extrabold mb-1 text-pma-navy">
                     {p.name}
                   </h3>
                   <p className="text-sm font-semibold mb-4" style={{ color: p.color }}>
@@ -245,8 +216,8 @@ export default function PreschoolPage() {
 
                   {/* Highlight callout */}
                   <div
-                    className="rounded-xl px-4 py-3 mb-5 text-sm font-semibold leading-snug"
-                    style={{ backgroundColor: "#f4f7fb", borderLeft: `4px solid ${p.color}` }}
+                    className="rounded-xl px-4 py-3 mb-5 text-sm font-semibold leading-snug bg-pma-cream"
+                    style={{ borderLeft: `4px solid ${p.color}` }}
                   >
                     {p.highlight}
                   </div>
@@ -278,18 +249,17 @@ export default function PreschoolPage() {
       </section>
 
       {/* ── WHAT TO EXPECT / FIRST CLASS ──────────────────────────── */}
-      <section className="py-16 px-4" style={{ backgroundColor: "#f4f7fb" }}>
+      <section className="py-16 px-4 bg-pma-cream">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* Text */}
             <div>
               <p
-                className="text-xs font-bold uppercase tracking-widest mb-3"
-                style={{ color: "#E22D33" }}
+                className="text-xs font-bold uppercase tracking-widest mb-3 text-pma-red"
               >
                 Your First Class
               </p>
-              <h2 className="text-3xl md:text-4xl font-extrabold mb-5" style={{ color: "#003B6F" }}>
+              <h2 className="text-3xl md:text-4xl font-extrabold mb-5 text-pma-navy">
                 Just show up.<br />We&apos;ll handle the rest.
               </h2>
               <p className="text-gray-600 leading-relaxed mb-6">
@@ -298,8 +268,7 @@ export default function PreschoolPage() {
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
                   <div
-                    className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm shadow"
-                    style={{ backgroundColor: "#003B6F" }}
+                    className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm shadow bg-pma-navy"
                   >
                     1
                   </div>
@@ -310,8 +279,7 @@ export default function PreschoolPage() {
                 </div>
                 <div className="flex items-start gap-4">
                   <div
-                    className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm shadow"
-                    style={{ backgroundColor: "#003B6F" }}
+                    className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm shadow bg-pma-navy"
                   >
                     2
                   </div>
@@ -322,8 +290,7 @@ export default function PreschoolPage() {
                 </div>
                 <div className="flex items-start gap-4">
                   <div
-                    className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm shadow"
-                    style={{ backgroundColor: "#003B6F" }}
+                    className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm shadow bg-pma-navy"
                   >
                     3
                   </div>
@@ -334,8 +301,7 @@ export default function PreschoolPage() {
                 </div>
                 <div className="flex items-start gap-4">
                   <div
-                    className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm shadow"
-                    style={{ backgroundColor: "#E22D33" }}
+                    className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm shadow bg-pma-red"
                   >
                     4
                   </div>
@@ -350,8 +316,7 @@ export default function PreschoolPage() {
                   href={BOOKING_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ backgroundColor: "#E22D33" }}
-                  className="inline-block text-white font-bold px-8 py-4 rounded-full shadow-lg hover:opacity-90 transition-opacity"
+                  className="inline-block text-white font-bold px-8 py-4 rounded-full shadow-lg hover:opacity-90 transition-opacity bg-pma-red"
                 >
                   Book Your Free Trial →
                 </a>
@@ -400,7 +365,7 @@ export default function PreschoolPage() {
       {/* ── PHOTO GALLERY STRIP ────────────────────────────────────── */}
       <section className="py-12 px-4 bg-white overflow-hidden">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-center mb-8" style={{ color: "#003B6F" }}>
+          <h2 className="text-2xl md:text-3xl font-extrabold text-center mb-8 text-pma-navy">
             See What Class Looks Like
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -428,7 +393,7 @@ export default function PreschoolPage() {
       </section>
 
       {/* ── BENEFITS / WHY PMA ─────────────────────────────────────── */}
-      <section className="py-16 px-4" style={{ backgroundColor: "#003B6F" }}>
+      <section className="py-16 px-4 bg-pma-navy">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-extrabold text-center text-white mb-4">
             More Than Kicks and Punches
@@ -439,10 +404,10 @@ export default function PreschoolPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {benefits.map((b) => (
               <div key={b.title} className="bg-white rounded-2xl p-6 text-center shadow-md hover:shadow-lg transition-shadow">
-                <div className="text-5xl mb-4">{b.emoji}</div>
-                <h3 className="font-bold text-lg mb-2" style={{ color: "#003B6F" }}>
-                  {b.title}
-                </h3>
+                <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-pma-light flex items-center justify-center">
+                  <b.icon className="w-7 h-7 text-pma-navy" aria-hidden />
+                </div>
+                <h3 className="font-bold text-lg mb-2 text-pma-navy">{b.title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{b.desc}</p>
               </div>
             ))}
@@ -463,25 +428,24 @@ export default function PreschoolPage() {
       {/* ── CLASS SCHEDULE ─────────────────────────────────────────── */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3" style={{ color: "#003B6F" }}>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3 text-pma-navy">
             Class Schedule
           </h2>
           <p className="text-center text-gray-500 mb-10 text-sm">
-            New schedule begins June 8, 2026. Four classes per week — pick the days that work for your family.
+            Four classes per week — pick the days that work for your family.
           </p>
 
           <div className="space-y-5">
             {/* Little Tigers schedule */}
             <div className="rounded-2xl overflow-hidden shadow-md border border-gray-100">
               <div
-                className="px-6 py-4 flex items-center justify-between"
-                style={{ backgroundColor: "#E22D33" }}
+                className="px-6 py-4 flex items-center justify-between bg-pma-red"
               >
                 <div>
                   <h3 className="text-white font-extrabold text-lg">Little Tigers</h3>
                   <p className="text-red-100 text-sm">Ages 3–4 · Parent participation required</p>
                 </div>
-                <span className="bg-white text-xs font-bold px-3 py-1.5 rounded-full" style={{ color: "#E22D33" }}>
+                <span className="bg-white text-xs font-bold px-3 py-1.5 rounded-full text-pma-red">
                   Ages 3–4
                 </span>
               </div>
@@ -489,7 +453,7 @@ export default function PreschoolPage() {
                 <div className="grid grid-cols-2 gap-4">
                   {["Monday", "Tuesday", "Wednesday", "Thursday"].map((day) => (
                     <div key={day} className="flex items-center gap-3">
-                      <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: "#E22D33" }} />
+                      <div className="w-2 h-2 rounded-full flex-shrink-0 bg-pma-red" />
                       <div>
                         <p className="font-semibold text-sm text-gray-800">{day}</p>
                         <p className="text-gray-500 text-xs">4:30 – 5:00 PM</p>
@@ -503,14 +467,13 @@ export default function PreschoolPage() {
             {/* Little Dragons schedule */}
             <div className="rounded-2xl overflow-hidden shadow-md border border-gray-100">
               <div
-                className="px-6 py-4 flex items-center justify-between"
-                style={{ backgroundColor: "#003B6F" }}
+                className="px-6 py-4 flex items-center justify-between bg-pma-navy"
               >
                 <div>
                   <h3 className="text-white font-extrabold text-lg">Little Dragons</h3>
                   <p className="text-blue-200 text-sm">Ages 5–7 · Independent on the mat</p>
                 </div>
-                <span className="bg-white text-xs font-bold px-3 py-1.5 rounded-full" style={{ color: "#003B6F" }}>
+                <span className="bg-white text-xs font-bold px-3 py-1.5 rounded-full text-pma-navy">
                   Ages 5–7
                 </span>
               </div>
@@ -523,7 +486,7 @@ export default function PreschoolPage() {
                     { day: "Thursday", time: "5:00 – 5:30 PM" },
                   ].map((row) => (
                     <div key={row.day} className="flex items-center gap-3">
-                      <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: "#003B6F" }} />
+                      <div className="w-2 h-2 rounded-full flex-shrink-0 bg-pma-navy" />
                       <div>
                         <p className="font-semibold text-sm text-gray-800">{row.day}</p>
                         <p className="text-gray-500 text-xs">{row.time}</p>
@@ -540,8 +503,7 @@ export default function PreschoolPage() {
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              style={{ backgroundColor: "#E22D33" }}
-              className="inline-block text-white font-bold px-8 py-4 rounded-full shadow-lg hover:opacity-90 transition-opacity"
+              className="inline-block text-white font-bold px-8 py-4 rounded-full shadow-lg hover:opacity-90 transition-opacity bg-pma-red"
             >
               Book a Free Trial Class →
             </a>
@@ -549,10 +511,17 @@ export default function PreschoolPage() {
         </div>
       </section>
 
+      {/* ── PRICING ────────────────────────────────────────────────── */}
+      <PricingSection
+        title="Preschool Membership Pricing"
+        subtitle="Little Tigers (Ages 3–4) and Little Dragons (Ages 5–7) — Silver for twice-a-week training, Gold for unlimited classes and no extra fees."
+        tiers={preschoolTiers}
+      />
+
       {/* ── PARENT REVIEWS ─────────────────────────────────────────── */}
-      <section className="py-16 px-4" style={{ backgroundColor: "#f4f7fb" }}>
+      <section className="py-16 px-4 bg-pma-cream">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3" style={{ color: "#003B6F" }}>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3 text-pma-navy">
             What Parents Are Saying
           </h2>
           <p className="text-center text-gray-500 mb-10 text-sm">Real reviews from Google — unedited.</p>
@@ -567,7 +536,7 @@ export default function PreschoolPage() {
                   ))}
                 </div>
                 <p className="text-gray-700 text-sm leading-relaxed flex-1">&ldquo;{r.text}&rdquo;</p>
-                <p className="font-bold text-sm" style={{ color: "#003B6F" }}>{r.name}</p>
+                <p className="font-bold text-sm text-pma-navy">{r.name}</p>
               </div>
             ))}
           </div>
@@ -577,7 +546,7 @@ export default function PreschoolPage() {
       {/* ── BOOKING WIDGET ─────────────────────────────────────────── */}
       <section id="trial" className="py-16 px-4 bg-white">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-4" style={{ color: "#003B6F" }}>
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-pma-navy">
             Ready to Try a Free Class?
           </h2>
           <p className="text-gray-600 text-lg mb-10 leading-relaxed">
@@ -591,8 +560,7 @@ export default function PreschoolPage() {
 
       {/* ── FINAL CTA ──────────────────────────────────────────────── */}
       <section
-        className="py-16 px-4 text-center text-white"
-        style={{ backgroundColor: "#E22D33" }}
+        className="py-16 px-4 text-center text-white bg-pma-red"
       >
         <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
           The First Class Is Free.<br />The Confidence Lasts a Lifetime.
@@ -604,13 +572,12 @@ export default function PreschoolPage() {
           href={BOOKING_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-white font-bold text-lg px-10 py-4 rounded-full shadow-lg hover:bg-gray-100 transition-colors inline-block"
-          style={{ color: "#E22D33" }}
+          className="bg-white font-bold text-lg px-10 py-4 rounded-full shadow-lg hover:bg-gray-100 transition-colors inline-block text-pma-red"
         >
           Book Your Free Trial Now →
         </a>
         <p className="text-red-200 text-sm mt-4">
-          Questions? Call us at 203-441-5358 or email info@prospectma.com
+          Questions? Call us at {PHONE_DISPLAY} or email {EMAIL}
         </p>
       </section>
     </>

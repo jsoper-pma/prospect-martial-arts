@@ -1,121 +1,217 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ChevronDown, Menu, Phone, X } from "lucide-react";
+import { BOOKING_URL, PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
+
+const programLinks = [
+  { href: "/preschool", label: "Preschool (Ages 3–7)" },
+  { href: "/kids", label: "Kids & Teens (Ages 8+)" },
+  { href: "/adults", label: "Adults (Ages 17+)" },
+];
 
 const links = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About Us" },
-  { href: "/team", label: "Our Team" },
+  { href: "/about", label: "About" },
+  { href: "/team", label: "Team" },
+  // Programs dropdown rendered separately
+  { href: "/blog", label: "Blog" },
+  { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [programsOpen, setProgramsOpen] = useState(false);
   const pathname = usePathname();
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close desktop dropdown on outside click
+  useEffect(() => {
+    function onClick(e: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setProgramsOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", onClick);
+    return () => document.removeEventListener("mousedown", onClick);
+  }, []);
+
+  // Close menus on navigation
+  useEffect(() => {
+    setMenuOpen(false);
+    setProgramsOpen(false);
+  }, [pathname]);
+
+  const isProgramPage = programLinks.some((p) => pathname === p.href);
+
+  const desktopLinkClass = (href: string) =>
+    `text-sm font-semibold tracking-wide transition-colors duration-200 ${
+      pathname === href
+        ? "text-white border-b-2 border-pma-red pb-1"
+        : "text-blue-200 hover:text-white"
+    }`;
 
   return (
-    <header style={{ backgroundColor: "#003B6F" }} className="shadow-lg sticky top-0 z-50">
+    <header className="bg-pma-navy shadow-lg sticky top-0 z-50">
       <nav className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo + School Name */}
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/images/logo.png"
             alt="Prospect Martial Arts Logo"
-            width={60}
-            height={60}
+            width={56}
+            height={56}
             className="rounded-full"
           />
           <div className="leading-tight">
-            <p className="text-white font-bold text-lg tracking-wide">
-              PROSPECT
-            </p>
-            <p style={{ color: "#E22D33" }} className="font-bold text-sm tracking-widest uppercase">
-              Martial Arts
-            </p>
+            <p className="text-white font-bold text-lg tracking-wide">PROSPECT</p>
+            <p className="text-pma-red font-bold text-sm tracking-widest uppercase">Martial Arts</p>
           </div>
         </Link>
 
         {/* Desktop Nav Links */}
-        <div className="hidden md:flex items-center gap-6">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`text-sm font-semibold tracking-wide transition-colors duration-200 ${
-                pathname === link.href
-                  ? "text-white border-b-2 border-red-500 pb-1"
-                  : "text-blue-200 hover:text-white"
-              }`}
-            >
+        <div className="hidden lg:flex items-center gap-5">
+          {links.slice(0, 3).map((link) => (
+            <Link key={link.href} href={link.href} className={desktopLinkClass(link.href)}>
               {link.label}
             </Link>
           ))}
+
+          {/* Programs dropdown */}
+          <div className="relative" ref={dropdownRef}>
+            <button
+              onClick={() => setProgramsOpen(!programsOpen)}
+              aria-expanded={programsOpen}
+              aria-haspopup="true"
+              className={`flex items-center gap-1 text-sm font-semibold tracking-wide transition-colors duration-200 ${
+                isProgramPage
+                  ? "text-white border-b-2 border-pma-red pb-1"
+                  : "text-blue-200 hover:text-white"
+              }`}
+            >
+              Programs
+              <ChevronDown
+                className={`w-4 h-4 transition-transform ${programsOpen ? "rotate-180" : ""}`}
+                aria-hidden
+              />
+            </button>
+            {programsOpen && (
+              <div className="absolute top-full left-0 mt-3 w-60 bg-white rounded-xl shadow-xl overflow-hidden border border-gray-100">
+                {programLinks.map((p) => (
+                  <Link
+                    key={p.href}
+                    href={p.href}
+                    onClick={() => setProgramsOpen(false)}
+                    className={`block px-5 py-3 text-sm font-semibold transition-colors ${
+                      pathname === p.href
+                        ? "bg-pma-light text-pma-navy"
+                        : "text-gray-700 hover:bg-pma-light hover:text-pma-navy"
+                    }`}
+                  >
+                    {p.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {links.slice(3).map((link) => (
+            <Link key={link.href} href={link.href} className={desktopLinkClass(link.href)}>
+              {link.label}
+            </Link>
+          ))}
+
           <a
-            href="tel:2034415358"
+            href={PHONE_HREF}
             className="text-blue-200 hover:text-white text-sm font-semibold tracking-wide transition-colors duration-200"
           >
-            (203) 441-5358
+            {PHONE_DISPLAY}
           </a>
-          <Link
-            href="/#trial"
-            style={{ backgroundColor: "#E22D33" }}
-            className="text-white text-sm font-bold px-5 py-2 rounded-full hover:opacity-90 transition-opacity duration-200 shadow-md"
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-pma-red text-white text-sm font-bold px-5 py-2 rounded-full hover:opacity-90 transition-opacity duration-200 shadow-md"
           >
             Book Free Trial
-          </Link>
+          </a>
         </div>
 
         {/* Mobile Hamburger Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-white p-2 focus:outline-none"
+          className="lg:hidden text-white p-2 focus:outline-none"
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
         >
-          {menuOpen ? (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          ) : (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          )}
+          {menuOpen ? <X className="w-6 h-6" aria-hidden /> : <Menu className="w-6 h-6" aria-hidden />}
         </button>
       </nav>
 
       {/* Mobile Menu Dropdown */}
       {menuOpen && (
-        <div style={{ backgroundColor: "#002a52" }} className="md:hidden px-4 pb-4 flex flex-col gap-3">
-          {links.map((link) => (
+        <div className="bg-pma-navy-dark lg:hidden px-4 pb-4 flex flex-col gap-1">
+          {links.slice(0, 3).map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className={`text-sm font-semibold py-2 border-b border-blue-800 transition-colors ${
+              className={`text-sm font-semibold py-2.5 border-b border-blue-900 transition-colors ${
                 pathname === link.href ? "text-white" : "text-blue-200 hover:text-white"
               }`}
             >
               {link.label}
             </Link>
           ))}
+
+          {/* Programs group */}
+          <p className="text-xs font-bold uppercase tracking-widest text-blue-400 pt-3 pb-1">Programs</p>
+          {programLinks.map((p) => (
+            <Link
+              key={p.href}
+              href={p.href}
+              onClick={() => setMenuOpen(false)}
+              className={`text-sm font-semibold py-2.5 pl-3 border-b border-blue-900 transition-colors ${
+                pathname === p.href ? "text-white" : "text-blue-200 hover:text-white"
+              }`}
+            >
+              {p.label}
+            </Link>
+          ))}
+
+          {links.slice(3).map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setMenuOpen(false)}
+              className={`text-sm font-semibold py-2.5 border-b border-blue-900 transition-colors ${
+                pathname === link.href ? "text-white" : "text-blue-200 hover:text-white"
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
+
           <a
-            href="tel:2034415358"
+            href={PHONE_HREF}
             onClick={() => setMenuOpen(false)}
-            className="text-sm font-semibold py-2 border-b border-blue-800 text-blue-200 hover:text-white transition-colors"
+            className="flex items-center gap-2 text-sm font-semibold py-2.5 border-b border-blue-900 text-blue-200 hover:text-white transition-colors"
           >
-            📞 (203) 441-5358
+            <Phone className="w-4 h-4" aria-hidden /> {PHONE_DISPLAY}
           </a>
-          <Link
-            href="/#trial"
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}
-            style={{ backgroundColor: "#E22D33" }}
-            className="text-white text-sm font-bold text-center px-5 py-2 rounded-full hover:opacity-90 transition-opacity mt-2"
+            className="bg-pma-red text-white text-sm font-bold text-center px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity mt-3"
           >
             Book Free Trial
-          </Link>
+          </a>
         </div>
       )}
     </header>

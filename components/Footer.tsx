@@ -1,12 +1,27 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ADDRESS, BOOKING_URL, EMAIL, PHONE_DISPLAY, PHONE_HREF, SOCIALS } from "@/lib/site";
+
+const quickLinks = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About Us" },
+  { href: "/team", label: "Our Team" },
+  { href: "/blog", label: "Blog" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/contact", label: "Contact & Location" },
+];
+
+const programLinks = [
+  { href: "/preschool", label: "Preschool — Ages 3–7" },
+  { href: "/kids", label: "Kids & Teens — Ages 8+" },
+  { href: "/adults", label: "Adults — Ages 17+" },
+];
 
 export default function Footer() {
   return (
-    <footer style={{ backgroundColor: "#003B6F" }} className="text-white mt-auto">
-
+    <footer className="bg-pma-navy text-white mt-auto">
       {/* ── QUOTE BAND ────────────────────────────────────────── */}
-      <div style={{ backgroundColor: "#002a52" }} className="px-4 py-8">
+      <div className="bg-pma-navy-dark px-4 py-8">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-white text-xl md:text-2xl font-semibold italic leading-relaxed mb-1">
             &ldquo;Everyone has greatness in them.
@@ -15,19 +30,18 @@ export default function Footer() {
             It just takes the right teacher to help bring it out.&rdquo;
           </p>
           <div className="flex items-center justify-center gap-3">
-            <div className="h-px w-10" style={{ backgroundColor: "#E22D33" }} />
+            <div className="h-px w-10 bg-pma-red" />
             <p className="text-blue-200 text-sm font-semibold tracking-wide">
               Mr. Soper &nbsp;·&nbsp; Owner, Prospect Martial Arts
             </p>
-            <div className="h-px w-10" style={{ backgroundColor: "#E22D33" }} />
+            <div className="h-px w-10 bg-pma-red" />
           </div>
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
-
-        {/* Logo */}
-        <div className="flex flex-col items-center md:items-start gap-3">
+      <div className="max-w-6xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
+        {/* Logo + CTA */}
+        <div className="flex flex-col items-center md:items-start gap-4">
           <Image
             src="/images/logo.png"
             alt="Prospect Martial Arts Logo"
@@ -35,22 +49,34 @@ export default function Footer() {
             height={80}
             className="rounded-full"
           />
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-pma-red text-white text-sm font-bold px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity shadow-md"
+          >
+            Book a Free Trial
+          </a>
+        </div>
+
+        {/* Programs */}
+        <div className="flex flex-col items-center md:items-start gap-2">
+          <h3 className="font-bold text-base mb-1 tracking-wide uppercase text-pma-red">Programs</h3>
+          {programLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-blue-200 hover:text-white text-sm transition-colors"
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
 
         {/* Quick Links */}
         <div className="flex flex-col items-center md:items-start gap-2">
-          <h3 className="font-bold text-base mb-1 tracking-wide uppercase" style={{ color: "#E22D33" }}>
-            Quick Links
-          </h3>
-          {[
-            { href: "/", label: "Home" },
-            { href: "/about", label: "About Us" },
-            { href: "/team", label: "Our Team" },
-            { href: "/kids", label: "Kids & Teen Program" },
-            { href: "/faq", label: "FAQ" },
-            { href: "/contact", label: "Contact & Location" },
-            { href: "/#trial", label: "Book a Free Trial" },
-          ].map((link) => (
+          <h3 className="font-bold text-base mb-1 tracking-wide uppercase text-pma-red">Quick Links</h3>
+          {quickLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -63,23 +89,25 @@ export default function Footer() {
 
         {/* Contact Info */}
         <div className="flex flex-col items-center md:items-start gap-2">
-          <h3 className="font-bold text-base mb-1 tracking-wide uppercase" style={{ color: "#E22D33" }}>
-            Contact Us
-          </h3>
-          <p className="text-blue-200 text-sm">73 Waterbury Road</p>
-          <p className="text-blue-200 text-sm">Prospect, CT</p>
-          <a href="tel:2034415358" className="text-blue-200 hover:text-white text-sm transition-colors">
-            (203) 441-5358
+          <h3 className="font-bold text-base mb-1 tracking-wide uppercase text-pma-red">Contact Us</h3>
+          <p className="text-blue-200 text-sm">{ADDRESS.street}</p>
+          <p className="text-blue-200 text-sm">
+            {ADDRESS.city}, {ADDRESS.state} {ADDRESS.zip}
+          </p>
+          <a href={PHONE_HREF} className="text-blue-200 hover:text-white text-sm transition-colors">
+            {PHONE_DISPLAY}
           </a>
-          <a href="mailto:info@prospectma.com" className="text-blue-200 hover:text-white text-sm transition-colors">
-            info@prospectma.com
+          <a
+            href={`mailto:${EMAIL}`}
+            className="text-blue-200 hover:text-white text-sm transition-colors"
+          >
+            {EMAIL}
           </a>
 
           {/* Social Icons */}
           <div className="flex gap-4 mt-3">
-            {/* Facebook */}
             <a
-              href="https://www.facebook.com/Pmatangsoodo"
+              href={SOCIALS.facebook}
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-200 hover:text-white transition-colors"
@@ -89,9 +117,8 @@ export default function Footer() {
                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
               </svg>
             </a>
-            {/* Instagram */}
             <a
-              href="https://www.instagram.com/prospectmartialartsct"
+              href={SOCIALS.instagram}
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-200 hover:text-white transition-colors"
@@ -103,9 +130,8 @@ export default function Footer() {
                 <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
               </svg>
             </a>
-            {/* YouTube */}
             <a
-              href="https://www.youtube.com/@ProspectMartialArts"
+              href={SOCIALS.youtube}
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-200 hover:text-white transition-colors"
@@ -120,8 +146,9 @@ export default function Footer() {
         </div>
       </div>
 
-      <div style={{ backgroundColor: "#002a52" }} className="text-center text-blue-300 text-xs py-4 px-4">
-        © {new Date().getFullYear()} Prospect Martial Arts · 73 Waterbury Road, Prospect, CT · All Rights Reserved
+      {/* Bottom bar — extra bottom padding on mobile clears the sticky CTA */}
+      <div className="bg-pma-navy-dark text-center text-blue-300 text-xs py-4 px-4 pb-24 md:pb-4">
+        © {new Date().getFullYear()} Prospect Martial Arts · {ADDRESS.full} · All Rights Reserved
       </div>
     </footer>
   );

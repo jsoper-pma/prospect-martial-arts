@@ -1,41 +1,54 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Brain, Check, HeartHandshake, Medal, Shield, Sprout, Trophy } from "lucide-react";
 import GymDeskWidget from "@/components/GymDeskWidget";
+import PricingSection from "@/components/PricingSection";
+import JsonLd from "@/components/JsonLd";
+import { youthTiers } from "@/lib/pricing";
+import { getBreadcrumbSchema } from "@/lib/structured-data";
+import { BOOKING_URL, PHONE_DISPLAY, PHONE_HREF, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Kids & Teen Martial Arts Classes Prospect CT | Ages 8+ | Prospect Martial Arts",
-  description: "Tang Soo Do classes for kids and teens ages 8 and up in Prospect, CT. Students build confidence, focus, and self-defense skills in a structured, encouraging environment. Book a free trial class today.",
+  title: "Kids & Teen Martial Arts Classes in Prospect, CT | Ages 8+",
+  description:
+    "Tang Soo Do classes for kids and teens ages 8 and up in Prospect, CT. Students build confidence, focus, and self-defense skills in a structured, encouraging environment. Book a free trial class today.",
+  alternates: { canonical: "/kids" },
+  openGraph: {
+    title: "Kids & Teen Tang Soo Do — Prospect Martial Arts",
+    description:
+      "Martial arts for ages 8+ in Prospect, CT. Confidence, focus, and real self-defense. First class free.",
+  },
 };
 
 const benefits = [
   {
-    emoji: "💪",
+    icon: Medal,
     title: "Confidence That Shows",
     desc: "Students who commit to training carry themselves differently — in school, at home, and everywhere in between. Martial arts builds a quiet, earned confidence.",
   },
   {
-    emoji: "🧠",
+    icon: Brain,
     title: "Focus & Discipline",
     desc: "Tang Soo Do demands attention and self-control. Students learn to tune out distractions and stay locked in — a skill that transfers directly into the classroom.",
   },
   {
-    emoji: "🥋",
+    icon: Shield,
     title: "Real Self-Defense Skills",
     desc: "Students learn practical striking, kicking, blocking, and self-defense techniques — not just choreography. They graduate knowing they can handle themselves.",
   },
   {
-    emoji: "🌱",
+    icon: Sprout,
     title: "A Clear Path Forward",
     desc: "The belt system gives students a tangible goal to work toward at every stage. Progress is visible, celebrated, and earned — which teaches them that effort has a reward.",
   },
   {
-    emoji: "🤝",
+    icon: HeartHandshake,
     title: "Respect & Character",
     desc: "Every class begins and ends with respect — for instructors, for training partners, and for themselves. These aren't just mat rules. They become habits.",
   },
   {
-    emoji: "🏆",
+    icon: Trophy,
     title: "A Community That Cares",
     desc: "Students make real friends here. Our instructors know every student by name, celebrate every milestone, and invest in every person who walks through the door.",
   },
@@ -66,75 +79,41 @@ const reviews = [
 export default function KidsPage() {
   return (
     <>
+      <JsonLd
+        data={getBreadcrumbSchema([
+          { name: "Home", url: SITE_URL },
+          { name: "Kids & Teens", url: `${SITE_URL}/kids` },
+        ])}
+      />
+
       {/* ── PAGE HEADER ───────────────────────────────────────── */}
-      <section
-        className="py-20 px-4 text-center text-white relative overflow-hidden"
-        style={{ backgroundColor: "#003B6F" }}
-      >
+      <section className="py-20 px-4 text-center text-white relative overflow-hidden bg-pma-navy">
         <div className="max-w-3xl mx-auto relative z-10">
-          <span
-            className="inline-block text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-widest"
-            style={{ backgroundColor: "#E22D33" }}
-          >
+          <span className="inline-block text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-widest bg-pma-red">
             Ages 8 &amp; Up
           </span>
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
             Tang Soo Do for Kids &amp; Teens
           </h1>
           <p className="text-blue-200 text-lg max-w-xl mx-auto">
-            Traditional martial arts training that builds confidence, discipline, and
-            real self-defense skills — in a school that genuinely cares about every student.
+            Traditional martial arts training that builds confidence, discipline, and real
+            self-defense skills — in a school that genuinely cares about every student.
           </p>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="#trial"
-              style={{ backgroundColor: "#E22D33" }}
-              className="inline-block text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:opacity-90 transition-opacity"
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-pma-red text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:opacity-90 transition-opacity"
             >
               Book Your Free Trial Class
             </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ── SUMMER OFFER ──────────────────────────────────────── */}
-      <section className="py-12 px-4" style={{ backgroundColor: "#003B6F" }}>
-        <div className="max-w-2xl mx-auto text-center">
-          <span
-            className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-5 text-white"
-            style={{ backgroundColor: "#E22D33" }}
-          >
-            Summer Special · 10 Spots Available
-          </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-3">
-            Summer Kickoff Special
-          </h2>
-          <p className="text-blue-200 text-lg mb-8 max-w-lg mx-auto">
-            Get your child started this summer with 10 weeks of classes, a free uniform, and no registration fee.
-          </p>
-          <div className="bg-white rounded-2xl shadow-xl p-8 max-w-sm mx-auto">
-            <p className="text-6xl font-extrabold mb-1" style={{ color: "#003B6F" }}>$169</p>
-            <p className="text-gray-500 text-sm mb-6">for 10 weeks of classes</p>
-            <ul className="space-y-3 text-left mb-8">
-              {[
-                "No registration fee",
-                "Free uniform included",
-                "10 weeks from your first class",
-                "Available through July 31",
-              ].map((item) => (
-                <li key={item} className="flex items-center gap-2 text-sm text-gray-700">
-                  <span style={{ color: "#E22D33" }}>✓</span> {item}
-                </li>
-              ))}
-            </ul>
             <a
-              href="#trial"
-              className="block text-white font-bold py-3 rounded-full shadow hover:opacity-90 transition-opacity"
-              style={{ backgroundColor: "#E22D33" }}
+              href={PHONE_HREF}
+              className="inline-block text-white font-bold text-lg px-8 py-4 rounded-full border-2 border-white hover:bg-white hover:text-pma-navy transition-colors"
             >
-              Book a Free Class →
+              Call {PHONE_DISPLAY}
             </a>
-            <p className="text-gray-400 text-xs mt-3">Only 10 spots available this summer.</p>
           </div>
         </div>
       </section>
@@ -143,9 +122,7 @@ export default function KidsPage() {
       <section className="py-16 px-4 bg-white">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-3xl font-extrabold mb-6" style={{ color: "#003B6F" }}>
-              More Than Kicks and Belts
-            </h2>
+            <h2 className="text-3xl font-extrabold mb-6 text-pma-navy">More Than Kicks and Belts</h2>
             <div className="space-y-4 text-gray-700 text-base leading-relaxed">
               <p>
                 Tang Soo Do is a traditional Korean martial art that has been developing focused,
@@ -154,16 +131,26 @@ export default function KidsPage() {
                 student.
               </p>
               <p>
-                Our Kids &amp; Teen program (ages 8 and up) puts students in structured classes
-                with experienced black belt instructors. They learn forms (<em>hyungs</em>),
-                kicking and striking techniques, self-defense, and sparring — growing in ability
-                and character with every class.
+                Our Kids &amp; Teen program (ages 8 and up) puts students in structured classes with
+                experienced black belt instructors. They learn forms (<em>hyungs</em>), kicking and
+                striking techniques, self-defense, and sparring — growing in ability and character
+                with every class.
               </p>
               <p>
                 Black belt takes roughly four years of consistent training. That journey is the
-                point — students learn that hard work, shown up for day after day, produces
-                real results.
+                point — students learn that hard work, shown up for day after day, produces real
+                results.
               </p>
+            </div>
+            <div className="mt-8">
+              <a
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-pma-red text-white font-bold px-8 py-4 rounded-full shadow-lg hover:opacity-90 transition-opacity"
+              >
+                Book Your Free Trial →
+              </a>
             </div>
           </div>
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
@@ -171,6 +158,7 @@ export default function KidsPage() {
               src="/images/gallery/20250717_194337.jpg"
               alt="Kids training Tang Soo Do at Prospect Martial Arts"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover object-top"
             />
           </div>
@@ -178,12 +166,12 @@ export default function KidsPage() {
       </section>
 
       {/* ── BENEFITS GRID ─────────────────────────────────────── */}
-      <section className="py-16 px-4" style={{ backgroundColor: "#f4f7fb" }}>
+      <section className="py-16 px-4 bg-pma-cream">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-4" style={{ color: "#003B6F" }}>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-4 text-pma-navy">
             What Your Child Will Gain
           </h2>
-          <p className="text-center text-gray-500 mb-12 max-w-xl mx-auto">
+          <p className="text-center text-pma-warm-gray mb-12 max-w-xl mx-auto">
             The mat is where it starts. The rest of their life is where it shows.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -192,10 +180,10 @@ export default function KidsPage() {
                 key={b.title}
                 className="bg-white rounded-2xl shadow-sm p-6 hover:shadow-md transition-shadow"
               >
-                <div className="text-4xl mb-3">{b.emoji}</div>
-                <h3 className="font-bold text-lg mb-2" style={{ color: "#003B6F" }}>
-                  {b.title}
-                </h3>
+                <div className="w-12 h-12 mb-3 rounded-full bg-pma-light flex items-center justify-center">
+                  <b.icon className="w-6 h-6 text-pma-navy" aria-hidden />
+                </div>
+                <h3 className="font-bold text-lg mb-2 text-pma-navy">{b.title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{b.desc}</p>
               </div>
             ))}
@@ -211,13 +199,12 @@ export default function KidsPage() {
               src="/images/gallery/20250717_194507.jpg"
               alt="Students in formation at Prospect Martial Arts"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover object-top"
             />
           </div>
           <div className="order-1 md:order-2">
-            <h2 className="text-3xl font-extrabold mb-6" style={{ color: "#003B6F" }}>
-              What to Expect in Class
-            </h2>
+            <h2 className="text-3xl font-extrabold mb-6 text-pma-navy">What to Expect in Class</h2>
             <div className="space-y-4 text-gray-700 text-base leading-relaxed">
               <p>
                 Every class opens with warm-up, respect rituals, and focused drilling — then moves
@@ -226,8 +213,8 @@ export default function KidsPage() {
               </p>
               <p>
                 Students are grouped by rank so they&apos;re always challenged at the right level —
-                not overwhelmed, not bored. Beginners start with fundamentals; advanced students
-                push toward higher belts and leadership responsibilities.
+                not overwhelmed, not bored. Beginners start with fundamentals; advanced students push
+                toward higher belts and leadership responsibilities.
               </p>
               <p>
                 Our instructors have experience working with students of all learning styles,
@@ -239,19 +226,26 @@ export default function KidsPage() {
         </div>
       </section>
 
+      {/* ── PRICING ───────────────────────────────────────────── */}
+      <PricingSection
+        title="Kids & Teens Membership Pricing"
+        subtitle="Two simple membership options — Silver for twice-a-week training, Gold for unlimited classes and no extra fees."
+        tiers={youthTiers}
+      />
+
       {/* ── CLASS SCHEDULE ────────────────────────────────────── */}
-      <section className="py-16 px-4" style={{ backgroundColor: "#003B6F" }}>
+      <section className="py-16 px-4 bg-pma-navy">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-extrabold text-center text-white mb-4">
             Kids &amp; Teen Class Schedule
           </h2>
           <p className="text-blue-200 text-center mb-10 text-sm">
-            Classes run Monday through Thursday. New schedule begins June 8, 2026.
+            Current schedule — classes run Monday through Thursday.
           </p>
           <div className="overflow-x-auto rounded-2xl shadow-lg mb-6">
             <table className="w-full text-sm text-center">
               <thead>
-                <tr style={{ backgroundColor: "#E22D33" }}>
+                <tr className="bg-pma-red">
                   <th className="text-white font-bold px-4 py-3 text-left">Time</th>
                   <th className="text-white font-bold px-4 py-3">Monday &amp; Wednesday</th>
                   <th className="text-white font-bold px-4 py-3">Tuesday &amp; Thursday</th>
@@ -260,9 +254,7 @@ export default function KidsPage() {
               <tbody>
                 {weeklySchedule.map((row, i) => (
                   <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-blue-50"}>
-                    <td className="px-4 py-3 font-semibold text-left" style={{ color: "#003B6F" }}>
-                      {row.time}
-                    </td>
+                    <td className="px-4 py-3 font-semibold text-left text-pma-navy">{row.time}</td>
                     <td className="px-4 py-3 text-gray-700">{row.monWed}</td>
                     <td className="px-4 py-3 text-gray-700">{row.tuesThu}</td>
                   </tr>
@@ -272,8 +264,8 @@ export default function KidsPage() {
           </div>
           <p className="text-blue-200 text-center text-xs">
             Questions about which class is right for your child?{" "}
-            <a href="tel:2034415358" className="underline font-semibold">
-              Text us at (203) 441-5358
+            <a href={PHONE_HREF} className="underline font-semibold">
+              Text us at {PHONE_DISPLAY}
             </a>{" "}
             and we&apos;ll help you get started.
           </p>
@@ -281,9 +273,9 @@ export default function KidsPage() {
       </section>
 
       {/* ── REVIEWS ───────────────────────────────────────────── */}
-      <section className="py-16 px-4" style={{ backgroundColor: "#f4f7fb" }}>
+      <section className="py-16 px-4 bg-pma-cream">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-extrabold text-center mb-10" style={{ color: "#003B6F" }}>
+          <h2 className="text-3xl font-extrabold text-center mb-10 text-pma-navy">
             What Parents Are Saying
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -297,7 +289,7 @@ export default function KidsPage() {
                   ))}
                 </div>
                 <p className="text-gray-700 text-sm leading-relaxed flex-1">&ldquo;{r.text}&rdquo;</p>
-                <p className="font-bold text-sm" style={{ color: "#003B6F" }}>{r.name}</p>
+                <p className="font-bold text-sm text-pma-navy">{r.name}</p>
               </div>
             ))}
           </div>
@@ -307,23 +299,23 @@ export default function KidsPage() {
       {/* ── FREE TRIAL BOOKING ────────────────────────────────── */}
       <section id="trial" className="py-16 px-4 bg-white">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-4" style={{ color: "#003B6F" }}>
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-pma-navy">
             Start with a Free Class
           </h2>
           <p className="text-gray-600 text-lg mb-10 leading-relaxed">
-            The first class is on us. Come in, try it out, and see if it&apos;s the right fit.
-            No commitment. No pressure. No experience needed.
+            The first class is on us. Come in, try it out, and see if it&apos;s the right fit. No
+            commitment. No pressure. No experience needed.
           </p>
-          <div className="rounded-2xl shadow-lg p-6 bg-gray-50">
+          <div className="rounded-2xl shadow-lg p-6 bg-pma-cream">
             <GymDeskWidget />
           </div>
           <p className="mt-6 text-gray-500 text-sm">
             Have a question first?{" "}
-            <a href="tel:2034415358" className="font-semibold hover:underline" style={{ color: "#003B6F" }}>
-              Text us at (203) 441-5358
+            <a href={PHONE_HREF} className="font-semibold hover:underline text-pma-navy">
+              Text us at {PHONE_DISPLAY}
             </a>{" "}
             or{" "}
-            <Link href="/faq" className="font-semibold hover:underline" style={{ color: "#003B6F" }}>
+            <Link href="/faq" className="font-semibold hover:underline text-pma-navy">
               visit our FAQ page
             </Link>
             .
