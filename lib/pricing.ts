@@ -57,20 +57,26 @@ export const youthTiers: PricingTier[] = [
   },
 ];
 
-export const adultTiers: PricingTier[] = [
-  {
-    name: "Adult Membership",
-    classes: "2 classes / week",
-    monthly: "$139",
-    highlighted: true,
-    includes: [
-      "Evening classes built for adult schedules",
-      "Monday & Wednesday, 7:00–7:45 PM",
-      "No experience required — beginners welcome",
-      "Structured belt curriculum with real milestones",
-    ],
-  },
-];
+// Limited-time Founders rate for the adult program: Gold-level
+// (unlimited) benefits at a below-Silver price.
+export const adultFoundersTier: PricingTier = {
+  name: "Adult Founders Membership",
+  classes: "Unlimited training",
+  monthly: "$139",
+  highlighted: true,
+  includes: [
+    "Unlimited classes — train as often as you like",
+    "Evening classes built for adult schedules",
+    "Monday & Wednesday, 7:00–7:45 PM",
+    "No experience required — beginners welcome",
+    "Structured belt curriculum with real milestones",
+    "No belt testing fees (saves $50/test)",
+    "Free uniform (saves $50)",
+    "20% off school events & gear",
+  ],
+};
+
+export const FOUNDERS_SPOTS = { total: 10, remaining: 7 };
 
 export interface FamilyDiscountRow {
   plan: string;

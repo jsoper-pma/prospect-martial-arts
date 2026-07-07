@@ -30,7 +30,7 @@ const faqs = [
   {
     question: "How much does it cost?",
     answer:
-      "Membership pricing is published right on each program page — Preschool memberships start at $149/month, Kids & Teens at $159/month, and Adults at $139/month — a limited-time rate, so lock it in while spots last. Gold (unlimited) options are also available. Family discounts apply automatically, and the 5th family member always trains free. Visit the program page that fits your family, or text us at (203) 441-5358 and we'll walk you through the options — no pressure, no sales pitch.",
+      "Membership pricing is published right on each program page — Preschool memberships start at $149/month, Kids & Teens at $159/month, with Gold (unlimited) options available. For adults, the Adult Founders Membership is $139/month for unlimited training — a limited-time rate, so lock it in while spots last. Family discounts apply automatically, and the 5th family member always trains free. Visit the program page that fits your family, or text us at (203) 441-5358 and we'll walk you through the options — no pressure, no sales pitch.",
   },
   {
     question: "What should my child wear to their first class?",

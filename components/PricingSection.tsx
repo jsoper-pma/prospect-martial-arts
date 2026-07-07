@@ -2,7 +2,7 @@ import { Check } from "lucide-react";
 import { BOOKING_URL, PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 import type { PricingTier } from "@/lib/pricing";
 
-function TierCard({ tier }: { tier: PricingTier }) {
+export function TierCard({ tier }: { tier: PricingTier }) {
   const highlighted = tier.highlighted;
   return (
     <div

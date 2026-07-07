@@ -1,7 +1,7 @@
 // ── Central site configuration ─────────────────────────────────────
 // Single source of truth for contact info, URLs, and brand data.
 
-export const SITE_URL = "https://prospect-martial-arts-ct.com"; // TODO: confirm production domain
+export const SITE_URL = "https://prospectma.com";
 
 export const BOOKING_URL = "https://prospect-martial-arts.gymdesk.com/book/v/Ayw2q";
 

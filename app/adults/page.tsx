@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Brain, Dumbbell, HeartHandshake, Shield, Swords, TrendingUp } from "lucide-react";
 import GymDeskWidget from "@/components/GymDeskWidget";
-import PricingSection from "@/components/PricingSection";
+import FoundersPricing from "@/components/FoundersPricing";
 import JsonLd from "@/components/JsonLd";
-import { adultTiers } from "@/lib/pricing";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
 import { ADDRESS, BOOKING_URL, EMAIL, PHONE_DISPLAY, PHONE_HREF, SITE_URL } from "@/lib/site";
 
@@ -187,11 +186,7 @@ export default function AdultsPage() {
       </section>
 
       {/* ── PRICING ──────────────────────────────────────────── */}
-      <PricingSection
-        title="Adult Membership Pricing"
-        subtitle="The $139/month rate is a limited-time offer — lock it in while spots last. No long-term contracts to start, no hidden fees."
-        tiers={adultTiers}
-      />
+      <FoundersPricing />
 
       {/* ── FAQ ──────────────────────────────────────────────── */}
       <section className="py-16 px-4 bg-white">
