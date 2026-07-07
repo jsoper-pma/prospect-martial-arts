@@ -63,7 +63,7 @@ export default function BlogPage() {
                 alt={featured.imageAlt}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                className={`object-cover ${featured.imagePosition ?? "object-center"} group-hover:scale-105 transition-transform duration-300`}
               />
             </div>
             <div>
@@ -97,7 +97,7 @@ export default function BlogPage() {
                   alt={post.imageAlt}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  className={`object-cover ${post.imagePosition ?? "object-center"} group-hover:scale-105 transition-transform duration-300`}
                 />
               </div>
               <div className="p-5 flex flex-col flex-1">

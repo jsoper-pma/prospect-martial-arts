@@ -105,7 +105,7 @@ export default async function BlogPostPage({
               alt={post.imageAlt}
               fill
               sizes="(max-width: 768px) 100vw, 768px"
-              className="object-cover"
+              className={`object-cover ${post.imagePosition ?? "object-center"}`}
               priority
             />
           </div>
@@ -176,7 +176,7 @@ export default async function BlogPostPage({
                     alt={p.imageAlt}
                     fill
                     sizes="(max-width: 640px) 100vw, 33vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    className={`object-cover ${p.imagePosition ?? "object-center"} group-hover:scale-105 transition-transform duration-300`}
                   />
                 </div>
                 <div className="p-5">

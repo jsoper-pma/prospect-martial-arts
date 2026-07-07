@@ -12,6 +12,8 @@ export interface BlogPost {
   author: string;
   image: string;
   imageAlt: string;
+  /** Tailwind object-position class for cropping the cover image (default: object-center) */
+  imagePosition?: string;
   tags: string[];
 }
 
@@ -283,6 +285,7 @@ ${CTA_END}`,
     author: "Prospect Martial Arts",
     image: "/images/preschool/dragons-board-break-high-five.jpg",
     imageAlt: "Young student celebrating a board break with a high five",
+    imagePosition: "object-top",
     tags: ["kids", "benefits", "parenting"],
     content: `Ask most parents why they signed their child up for martial arts and you'll hear "I want them to be able to defend themselves." That's a real benefit — kids in our program learn practical, age-appropriate self-defense.
 
