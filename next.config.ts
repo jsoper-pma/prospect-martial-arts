@@ -5,6 +5,12 @@ const nextConfig: NextConfig = {
     // Allow images from external sources if needed in the future
     remotePatterns: [],
   },
+  async redirects() {
+    return [
+      { source: "/founders", destination: "/adults", permanent: true },
+      { source: "/pricing", destination: "/kids", permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;

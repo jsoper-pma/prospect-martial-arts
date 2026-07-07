@@ -1,10 +1,18 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
+import { getBreadcrumbSchema } from "@/lib/structured-data";
+import { BOOKING_URL, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Meet Our Instructors | Prospect Martial Arts",
-  description: "Meet the Prospect Martial Arts instructor team. Tang Soo Do black belts with years of experience teaching kids, teens, and adults in Prospect, CT.",
+  title: "Meet Our Instructors",
+  description:
+    "Meet the Prospect Martial Arts instructor team. Tang Soo Do black belts with years of experience teaching kids, teens, and adults in Prospect, CT.",
+  alternates: { canonical: "/team" },
+  openGraph: {
+    title: "Our Team — Prospect Martial Arts",
+    description: "TSDMA-certified black belt instructors who invest in every student.",
+  },
 };
 
 const instructors = [
@@ -69,10 +77,15 @@ const instructors = [
 export default function TeamPage() {
   return (
     <>
+      <JsonLd
+        data={getBreadcrumbSchema([
+          { name: "Home", url: SITE_URL },
+          { name: "Our Team", url: `${SITE_URL}/team` },
+        ])}
+      />
       {/* ── PAGE HEADER ───────────────────────────────────────── */}
       <section
-        className="py-20 px-4 text-center text-white"
-        style={{ backgroundColor: "#003B6F" }}
+        className="py-20 px-4 text-center text-white bg-pma-navy"
       >
         <div className="max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">Our Team</h1>
@@ -93,13 +106,13 @@ export default function TeamPage() {
             what sets PMA apart.
           </p>
           <div className="mt-6 flex justify-center">
-            <div className="h-1 w-24 rounded-full" style={{ backgroundColor: "#E22D33" }} />
+            <div className="h-1 w-24 rounded-full bg-pma-red" />
           </div>
         </div>
       </section>
 
       {/* ── INSTRUCTOR CARDS ──────────────────────────────────── */}
-      <section className="py-12 px-4 pb-20" style={{ backgroundColor: "#f4f7fb" }}>
+      <section className="py-12 px-4 pb-20 bg-pma-cream">
         <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {instructors.map((instructor) => (
             <div
@@ -119,10 +132,10 @@ export default function TeamPage() {
               {/* Info */}
               <div className="p-5 flex flex-col flex-1">
                 <div className="mb-3">
-                  <h2 className="font-extrabold text-xl" style={{ color: "#003B6F" }}>
+                  <h2 className="font-extrabold text-xl text-pma-navy">
                     {instructor.name}
                   </h2>
-                  <p className="font-semibold text-sm mt-0.5" style={{ color: "#E22D33" }}>
+                  <p className="font-semibold text-sm mt-0.5 text-pma-red">
                     {instructor.title}
                   </p>
                   <p className="text-xs text-gray-500 mt-1 font-medium">{instructor.rank}</p>
@@ -136,21 +149,21 @@ export default function TeamPage() {
 
       {/* ── CTA ───────────────────────────────────────────────── */}
       <section
-        className="py-16 px-4 text-center text-white"
-        style={{ backgroundColor: "#003B6F" }}
+        className="py-16 px-4 text-center text-white bg-pma-navy"
       >
         <h2 className="text-3xl font-extrabold mb-4">Come Meet the Team in Person</h2>
         <p className="text-blue-200 text-lg mb-8 max-w-xl mx-auto">
           The best way to get to know us is to walk through the door. Your first class is free —
           no experience needed, no commitment required.
         </p>
-        <Link
-          href="/#trial"
-          style={{ backgroundColor: "#E22D33" }}
-          className="inline-block text-white font-bold text-lg px-10 py-4 rounded-full shadow-lg hover:opacity-90 transition-opacity"
+        <a
+          href={BOOKING_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block text-white font-bold text-lg px-10 py-4 rounded-full shadow-lg hover:opacity-90 transition-opacity bg-pma-red"
         >
           Book Your Free Trial Class
-        </Link>
+        </a>
       </section>
     </>
   );

@@ -1,30 +1,40 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import { Handshake, Heart, Medal, Sprout } from "lucide-react";
+import JsonLd from "@/components/JsonLd";
+import { getBreadcrumbSchema } from "@/lib/structured-data";
+import { ADDRESS, BOOKING_URL, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "About Us | Prospect Martial Arts",
-  description: "Learn the story behind Prospect Martial Arts — a Tang Soo Do school in Prospect, CT serving the community since 2013. Our mission, our lineage, and our values.",
+  title: "About Us",
+  description:
+    "Learn the story behind Prospect Martial Arts — a Tang Soo Do school in Prospect, CT serving the community since 2013. Our mission, our lineage, and our values.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About Prospect Martial Arts",
+    description:
+      "A Tang Soo Do school in Prospect, CT — rooted in tradition, built on relationships, open to everyone.",
+  },
 };
 
 const values = [
   {
-    emoji: "🙏",
+    icon: Handshake,
     title: "Respect & Discipline",
     desc: "The foundation of Tang Soo Do. We bring these values into every class, every interaction, and encourage our students to carry them into everyday life.",
   },
   {
-    emoji: "💪",
+    icon: Medal,
     title: "Confidence Building",
     desc: "We believe every student has greatness in them. Our job is to help bring it out — one class at a time.",
   },
   {
-    emoji: "❤️",
+    icon: Heart,
     title: "Family & Belonging",
     desc: "PMA is a second home. Everyone who walks through our doors is welcomed as part of the community, from day one.",
   },
   {
-    emoji: "🌱",
+    icon: Sprout,
     title: "Personal Growth",
     desc: "Progress here is measured as a person, not just as a martial artist. We celebrate every step of the journey.",
   },
@@ -33,10 +43,15 @@ const values = [
 export default function AboutPage() {
   return (
     <>
+      <JsonLd
+        data={getBreadcrumbSchema([
+          { name: "Home", url: SITE_URL },
+          { name: "About", url: `${SITE_URL}/about` },
+        ])}
+      />
       {/* ── PAGE HEADER ───────────────────────────────────────── */}
       <section
-        className="py-20 px-4 text-center text-white relative overflow-hidden"
-        style={{ backgroundColor: "#003B6F" }}
+        className="py-20 px-4 text-center text-white relative overflow-hidden bg-pma-navy"
       >
         <div className="max-w-3xl mx-auto relative z-10">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">About Us</h1>
@@ -50,7 +65,7 @@ export default function AboutPage() {
       <section className="py-16 px-4 bg-white">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-3xl font-extrabold mb-6" style={{ color: "#003B6F" }}>
+            <h2 className="text-3xl font-extrabold mb-6 text-pma-navy">
               Our Story
             </h2>
             <div className="space-y-4 text-gray-700 text-base leading-relaxed">
@@ -85,7 +100,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── WHAT IS TANG SOO DO ───────────────────────────────── */}
-      <section className="py-16 px-4" style={{ backgroundColor: "#f4f7fb" }}>
+      <section className="py-16 px-4 bg-pma-cream">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl order-2 md:order-1">
             <Image
@@ -96,7 +111,7 @@ export default function AboutPage() {
             />
           </div>
           <div className="order-1 md:order-2">
-            <h2 className="text-3xl font-extrabold mb-6" style={{ color: "#003B6F" }}>
+            <h2 className="text-3xl font-extrabold mb-6 text-pma-navy">
               What Is Tang Soo Do?
             </h2>
             <div className="space-y-4 text-gray-700 text-base leading-relaxed">
@@ -126,10 +141,9 @@ export default function AboutPage() {
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Affiliation */}
           <div
-            className="rounded-2xl p-8 shadow-sm"
-            style={{ backgroundColor: "#f4f7fb", border: "1px solid #e2e8f0" }}
+            className="rounded-2xl p-8 shadow-sm bg-pma-cream border border-gray-200"
           >
-            <h3 className="text-xl font-extrabold mb-4" style={{ color: "#003B6F" }}>
+            <h3 className="text-xl font-extrabold mb-4 text-pma-navy">
               Our Affiliation
             </h3>
             <p className="text-gray-700 text-sm leading-relaxed">
@@ -142,10 +156,9 @@ export default function AboutPage() {
 
           {/* Lineage */}
           <div
-            className="rounded-2xl p-8 shadow-sm"
-            style={{ backgroundColor: "#f4f7fb", border: "1px solid #e2e8f0" }}
+            className="rounded-2xl p-8 shadow-sm bg-pma-cream border border-gray-200"
           >
-            <h3 className="text-xl font-extrabold mb-4" style={{ color: "#003B6F" }}>
+            <h3 className="text-xl font-extrabold mb-4 text-pma-navy">
               Our Lineage
             </h3>
             <p className="text-gray-700 text-sm leading-relaxed">
@@ -159,10 +172,9 @@ export default function AboutPage() {
 
           {/* Instructor Credentials */}
           <div
-            className="rounded-2xl p-8 shadow-sm md:col-span-2"
-            style={{ backgroundColor: "#f4f7fb", border: "1px solid #e2e8f0" }}
+            className="rounded-2xl p-8 shadow-sm md:col-span-2 bg-pma-cream border border-gray-200"
           >
-            <h3 className="text-xl font-extrabold mb-4" style={{ color: "#003B6F" }}>
+            <h3 className="text-xl font-extrabold mb-4 text-pma-navy">
               Instructor Credentials & Safety
             </h3>
             <p className="text-gray-700 text-sm leading-relaxed">
@@ -179,7 +191,7 @@ export default function AboutPage() {
       {/* ── CORE VALUES ───────────────────────────────────────── */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-4" style={{ color: "#003B6F" }}>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-4 text-pma-navy">
             What We Stand For
           </h2>
           <p className="text-center text-gray-500 mb-12 max-w-xl mx-auto">
@@ -189,11 +201,13 @@ export default function AboutPage() {
             {values.map((v) => (
               <div
                 key={v.title}
-                className="flex gap-5 bg-gray-50 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow"
+                className="flex gap-5 bg-pma-cream rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow"
               >
-                <div className="text-4xl flex-shrink-0">{v.emoji}</div>
+                <div className="w-12 h-12 rounded-full bg-pma-light flex items-center justify-center flex-shrink-0">
+                  <v.icon className="w-6 h-6 text-pma-navy" aria-hidden />
+                </div>
                 <div>
-                  <h3 className="font-bold text-lg mb-2" style={{ color: "#003B6F" }}>
+                  <h3 className="font-bold text-lg mb-2 text-pma-navy">
                     {v.title}
                   </h3>
                   <p className="text-gray-600 text-sm leading-relaxed">{v.desc}</p>
@@ -205,30 +219,46 @@ export default function AboutPage() {
       </section>
 
       {/* ── DOJANG PHOTO ───────────────────────────────────────── */}
-      <section className="py-16 px-4" style={{ backgroundColor: "#f4f7fb" }}>
+      <section className="py-16 px-4 bg-pma-cream">
         <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-3xl font-extrabold mb-4" style={{ color: "#003B6F" }}>
+          <h2 className="text-3xl font-extrabold mb-4 text-pma-navy">
             Come See for Yourself
           </h2>
           <p className="text-gray-600 mb-8 max-w-xl mx-auto text-lg">
             Our school is a welcoming, energetic space where students of all ages train together.
             We invite you to come in, watch a class, and meet the team.
           </p>
-          <div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl mb-8">
-            <Image
-              src="/images/gallery/20250717_194421.jpg"
-              alt="Students training at Prospect Martial Arts"
-              fill
-              className="object-cover"
-            />
+          <div className="grid md:grid-cols-2 gap-4 mb-8">
+            <div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl">
+              <Image
+                src="/images/gallery/20250717_194421.jpg"
+                alt="Students training at Prospect Martial Arts"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl">
+              <Image
+                src="/images/storefront.jpg"
+                alt={`Prospect Martial Arts storefront at ${ADDRESS.full}`}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
           </div>
-          <Link
-            href="/#trial"
-            style={{ backgroundColor: "#E22D33" }}
-            className="inline-block text-white font-bold text-lg px-10 py-4 rounded-full shadow-lg hover:opacity-90 transition-opacity"
+          <p className="text-gray-500 text-sm mb-8">
+            Find us at {ADDRESS.full} — on Route 69, minutes from Waterbury, Naugatuck, and Cheshire.
+          </p>
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block text-white font-bold text-lg px-10 py-4 rounded-full shadow-lg hover:opacity-90 transition-opacity bg-pma-red"
           >
             Book Your Free Trial Class
-          </Link>
+          </a>
         </div>
       </section>
     </>

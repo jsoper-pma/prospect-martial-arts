@@ -1,10 +1,28 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import ContactForm from "./ContactForm";
+import Image from "next/image";
+import { Mail, MapPin, Phone, Globe } from "lucide-react";
+import JsonLd from "@/components/JsonLd";
+import { getBreadcrumbSchema } from "@/lib/structured-data";
+import {
+  ADDRESS,
+  BOOKING_URL,
+  EMAIL,
+  MAPS_EMBED_URL,
+  MAPS_LINK,
+  PHONE_DISPLAY,
+  PHONE_HREF,
+  SITE_URL,
+  SOCIALS,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact & Location | Prospect Martial Arts — Prospect, CT",
-  description: "Contact Prospect Martial Arts at 73 Waterbury Road, Prospect, CT. Text or email us and we'll respond within 24 hours. Get directions, class schedule, and more.",
+  title: "Contact & Location — Prospect, CT",
+  description: `Contact Prospect Martial Arts at ${ADDRESS.full}. Call or text (203) 441-5358, email info@prospectma.com, or book a free trial class online. Directions, schedule, and more.`,
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contact Prospect Martial Arts",
+    description: `Visit us at ${ADDRESS.full}. First class free.`,
+  },
 };
 
 const weekdaySchedule = [
@@ -26,48 +44,64 @@ const saturdaySchedule = [
 export default function ContactPage() {
   return (
     <>
+      <JsonLd
+        data={getBreadcrumbSchema([
+          { name: "Home", url: SITE_URL },
+          { name: "Contact", url: `${SITE_URL}/contact` },
+        ])}
+      />
+
       {/* ── PAGE HEADER ───────────────────────────────────────── */}
-      <section
-        className="py-20 px-4 text-center text-white"
-        style={{ backgroundColor: "#003B6F" }}
-      >
+      <section className="py-20 px-4 text-center text-white bg-pma-navy">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">Contact &amp; Location</h1>
-          <p className="text-blue-200 text-lg max-w-xl mx-auto">
-            We&apos;d love to hear from you. Stop by, send us a text, or shoot us an email — we&apos;re always happy to help.
+          <p className="text-blue-200 text-lg max-w-xl mx-auto mb-8">
+            The fastest way to get started is to book a free trial class online. You can also
+            contact us directly via phone or email, and we&apos;ll guide you to get started.
           </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-pma-red text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:opacity-90 transition-opacity"
+            >
+              Book a Free Trial Class
+            </a>
+            <a
+              href={PHONE_HREF}
+              className="text-white font-bold text-lg px-8 py-4 rounded-full border-2 border-white hover:bg-white hover:text-pma-navy transition-colors"
+            >
+              Call {PHONE_DISPLAY}
+            </a>
+          </div>
         </div>
       </section>
 
       {/* ── CONTACT INFO + MAP ────────────────────────────────── */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-
           {/* Contact details */}
           <div>
-            <h2 className="text-2xl font-extrabold mb-8" style={{ color: "#003B6F" }}>
-              Get in Touch
-            </h2>
+            <h2 className="text-2xl font-extrabold mb-8 text-pma-navy">Get in Touch</h2>
 
             <div className="space-y-6">
               {/* Address */}
               <div className="flex gap-4 items-start">
-                <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 text-white text-xl"
-                  style={{ backgroundColor: "#003B6F" }}
-                >
-                  📍
+                <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 text-white bg-pma-navy">
+                  <MapPin className="w-5 h-5" aria-hidden />
                 </div>
                 <div>
                   <p className="font-bold text-gray-900">Address</p>
-                  <p className="text-gray-600">73 Waterbury Road</p>
-                  <p className="text-gray-600">Prospect, CT</p>
+                  <p className="text-gray-600">{ADDRESS.street}</p>
+                  <p className="text-gray-600">
+                    {ADDRESS.city}, {ADDRESS.state} {ADDRESS.zip}
+                  </p>
                   <a
-                    href="https://maps.google.com/?q=73+Waterbury+Road+Prospect+CT"
+                    href={MAPS_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm font-semibold mt-1 inline-block hover:underline"
-                    style={{ color: "#E22D33" }}
+                    className="text-sm font-semibold mt-1 inline-block hover:underline text-pma-red"
                   >
                     Get Directions →
                   </a>
@@ -76,77 +110,60 @@ export default function ContactPage() {
 
               {/* Phone */}
               <div className="flex gap-4 items-start">
-                <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 text-white text-xl"
-                  style={{ backgroundColor: "#003B6F" }}
-                >
-                  📞
+                <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 text-white bg-pma-navy">
+                  <Phone className="w-5 h-5" aria-hidden />
                 </div>
                 <div>
                   <p className="font-bold text-gray-900">Phone</p>
-                  <a
-                    href="tel:2034415358"
-                    className="text-gray-600 hover:underline text-lg"
-                  >
-                    (203) 441-5358
+                  <a href={PHONE_HREF} className="text-gray-600 hover:underline text-lg">
+                    {PHONE_DISPLAY}
                   </a>
+                  <p className="text-gray-400 text-xs mt-0.5">Call or text — texting is fastest</p>
                 </div>
               </div>
 
               {/* Email */}
               <div className="flex gap-4 items-start">
-                <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 text-white text-xl"
-                  style={{ backgroundColor: "#003B6F" }}
-                >
-                  ✉️
+                <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 text-white bg-pma-navy">
+                  <Mail className="w-5 h-5" aria-hidden />
                 </div>
                 <div>
                   <p className="font-bold text-gray-900">Email</p>
-                  <a
-                    href="mailto:info@prospectma.com"
-                    className="text-gray-600 hover:underline"
-                  >
-                    info@prospectma.com
+                  <a href={`mailto:${EMAIL}`} className="text-gray-600 hover:underline">
+                    {EMAIL}
                   </a>
                 </div>
               </div>
 
               {/* Social */}
               <div className="flex gap-4 items-start">
-                <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 text-white text-xl"
-                  style={{ backgroundColor: "#003B6F" }}
-                >
-                  🌐
+                <div className="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 text-white bg-pma-navy">
+                  <Globe className="w-5 h-5" aria-hidden />
                 </div>
                 <div>
                   <p className="font-bold text-gray-900 mb-2">Follow Us</p>
                   <div className="flex flex-col gap-1">
                     <a
-                      href="https://www.facebook.com/Pmatangsoodo"
+                      href={SOCIALS.facebook}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm font-semibold hover:underline"
-                      style={{ color: "#1877F2" }}
+                      className="text-sm font-semibold hover:underline text-pma-navy"
                     >
                       Facebook — @Pmatangsoodo
                     </a>
                     <a
-                      href="https://www.instagram.com/prospectmartialartsct"
+                      href={SOCIALS.instagram}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm font-semibold hover:underline"
-                      style={{ color: "#E1306C" }}
+                      className="text-sm font-semibold hover:underline text-pma-navy"
                     >
                       Instagram — @prospectmartialartsct
                     </a>
                     <a
-                      href="https://www.youtube.com/@ProspectMartialArts"
+                      href={SOCIALS.youtube}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm font-semibold hover:underline"
-                      style={{ color: "#FF0000" }}
+                      className="text-sm font-semibold hover:underline text-pma-navy"
                     >
                       YouTube — @ProspectMartialArts
                     </a>
@@ -155,65 +172,77 @@ export default function ContactPage() {
               </div>
 
               {/* Response time note */}
-              <div
-                className="rounded-2xl p-5 mt-2"
-                style={{ backgroundColor: "#fff8e1", border: "1px solid #ffe082" }}
-              >
-                <p className="font-bold text-gray-900 mb-1">💬 Best Way to Reach Us</p>
+              <div className="rounded-2xl p-5 mt-2 bg-pma-cream border border-pma-gold/40">
+                <p className="font-bold text-gray-900 mb-1">Best Way to Reach Us</p>
                 <p className="text-gray-700 text-sm">
-                  Text <strong>(203) 441-5358</strong> or email{" "}
-                  <a href="mailto:info@prospectma.com" className="underline" style={{ color: "#003B6F" }}>
-                    info@prospectma.com
+                  Text <strong>{PHONE_DISPLAY}</strong> or email{" "}
+                  <a href={`mailto:${EMAIL}`} className="underline text-pma-navy">
+                    {EMAIL}
                   </a>{" "}
-                  — we respond to all messages within 24 hours.
+                  — we respond to all messages within 24 hours. Or skip the wait entirely and{" "}
+                  <a
+                    href={BOOKING_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline font-semibold text-pma-navy"
+                  >
+                    book your free trial class online
+                  </a>
+                  .
                 </p>
               </div>
 
               {/* Private Lessons */}
-              <div
-                className="rounded-2xl p-5"
-                style={{ backgroundColor: "#f4f7fb", border: "1px solid #e2e8f0" }}
-              >
-                <p className="font-bold text-gray-900 mb-1">🥋 Private Lessons Available</p>
+              <div className="rounded-2xl p-5 bg-pma-light border border-gray-200">
+                <p className="font-bold text-gray-900 mb-1">Private Lessons Available</p>
                 <p className="text-gray-600 text-sm">
-                  Available Friday, Saturday, and Sunday — $30 per 30 minutes.
-                  Text or email us to check instructor availability.
+                  Available Friday, Saturday, and Sunday — $30 per 30 minutes. Text or email us to
+                  check instructor availability.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Google Map */}
-          <div className="rounded-2xl overflow-hidden shadow-lg">
-            <iframe
-              title="Prospect Martial Arts Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2985.0!2d-73.0!3d41.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7b4a0a0a0a0a1%3A0x0!2s73+Waterbury+Rd%2C+Prospect%2C+CT+06712!5e0!3m2!1sen!2sus!4v1"
-              width="100%"
-              height="450"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+          {/* Storefront photo + Google Map */}
+          <div className="space-y-4">
+            <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg">
+              <Image
+                src="/images/storefront.jpg"
+                alt={`Prospect Martial Arts storefront at ${ADDRESS.full}`}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-lg">
+              <iframe
+                title="Prospect Martial Arts Location — 73 Waterbury Road, Unit 2, Prospect, CT 06712"
+                src={MAPS_EMBED_URL}
+                width="100%"
+                height="360"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
           </div>
         </div>
       </section>
 
       {/* ── FULL CLASS SCHEDULE ───────────────────────────────── */}
-      <section className="py-16 px-4" style={{ backgroundColor: "#003B6F" }}>
+      <section className="py-16 px-4 bg-pma-navy">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl font-extrabold text-center text-white mb-4">
-            Class Schedule
-          </h2>
+          <h2 className="text-3xl font-extrabold text-center text-white mb-4">Class Schedule</h2>
           <p className="text-blue-200 text-center mb-10 text-sm">
-            New schedule begins June 8, 2026 following the promotion ceremony.
+            Current schedule — classes run Monday through Thursday, plus Saturdays.
           </p>
 
           {/* Weekday table */}
           <div className="overflow-x-auto rounded-2xl shadow-lg mb-8">
             <table className="w-full text-sm text-center">
               <thead>
-                <tr style={{ backgroundColor: "#E22D33" }}>
+                <tr className="bg-pma-red">
                   <th className="text-white font-bold px-4 py-3 text-left">Time</th>
                   <th className="text-white font-bold px-4 py-3">Monday &amp; Wednesday</th>
                   <th className="text-white font-bold px-4 py-3">Tuesday &amp; Thursday</th>
@@ -222,9 +251,7 @@ export default function ContactPage() {
               <tbody>
                 {weekdaySchedule.map((row, i) => (
                   <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-blue-50"}>
-                    <td className="px-4 py-3 font-semibold text-left" style={{ color: "#003B6F" }}>
-                      {row.time}
-                    </td>
+                    <td className="px-4 py-3 font-semibold text-left text-pma-navy">{row.time}</td>
                     <td className="px-4 py-3 text-gray-700">{row.monWed}</td>
                     <td className="px-4 py-3 text-gray-700">{row.tuesThu}</td>
                   </tr>
@@ -235,13 +262,11 @@ export default function ContactPage() {
 
           {/* Saturday */}
           <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
-            <h3 className="font-bold text-lg mb-4 text-center" style={{ color: "#003B6F" }}>
-              Saturday Classes
-            </h3>
+            <h3 className="font-bold text-lg mb-4 text-center text-pma-navy">Saturday Classes</h3>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               {saturdaySchedule.map((row) => (
-                <div key={row.time} className="text-center px-6 py-3 rounded-xl" style={{ backgroundColor: "#f4f7fb" }}>
-                  <p className="font-bold text-sm" style={{ color: "#E22D33" }}>{row.time}</p>
+                <div key={row.time} className="text-center px-6 py-3 rounded-xl bg-pma-light">
+                  <p className="font-bold text-sm text-pma-red">{row.time}</p>
                   <p className="font-semibold text-gray-800 mt-1">{row.cls}</p>
                 </div>
               ))}
@@ -251,47 +276,39 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div
-            className="text-center rounded-2xl p-5"
-            style={{ backgroundColor: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)" }}
-          >
+          <div className="text-center rounded-2xl p-5 bg-white/10 border border-white/20">
             <p className="text-white font-semibold">
-              🎂 <strong>Birthday Parties</strong> available Saturdays 1–3 PM &nbsp;·&nbsp;
-              🥋 <strong>Private Lessons</strong> Fri, Sat &amp; Sun — $30 / 30 min
+              <strong>Birthday Parties</strong> available Saturdays 1–3 PM &nbsp;·&nbsp;{" "}
+              <strong>Private Lessons</strong> Fri, Sat &amp; Sun — $30 / 30 min
             </p>
           </div>
         </div>
       </section>
 
-      {/* ── SEND A MESSAGE ────────────────────────────────────── */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl font-extrabold mb-3 text-center" style={{ color: "#003B6F" }}>
-            Send Us a Message
-          </h2>
-          <p className="text-gray-500 text-center mb-10">
-            Have a question? Fill out the form below and we&apos;ll get back to you within 24 hours.
-          </p>
-          <ContactForm />
-        </div>
-      </section>
-
       {/* ── FREE TRIAL CTA ────────────────────────────────────── */}
-      <section className="py-16 px-4 text-center" style={{ backgroundColor: "#f4f7fb" }}>
+      <section className="py-16 px-4 text-center bg-pma-cream">
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl font-extrabold mb-4" style={{ color: "#003B6F" }}>
-            Ready to Try a Free Class?
-          </h2>
+          <h2 className="text-3xl font-extrabold mb-4 text-pma-navy">Ready to Try a Free Class?</h2>
           <p className="text-gray-600 text-lg mb-8">
-            No commitment, no experience needed — just come see what we&apos;re all about.
+            No commitment, no experience needed — just come see what we&apos;re all about. Booking
+            takes less than a minute.
           </p>
-          <Link
-            href="/#trial"
-            style={{ backgroundColor: "#E22D33" }}
-            className="inline-block text-white font-bold text-lg px-10 py-4 rounded-full shadow-lg hover:opacity-90 transition-opacity"
-          >
-            Book Your Free Trial Class
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-pma-red text-white font-bold text-lg px-10 py-4 rounded-full shadow-lg hover:opacity-90 transition-opacity"
+            >
+              Book Your Free Trial Class
+            </a>
+            <a
+              href={PHONE_HREF}
+              className="inline-block text-pma-navy font-bold text-lg px-10 py-4 rounded-full border-2 border-pma-navy hover:bg-pma-navy hover:text-white transition-colors"
+            >
+              Call {PHONE_DISPLAY}
+            </a>
+          </div>
         </div>
       </section>
     </>

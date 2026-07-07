@@ -1,9 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
+import { getFaqSchema, getBreadcrumbSchema } from "@/lib/structured-data";
+import { BOOKING_URL, PHONE_DISPLAY, PHONE_HREF, EMAIL, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Frequently Asked Questions | Prospect Martial Arts",
-  description: "Answers to the most common questions about Prospect Martial Arts — cost, age requirements, what to wear, how long to black belt, special needs accommodation, and more.",
+  title: "Frequently Asked Questions",
+  description:
+    "Answers to the most common questions about Prospect Martial Arts — cost, age requirements, what to wear, how long to black belt, special needs accommodation, and more.",
+  alternates: { canonical: "/faq" },
+  openGraph: {
+    title: "FAQ — Prospect Martial Arts",
+    description:
+      "Everything you want to know before your first martial arts class in Prospect, CT.",
+  },
 };
 
 const faqs = [
@@ -20,7 +30,7 @@ const faqs = [
   {
     question: "How much does it cost?",
     answer:
-      "Membership pricing depends on the program and membership type you choose. We prefer to walk through options with you directly so we can find the right fit for your family. Text or email us at info@prospectma.com and we'll get you all the details — no pressure, no sales pitch.",
+      "Membership pricing is published right on each program page — Preschool memberships start at $149/month, Kids & Teens at $159/month, and Adults at $139/month, with Gold (unlimited) options available. Family discounts apply automatically, and the 5th family member always trains free. Visit the program page that fits your family, or text us at (203) 441-5358 and we'll walk you through the options — no pressure, no sales pitch.",
   },
   {
     question: "What should my child wear to their first class?",
@@ -55,7 +65,7 @@ const faqs = [
   {
     question: "Do you offer classes for adults?",
     answer:
-      "Yes — our Adult Tang Soo Do program is for students ages 17 and up. It runs Monday, Tuesday, Wednesday, and Thursday evenings starting at 7:00 PM. We are currently enrolling Founding Members who lock in a special rate for as long as they hold an active membership. See our Founders page for details.",
+      "Yes — our Adult Tang Soo Do program is for students ages 17 and up. Classes run Monday and Wednesday evenings at 7:00 PM. No experience is needed, and your first class is free. See our Adults page for details.",
   },
   {
     question: "What is the difference between Little Tigers, Little Dragons, and the main program?",
@@ -82,10 +92,18 @@ const faqs = [
 export default function FaqPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          getFaqSchema(faqs),
+          getBreadcrumbSchema([
+            { name: "Home", url: SITE_URL },
+            { name: "FAQ", url: `${SITE_URL}/faq` },
+          ]),
+        ]}
+      />
       {/* ── PAGE HEADER ───────────────────────────────────────── */}
       <section
-        className="py-20 px-4 text-center text-white"
-        style={{ backgroundColor: "#003B6F" }}
+        className="py-20 px-4 text-center text-white bg-pma-navy"
       >
         <div className="max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
@@ -104,14 +122,12 @@ export default function FaqPage() {
           {faqs.map((faq, i) => (
             <div
               key={i}
-              className="rounded-2xl shadow-sm overflow-hidden"
-              style={{ border: "1px solid #e2e8f0" }}
+              className="rounded-2xl shadow-sm overflow-hidden border border-gray-200"
             >
               <div
-                className="px-6 py-5"
-                style={{ backgroundColor: "#f4f7fb" }}
+                className="px-6 py-5 bg-pma-cream"
               >
-                <h2 className="font-extrabold text-base leading-snug" style={{ color: "#003B6F" }}>
+                <h2 className="font-extrabold text-base leading-snug text-pma-navy">
                   {faq.question}
                 </h2>
               </div>
@@ -124,28 +140,29 @@ export default function FaqPage() {
       </section>
 
       {/* ── STILL HAVE QUESTIONS ──────────────────────────────── */}
-      <section className="py-16 px-4" style={{ backgroundColor: "#f4f7fb" }}>
+      <section className="py-16 px-4 bg-pma-cream">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl font-extrabold mb-4" style={{ color: "#003B6F" }}>
+          <h2 className="text-3xl font-extrabold mb-4 text-pma-navy">
             Still Have Questions?
           </h2>
           <p className="text-gray-600 text-lg mb-8 leading-relaxed">
             Text us at{" "}
-            <a href="tel:2034415358" className="font-bold hover:underline" style={{ color: "#003B6F" }}>
-              (203) 441-5358
+            <a href={PHONE_HREF} className="font-bold hover:underline text-pma-navy">
+              {PHONE_DISPLAY}
             </a>{" "}
             or email{" "}
-            <a href="mailto:info@prospectma.com" className="font-bold hover:underline" style={{ color: "#003B6F" }}>
-              info@prospectma.com
+            <a href={`mailto:${EMAIL}`} className="font-bold hover:underline text-pma-navy">
+              {EMAIL}
             </a>{" "}
             and we&apos;ll get back to you within 24 hours.
             Or just come in — your first class is free.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="#trial"
-              style={{ backgroundColor: "#E22D33" }}
-              className="text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:opacity-90 transition-opacity"
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:opacity-90 transition-opacity bg-pma-red"
             >
               Book Your Free Trial Class
             </a>
