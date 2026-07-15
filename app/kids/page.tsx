@@ -4,8 +4,10 @@ import Link from "next/link";
 import { Brain, Check, HeartHandshake, Medal, Shield, Sprout, Trophy } from "lucide-react";
 import GymDeskWidget from "@/components/GymDeskWidget";
 import PricingSection from "@/components/PricingSection";
+import ScheduleTable from "@/components/ScheduleTable";
 import JsonLd from "@/components/JsonLd";
 import { youthTiers } from "@/lib/pricing";
+import { kidsSchedule } from "@/lib/schedule";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
 import { BOOKING_URL, PHONE_DISPLAY, PHONE_HREF, SITE_URL } from "@/lib/site";
 
@@ -52,13 +54,6 @@ const benefits = [
     title: "A Community That Cares",
     desc: "Students make real friends here. Our instructors know every student by name, celebrate every milestone, and invest in every person who walks through the door.",
   },
-];
-
-const weeklySchedule = [
-  { time: "5:30 – 6:15 PM", monWed: "Beginners", tuesThu: "Intermediate" },
-  { time: "6:15 – 7:00 PM", monWed: "Intermediate", tuesThu: "Beginners" },
-  { time: "7:00 – 7:15 PM", monWed: "Leadership", tuesThu: "—" },
-  { time: "7:45 – 8:30 PM", monWed: "Advanced", tuesThu: "Advanced" },
 ];
 
 const reviews = [
@@ -226,13 +221,6 @@ export default function KidsPage() {
         </div>
       </section>
 
-      {/* ── PRICING ───────────────────────────────────────────── */}
-      <PricingSection
-        title="Kids & Teens Membership Pricing"
-        subtitle="Two simple membership options — Silver for twice-a-week training, Gold for unlimited classes and no extra fees."
-        tiers={youthTiers}
-      />
-
       {/* ── CLASS SCHEDULE ────────────────────────────────────── */}
       <section className="py-16 px-4 bg-pma-navy">
         <div className="max-w-4xl mx-auto">
@@ -242,25 +230,8 @@ export default function KidsPage() {
           <p className="text-blue-200 text-center mb-10 text-sm">
             Current schedule — classes run Monday through Thursday.
           </p>
-          <div className="overflow-x-auto rounded-2xl shadow-lg mb-6">
-            <table className="w-full text-sm text-center">
-              <thead>
-                <tr className="bg-pma-red">
-                  <th className="text-white font-bold px-4 py-3 text-left">Time</th>
-                  <th className="text-white font-bold px-4 py-3">Monday &amp; Wednesday</th>
-                  <th className="text-white font-bold px-4 py-3">Tuesday &amp; Thursday</th>
-                </tr>
-              </thead>
-              <tbody>
-                {weeklySchedule.map((row, i) => (
-                  <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-blue-50"}>
-                    <td className="px-4 py-3 font-semibold text-left text-pma-navy">{row.time}</td>
-                    <td className="px-4 py-3 text-gray-700">{row.monWed}</td>
-                    <td className="px-4 py-3 text-gray-700">{row.tuesThu}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="mb-6">
+            <ScheduleTable rows={kidsSchedule} />
           </div>
           <p className="text-blue-200 text-center text-xs">
             Questions about which class is right for your child?{" "}
@@ -295,6 +266,13 @@ export default function KidsPage() {
           </div>
         </div>
       </section>
+
+      {/* ── PRICING ───────────────────────────────────────────── */}
+      <PricingSection
+        title="Kids & Teens Membership Pricing"
+        subtitle="Two simple membership options — Silver for twice-a-week training, Gold for unlimited classes and no extra fees."
+        tiers={youthTiers}
+      />
 
       {/* ── FREE TRIAL BOOKING ────────────────────────────────── */}
       <section id="trial" className="py-16 px-4 bg-white">

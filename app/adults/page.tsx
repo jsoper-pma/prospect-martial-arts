@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Brain, Dumbbell, HeartHandshake, Shield, Swords, TrendingUp } from "lucide-react";
 import GymDeskWidget from "@/components/GymDeskWidget";
 import FoundersPricing from "@/components/FoundersPricing";
+import ScheduleTable from "@/components/ScheduleTable";
 import JsonLd from "@/components/JsonLd";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
 import { ADDRESS, BOOKING_URL, EMAIL, PHONE_DISPLAY, PHONE_HREF, SITE_URL } from "@/lib/site";
@@ -23,12 +24,12 @@ const features = [
   {
     icon: Swords,
     title: "Authentic Tang Soo Do",
-    desc: "Learn a traditional Korean martial art from certified instructors who have trained for decades. Real technique, real tradition.",
+    desc: "Learn a traditional Korean martial art from certified instructors who have trained for years. Real technique, real tradition.",
   },
   {
     icon: Dumbbell,
     title: "Serious Fitness",
-    desc: "Conditioning, flexibility, and strength built into every class. No gym membership required.",
+    desc: "Conditioning, flexibility, and strength built into every class. Every session is a full-body workout that leaves you stronger than you walked in.",
   },
   {
     icon: Shield,
@@ -135,12 +136,21 @@ export default function AdultsPage() {
             Evening classes, two nights a week. Train hard. Go home. Sleep well.
           </p>
 
-          <div className="flex justify-center mb-6">
+          <div className="flex justify-center mb-10">
             <div className="bg-white rounded-2xl shadow p-8 max-w-xs w-full">
               <p className="font-bold text-base mb-1 text-pma-red">Monday &amp; Wednesday</p>
               <p className="font-extrabold text-3xl mb-1 text-pma-navy">7:00 – 7:45 PM</p>
               <p className="text-gray-500 text-sm">Adult students, ages 17+</p>
             </div>
+          </div>
+
+          <h3 className="text-xl font-extrabold mb-2 text-pma-navy">Want more mat time?</h3>
+          <p className="text-gray-600 mb-6 max-w-xl mx-auto">
+            Adult students are also welcome in our all-ages Tang Soo Do classes — train any evening
+            that fits your week.
+          </p>
+          <div className="mb-6 text-left">
+            <ScheduleTable />
           </div>
 
           <p className="text-gray-500 text-sm">{ADDRESS.full}</p>
@@ -185,9 +195,6 @@ export default function AdultsPage() {
         </div>
       </section>
 
-      {/* ── PRICING ──────────────────────────────────────────── */}
-      <FoundersPricing />
-
       {/* ── FAQ ──────────────────────────────────────────────── */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-3xl mx-auto">
@@ -205,8 +212,11 @@ export default function AdultsPage() {
         </div>
       </section>
 
+      {/* ── PRICING ──────────────────────────────────────────── */}
+      <FoundersPricing />
+
       {/* ── TRIAL BOOKING ────────────────────────────────────── */}
-      <section id="trial" className="py-16 px-4 bg-pma-cream">
+      <section id="trial" className="py-16 px-4 bg-white">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-pma-navy">
             Your First Class Is Free
@@ -215,7 +225,7 @@ export default function AdultsPage() {
             Come try a class before you commit to anything. Meet the instructors, see the school,
             and find out if Tang Soo Do is right for you.
           </p>
-          <div className="rounded-2xl shadow-lg p-6 bg-white">
+          <div className="rounded-2xl shadow-lg p-6 bg-pma-cream">
             <GymDeskWidget />
           </div>
         </div>

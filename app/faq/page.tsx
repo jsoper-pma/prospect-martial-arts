@@ -60,7 +60,7 @@ const faqs = [
   {
     question: "What is the class schedule?",
     answer:
-      "We run classes Monday through Thursday evenings, with Little Tigers and Little Dragons starting at 4:30 PM and the main program running through the evening. Saturday classes are also available depending on instructor availability. You can see the full schedule on our home page or contact us directly.",
+      "We run classes Monday through Thursday evenings, with Little Tigers and Little Dragons starting at 4:30 PM and the main program running through the evening. You can see the full color-coded schedule on our home page or contact us directly.",
   },
   {
     question: "Do you offer classes for adults?",
@@ -80,7 +80,12 @@ const faqs = [
   {
     question: "Are private lessons available?",
     answer:
-      "Private lessons are available on Fridays, Saturdays, and Sundays at $30 per 30-minute session. Private lessons are a great way to accelerate progress, work on specific techniques, or give a student one-on-one attention. Contact us or check with an instructor to schedule.",
+      "Private lessons are available by appointment at $30 per 30-minute session. They're a great way to accelerate progress, work on specific techniques, or give a student one-on-one attention. Text or email us and we'll set one up.",
+  },
+  {
+    question: "What fees and policies should I know about?",
+    answer:
+      "We keep our policies simple and fair. Late payments carry a $30 fee after 10 days. Returned checks or failed bank transfers carry a $35 fee. Memberships can be placed on hold for up to 90 days with a one-time hold fee equal to one month's tuition — and that fee covers your first month back when you return. You can cancel within your first 30 days without penalty; after that, we ask for 30 days' written notice, and you can keep training through your paid period.",
   },
   {
     question: "How do I get started?",

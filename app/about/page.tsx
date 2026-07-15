@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Handshake, Heart, Medal, Sprout } from "lucide-react";
 import JsonLd from "@/components/JsonLd";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
@@ -147,9 +148,9 @@ export default function AboutPage() {
               Our Affiliation
             </h3>
             <p className="text-gray-700 text-sm leading-relaxed">
-              Prospect Martial Arts is a proud member of the <strong>Tang Soo Do Martial Arts
-              Association (TSDMA)</strong>. Our affiliation connects our students to a recognized
-              national federation with a shared commitment to the authentic practice and
+              Prospect Martial Arts is a proud member of the <strong>Tang Soo Do Masters
+              Alliance (TSDMA)</strong>. Our affiliation connects our students to a recognized
+              federation with a shared commitment to the authentic practice and
               preservation of traditional Tang Soo Do.
             </p>
           </div>
@@ -162,11 +163,14 @@ export default function AboutPage() {
               Our Lineage
             </h3>
             <p className="text-gray-700 text-sm leading-relaxed">
-              Our lineage traces back to <strong>Kwanjinim Garth Charland</strong> of the Charland
-              Institute of Karate and Fitness in Watertown, CT — a foundational figure in
-              Connecticut&apos;s Tang Soo Do community. Master Capolupo, who earned her black belt
-              under Kwanjinim Charland, has carried that tradition forward and passed it on to our
-              instructors and students at PMA.
+              Our lineage traces back through <strong>Kwanjinim Garth Charland</strong> of the
+              Charland Institute in Watertown, CT and <strong>Grandmaster Robert Cheezic</strong>{" "}
+              of Waterbury all the way to <strong>Hwang Kee</strong>, the founder of Tang Soo Do.
+              Master Capolupo, who earned her black belt under Kwanjinim Charland, carries that
+              tradition forward at PMA.{" "}
+              <Link href="/team" className="font-semibold text-pma-navy underline">
+                See the full lineage →
+              </Link>
             </p>
           </div>
 

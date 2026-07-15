@@ -147,6 +147,65 @@ export default function TeamPage() {
         </div>
       </section>
 
+      {/* ── OUR LINEAGE ───────────────────────────────────────── */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-4 text-pma-navy">
+            Our Lineage
+          </h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            Every belt earned at Prospect Martial Arts is part of an unbroken chain that reaches
+            back to the founder of Tang Soo Do himself.
+          </p>
+
+          <div className="space-y-0">
+            {[
+              {
+                name: "Grandmaster Hwang Kee",
+                title: "Founder of Tang Soo Do Moo Duk Kwan · Korea, 1945",
+                note: "Founded the Moo Duk Kwan — the school of Tang Soo Do — blending Korean tradition, the Chinese systems he studied, and the forms of Okinawan karate into a complete martial art.",
+              },
+              {
+                name: "Grandmaster Robert Cheezic",
+                title: "Cheezic Tang Soo Do Federation · Waterbury, CT",
+                note: "Earned black belt #2278 directly from Hwang Kee in Korea in 1959 while serving in the U.S. Air Force — the same era Chuck Norris earned his Tang Soo Do black belt there. He brought the art home to Connecticut and taught it for over six decades.",
+              },
+              {
+                name: "Kwanjinim Garth Charland",
+                title: "8th Degree Grandmaster · Tang Soo Do Masters Alliance · Watertown, CT",
+                note: "Received his black belt under Grandmaster Cheezic and leads the Tang Soo Do Masters Alliance (TSDMA). A lifelong student of the art, he continues his own training today under Grandmaster David Sgro, founder of the Moo Yea Tang Soo Do Association (MYTSD).",
+              },
+              {
+                name: "Master Gail Capolupo",
+                title: "5th Degree Black Belt · TSDMA #153 · Prospect Martial Arts",
+                note: "Earned her black belt under Kwanjinim Charland and carries the lineage forward as our school's master — passing it on to every instructor and student at PMA.",
+              },
+            ].map((link, i, arr) => (
+              <div key={link.name}>
+                <div className="rounded-2xl p-6 shadow-sm bg-pma-cream border border-gray-200">
+                  <h3 className="text-xl font-extrabold text-pma-navy">{link.name}</h3>
+                  <p className="text-sm font-semibold mb-2 text-pma-red">{link.title}</p>
+                  <p className="text-gray-700 text-sm leading-relaxed">{link.note}</p>
+                </div>
+                {i < arr.length - 1 && (
+                  <div className="flex justify-center py-2" aria-hidden>
+                    <svg className="w-6 h-6 text-pma-red" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <p className="text-center text-gray-500 text-sm italic mt-10 max-w-2xl mx-auto">
+            Connecticut holds a special place in Tang Soo Do history — pioneers like Grandmaster
+            Robert Beaudoin of Waterbury helped make our state one of the art&apos;s strongest homes
+            in America. When you bow onto our mat, you become part of that story.
+          </p>
+        </div>
+      </section>
+
       {/* ── CTA ───────────────────────────────────────────────── */}
       <section
         className="py-16 px-4 text-center text-white bg-pma-navy"

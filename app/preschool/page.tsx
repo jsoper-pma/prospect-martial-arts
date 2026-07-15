@@ -25,7 +25,7 @@ const programs = [
     slug: "little-tigers",
     name: "Little Tigers",
     ages: "Ages 3–4",
-    color: "#E22D33",
+    color: "#EC4899",
     tagline: "Their first step on the mat.",
     description:
       "Little Tigers is designed specifically for our youngest students — ages 3 and 4. Classes are short, structured, and full of fun. We focus on big-picture skills: following directions, taking turns, building coordination, and learning to love being active.",
@@ -43,7 +43,7 @@ const programs = [
     slug: "little-dragons",
     name: "Little Dragons",
     ages: "Ages 5–7",
-    color: "#003B6F",
+    color: "#166534",
     tagline: "More structure. More confidence. More fun.",
     description:
       "Little Dragons builds on the foundation with more technique, more structure, and the thrill of earning belts and growing their skills. Students in this program develop real discipline and focus — skills that carry into school and everyday life.",
@@ -511,13 +511,6 @@ export default function PreschoolPage() {
         </div>
       </section>
 
-      {/* ── PRICING ────────────────────────────────────────────────── */}
-      <PricingSection
-        title="Preschool Membership Pricing"
-        subtitle="Little Tigers (Ages 3–4) and Little Dragons (Ages 5–7) — Silver for twice-a-week training, Gold for unlimited classes and no extra fees."
-        tiers={preschoolTiers}
-      />
-
       {/* ── PARENT REVIEWS ─────────────────────────────────────────── */}
       <section className="py-16 px-4 bg-pma-cream">
         <div className="max-w-5xl mx-auto">
@@ -542,6 +535,13 @@ export default function PreschoolPage() {
           </div>
         </div>
       </section>
+
+      {/* ── PRICING ────────────────────────────────────────────────── */}
+      <PricingSection
+        title="Preschool Membership Pricing"
+        subtitle="Little Tigers (Ages 3–4) and Little Dragons (Ages 5–7) — Silver for twice-a-week training, Gold for unlimited classes and no extra fees."
+        tiers={preschoolTiers}
+      />
 
       {/* ── BOOKING WIDGET ─────────────────────────────────────────── */}
       <section id="trial" className="py-16 px-4 bg-white">

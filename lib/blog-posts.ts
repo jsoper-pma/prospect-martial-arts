@@ -646,7 +646,7 @@ When you walk in, the instructors will learn your kids' names in the first week.
 
 ## Traditional Values, Without the Time Capsule
 
-Tang Soo Do is a classical Korean martial art, and we teach it traditionally: forms, self-defense, sparring, etiquette, and the belt curriculum recognized by the Tang Soo Do Martial Arts Association (TSDMA). Students bow, use titles, and earn everything they wear.
+Tang Soo Do is a classical Korean martial art, and we teach it traditionally: forms, self-defense, sparring, etiquette, and the belt curriculum recognized by the Tang Soo Do Masters Alliance (TSDMA). Students bow, use titles, and earn everything they wear.
 
 But traditional doesn't mean rigid. Classes are energetic and age-appropriate, our instructors have experience with every learning style — including students with ADHD and special needs — and the culture is warm, not militaristic. Discipline and joy aren't opposites here.
 

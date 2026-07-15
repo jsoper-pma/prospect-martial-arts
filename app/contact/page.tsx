@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Mail, MapPin, Phone, Globe } from "lucide-react";
 import JsonLd from "@/components/JsonLd";
+import ScheduleTable from "@/components/ScheduleTable";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
 import {
   ADDRESS,
@@ -24,22 +25,6 @@ export const metadata: Metadata = {
     description: `Visit us at ${ADDRESS.full}. First class free.`,
   },
 };
-
-const weekdaySchedule = [
-  { time: "4:30 – 5:00 PM", monWed: "Little Tigers", tuesThu: "Little Tigers" },
-  { time: "5:00 – 5:30 PM", monWed: "Little Dragons", tuesThu: "Little Dragons" },
-  { time: "5:30 – 6:15 PM", monWed: "Beginners", tuesThu: "Intermediate" },
-  { time: "6:15 – 7:00 PM", monWed: "Intermediate", tuesThu: "Beginners" },
-  { time: "7:00 – 7:15 PM", monWed: "Leadership", tuesThu: "—" },
-  { time: "7:00 – 7:45 PM", monWed: "Adult Gups 17+", tuesThu: "Black Belts" },
-  { time: "7:45 – 8:30 PM", monWed: "Advanced", tuesThu: "Advanced" },
-];
-
-const saturdaySchedule = [
-  { time: "9:00 – 9:30 AM", cls: "Little Dragons" },
-  { time: "9:40 – 10:40 AM", cls: "Sparring & Endurance" },
-  { time: "10:50 – 11:30 AM", cls: "Weapons" },
-];
 
 export default function ContactPage() {
   return (
@@ -192,14 +177,6 @@ export default function ContactPage() {
                 </p>
               </div>
 
-              {/* Private Lessons */}
-              <div className="rounded-2xl p-5 bg-pma-light border border-gray-200">
-                <p className="font-bold text-gray-900 mb-1">Private Lessons Available</p>
-                <p className="text-gray-600 text-sm">
-                  Available Friday, Saturday, and Sunday — $30 per 30 minutes. Text or email us to
-                  check instructor availability.
-                </p>
-              </div>
             </div>
           </div>
 
@@ -235,51 +212,18 @@ export default function ContactPage() {
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-extrabold text-center text-white mb-4">Class Schedule</h2>
           <p className="text-blue-200 text-center mb-10 text-sm">
-            Current schedule — classes run Monday through Thursday, plus Saturdays.
+            Classes run Monday through Thursday evenings — each class has its own color.
           </p>
 
           {/* Weekday table */}
-          <div className="overflow-x-auto rounded-2xl shadow-lg mb-8">
-            <table className="w-full text-sm text-center">
-              <thead>
-                <tr className="bg-pma-red">
-                  <th className="text-white font-bold px-4 py-3 text-left">Time</th>
-                  <th className="text-white font-bold px-4 py-3">Monday &amp; Wednesday</th>
-                  <th className="text-white font-bold px-4 py-3">Tuesday &amp; Thursday</th>
-                </tr>
-              </thead>
-              <tbody>
-                {weekdaySchedule.map((row, i) => (
-                  <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-blue-50"}>
-                    <td className="px-4 py-3 font-semibold text-left text-pma-navy">{row.time}</td>
-                    <td className="px-4 py-3 text-gray-700">{row.monWed}</td>
-                    <td className="px-4 py-3 text-gray-700">{row.tuesThu}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          {/* Saturday */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
-            <h3 className="font-bold text-lg mb-4 text-center text-pma-navy">Saturday Classes</h3>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              {saturdaySchedule.map((row) => (
-                <div key={row.time} className="text-center px-6 py-3 rounded-xl bg-pma-light">
-                  <p className="font-bold text-sm text-pma-red">{row.time}</p>
-                  <p className="font-semibold text-gray-800 mt-1">{row.cls}</p>
-                </div>
-              ))}
-            </div>
-            <p className="text-center text-gray-500 text-xs mt-4">
-              * Saturday classes depend on instructor availability. Check with instructors for dates.
-            </p>
+          <div className="mb-8">
+            <ScheduleTable />
           </div>
 
           <div className="text-center rounded-2xl p-5 bg-white/10 border border-white/20">
             <p className="text-white font-semibold">
               <strong>Birthday Parties</strong> available Saturdays 1–3 PM &nbsp;·&nbsp;{" "}
-              <strong>Private Lessons</strong> Fri, Sat &amp; Sun — $30 / 30 min
+              <strong>Private Lessons</strong> available by appointment — $30 / 30 min
             </p>
           </div>
         </div>

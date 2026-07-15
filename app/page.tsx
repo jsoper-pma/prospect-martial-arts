@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CheckCircle2, Users, Medal, Sparkles, Swords } from "lucide-react";
 import GymDeskWidget from "@/components/GymDeskWidget";
+import ScheduleTable from "@/components/ScheduleTable";
 import { BOOKING_URL, PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -44,7 +45,7 @@ const programs = [
     image: "/images/program-card-adult-tang-soo-do.png",
     title: "Adult Tang Soo Do",
     ages: "Ages 17+",
-    desc: "Evening classes built for adults with real schedules. Fitness, self-defense, stress relief, and a clear path of progress — no experience needed to start.",
+    desc: "A traditional Korean martial art built for adults: a serious workout, sharper skills, greater flexibility, practical self-defense, and the chance to compete. No experience needed to start.",
     href: "/adults",
   },
 ];
@@ -100,23 +101,6 @@ const pillars = [
     title: "All Ages, All Levels",
     desc: "From our youngest Little Tigers to adult students, everyone is welcome here. No experience necessary — ever.",
   },
-];
-
-// ── Schedule data ─────────────────────────────────────────────────
-const weekdaySchedule = [
-  { time: "4:30 – 5:00 PM", monWed: "Little Tigers", tuesThu: "Little Tigers" },
-  { time: "5:00 – 5:30 PM", monWed: "Little Dragons", tuesThu: "Little Dragons" },
-  { time: "5:30 – 6:15 PM", monWed: "Beginners", tuesThu: "Intermediate" },
-  { time: "6:15 – 7:00 PM", monWed: "Intermediate", tuesThu: "Beginners" },
-  { time: "7:00 – 7:15 PM", monWed: "Leadership", tuesThu: "—" },
-  { time: "7:00 – 7:45 PM", monWed: "Adult Gups 17+", tuesThu: "Black Belts" },
-  { time: "7:45 – 8:30 PM", monWed: "Advanced", tuesThu: "Advanced" },
-];
-
-const saturdaySchedule = [
-  { time: "9:00 – 9:30 AM", cls: "Little Dragons" },
-  { time: "9:40 – 10:40 AM", cls: "Sparring & Endurance" },
-  { time: "10:50 – 11:30 AM", cls: "Weapons" },
 ];
 
 function Stars() {
@@ -343,54 +327,20 @@ export default function HomePage() {
             Class Schedule
           </h2>
           <p className="text-blue-200 text-center mb-10 text-sm">
-            Current schedule — classes run Monday through Thursday, plus Saturdays.
+            Classes run Monday through Thursday evenings — each class has its own color.
           </p>
 
           {/* Weekday table */}
-          <div className="overflow-x-auto rounded-2xl shadow-lg mb-8">
-            <table className="w-full text-sm text-center">
-              <thead>
-                <tr className="bg-pma-red">
-                  <th className="text-white font-bold px-4 py-3 text-left">Time</th>
-                  <th className="text-white font-bold px-4 py-3">Monday &amp; Wednesday</th>
-                  <th className="text-white font-bold px-4 py-3">Tuesday &amp; Thursday</th>
-                </tr>
-              </thead>
-              <tbody>
-                {weekdaySchedule.map((row, i) => (
-                  <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-blue-50"}>
-                    <td className="px-4 py-3 font-semibold text-left text-pma-navy">{row.time}</td>
-                    <td className="px-4 py-3 text-gray-700">{row.monWed}</td>
-                    <td className="px-4 py-3 text-gray-700">{row.tuesThu}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="mb-8">
+            <ScheduleTable />
           </div>
 
-          {/* Saturday */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
-            <h3 className="font-bold text-lg mb-4 text-center text-pma-navy">Saturday Classes</h3>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              {saturdaySchedule.map((row) => (
-                <div key={row.time} className="text-center px-6 py-3 rounded-xl bg-pma-light">
-                  <p className="font-bold text-sm text-pma-red">{row.time}</p>
-                  <p className="font-semibold text-gray-800 mt-1">{row.cls}</p>
-                </div>
-              ))}
-            </div>
-            <p className="text-center text-gray-500 text-xs mt-4">
-              * Saturday classes depend on instructor availability. Check with instructors for dates.
-            </p>
-          </div>
-
-          {/* Private lessons callout */}
+          {/* Birthday parties + private lessons callout */}
           <div className="text-center rounded-2xl p-5 bg-white/10 border border-white/20">
             <p className="text-white font-semibold">
               <strong>Birthday Parties</strong> available Saturdays 1–3 PM &nbsp;·&nbsp;{" "}
-              <strong>Private Lessons</strong> available Fri, Sat &amp; Sun — $30 / 30 min
+              <strong>Private Lessons</strong> available by appointment — $30 / 30 min
             </p>
-            <p className="text-blue-200 text-sm mt-1">Contact us to check instructor availability.</p>
           </div>
         </div>
       </section>
