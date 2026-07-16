@@ -83,9 +83,14 @@ const faqs = [
       "Private lessons are available by appointment at $30 per 30-minute session. They're a great way to accelerate progress, work on specific techniques, or give a student one-on-one attention. Text or email us and we'll set one up.",
   },
   {
-    question: "What fees and policies should I know about?",
+    question: "What fees should I know about?",
     answer:
-      "We keep our policies simple and fair. Late payments carry a $30 fee after 10 days, and returned checks or failed bank transfers carry a $35 fee. You can cancel your membership at any time with seven days' notice — cancellations made in person take effect immediately, or you can email info@prospectma.com and we'll take care of it.",
+      "We keep our fees simple and fair. Late payments carry a $30 fee after 10 days, and returned checks or failed bank transfers carry a $35 fee. That's it — no hidden charges.",
+  },
+  {
+    question: "What if we need to pause or cancel our membership?",
+    answer:
+      "We know life gets busy. Memberships are month-to-month unless you choose a multi-month package, so you're never locked in. If your student needs a break — a sports season, a school crunch, whatever life brings — you can freeze your account (typically up to 30 days) or simply cancel and rejoin when you're ready; the mat will be here waiting. Cancellations just require seven days' notice: they take effect immediately when done in person, or you can email info@prospectma.com and we'll take care of it.",
   },
   {
     question: "How do I get started?",
