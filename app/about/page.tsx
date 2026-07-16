@@ -137,6 +137,38 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ── THE CHUCK NORRIS CONNECTION ───────────────────────── */}
+      <section className="py-16 px-4 bg-pma-navy">
+        <div className="max-w-3xl mx-auto text-center text-white">
+          <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6 bg-pma-red">
+            Fun Fact
+          </span>
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-6">
+            The Same Art That Made Chuck Norris
+          </h2>
+          {/* Photo slot — add a licensed Chuck Norris–era image here later */}
+          <div className="space-y-4 text-blue-100 text-lg leading-relaxed">
+            <p>
+              Before he was a martial arts icon, Chuck Norris was a young airman stationed in Korea
+              — where he earned his black belt in <strong className="text-white">Tang Soo Do</strong>,
+              the very art we teach at PMA. It was in the Moo Duk Kwan tradition founded by
+              Grandmaster Hwang Kee, during the same era our own lineage&apos;s Grandmaster Robert
+              Cheezic earned his black belt there directly from Hwang Kee himself.
+            </p>
+            <p>
+              The kicks, forms, and discipline that built one of the most famous martial artists in
+              the world are the same ones our students practice on our mats every week.
+            </p>
+          </div>
+          <Link
+            href="/team"
+            className="inline-block mt-8 text-white font-bold px-8 py-3 rounded-full border-2 border-white hover:bg-white hover:text-pma-navy transition-colors"
+          >
+            See Our Full Lineage →
+          </Link>
+        </div>
+      </section>
+
       {/* ── AFFILIATION & LINEAGE ─────────────────────────────── */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">

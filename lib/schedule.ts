@@ -23,6 +23,12 @@ export const kidsSchedule: ScheduleRow[] = weekdaySchedule.filter((row) =>
   ["Beginners", "Intermediate", "Leadership", "Advanced"].includes(row.monWed)
 );
 
+// Adults page shows the classes adult students can join — no preschool
+// programs or Leadership.
+export const adultsSchedule: ScheduleRow[] = weekdaySchedule.filter(
+  (row) => !["Little Tigers", "Little Dragons", "Leadership"].includes(row.monWed)
+);
+
 // Color system chosen by the owner — each class keeps one color everywhere.
 export const CLASS_COLORS: Record<string, { bg: string; text: string }> = {
   "Little Tigers": { bg: "#EC4899", text: "#FFFFFF" }, // pink

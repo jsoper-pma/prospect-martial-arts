@@ -85,7 +85,7 @@ const faqs = [
   {
     question: "What fees and policies should I know about?",
     answer:
-      "We keep our policies simple and fair. Late payments carry a $30 fee after 10 days. Returned checks or failed bank transfers carry a $35 fee. Memberships can be placed on hold for up to 90 days with a one-time hold fee equal to one month's tuition — and that fee covers your first month back when you return. You can cancel within your first 30 days without penalty; after that, we ask for 30 days' written notice, and you can keep training through your paid period.",
+      "We keep our policies simple and fair. Late payments carry a $30 fee after 10 days, and returned checks or failed bank transfers carry a $35 fee. You can cancel your membership at any time with seven days' notice — cancellations made in person take effect immediately, or you can email info@prospectma.com and we'll take care of it.",
   },
   {
     question: "How do I get started?",

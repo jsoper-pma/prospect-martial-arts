@@ -4,6 +4,7 @@ import { Brain, Dumbbell, HeartHandshake, Shield, Swords, TrendingUp } from "luc
 import GymDeskWidget from "@/components/GymDeskWidget";
 import FoundersPricing from "@/components/FoundersPricing";
 import ScheduleTable from "@/components/ScheduleTable";
+import { adultsSchedule } from "@/lib/schedule";
 import JsonLd from "@/components/JsonLd";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
 import { ADDRESS, BOOKING_URL, EMAIL, PHONE_DISPLAY, PHONE_HREF, SITE_URL } from "@/lib/site";
@@ -150,7 +151,7 @@ export default function AdultsPage() {
             that fits your week.
           </p>
           <div className="mb-6 text-left">
-            <ScheduleTable />
+            <ScheduleTable rows={adultsSchedule} />
           </div>
 
           <p className="text-gray-500 text-sm">{ADDRESS.full}</p>
