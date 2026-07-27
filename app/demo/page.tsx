@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Bebas_Neue, Inter } from "next/font/google";
 import DemoHeader from "@/components/DemoHeader";
 import DemoFooter from "@/components/DemoFooter";
-import { EMAIL, PHONE_HREF } from "@/lib/site";
+import { ADDRESS, EMAIL, PHONE_DISPLAY } from "@/lib/site";
 import "./demo.css";
 
 // This page keeps its own dark/crimson identity, so it loads its own
@@ -22,14 +22,6 @@ const inter = Inter({
   variable: "--font-inter",
   display: "swap",
 });
-
-// Derived from lib/site so the number stays in one place. PHONE_HREF is
-// "tel:2034415358"; SMS links want the E.164 form.
-const SMS_PLAIN = `sms:+1${PHONE_HREF.replace("tel:", "")}`;
-const SMS_INTEREST = `${SMS_PLAIN}?&body=${encodeURIComponent(
-  "Hi Mr. Soper, I'm interested in the Demo Team."
-)}`;
-const MAILTO_INTEREST = `mailto:${EMAIL}?subject=${encodeURIComponent("Demo Team Interest")}`;
 
 export const metadata: Metadata = {
   title: "Demo & Competition Team",
@@ -389,16 +381,31 @@ export default function DemoTeamPage() {
             to push yourself, talk to Mr. Soper.
           </p>
 
-          <div className="cta-buttons">
-            <a className="btn btn-primary" href={SMS_INTEREST}>
-              Talk to Mr. Soper
-            </a>
-            <a className="btn btn-secondary" href={MAILTO_INTEREST}>
-              Email
-            </a>
-            <a className="btn btn-ghost" href={SMS_PLAIN}>
-              Text
-            </a>
+          {/* Plain, visible contact details rather than sms:/mailto: buttons —
+              desktop browsers have no SMS handler and often no mail client, so
+              those silently failed. The values are readable and copyable here. */}
+          <div className="contact-card">
+            <h3 className="contact-title">Talk to Mr. Soper</h3>
+
+            <ul className="contact-list">
+              <li>
+                <span className="contact-label">In Person</span>
+                <span className="contact-value">See him at the school</span>
+                <span className="contact-sub">
+                  {ADDRESS.street}, {ADDRESS.city}, {ADDRESS.state} {ADDRESS.zip}
+                </span>
+              </li>
+              <li>
+                <span className="contact-label">Email</span>
+                <a className="contact-value contact-link" href={`mailto:${EMAIL}`}>
+                  {EMAIL}
+                </a>
+              </li>
+              <li>
+                <span className="contact-label">Text</span>
+                <span className="contact-value">{PHONE_DISPLAY}</span>
+              </li>
+            </ul>
           </div>
 
           <p className="cta-note">

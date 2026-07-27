@@ -1135,12 +1135,70 @@ body:has(.demo-page) {
   margin-bottom: 2rem;
 }
 
-.demo-page .cta-buttons {
+/* Contact details for the final CTA. Values are shown in full rather than
+   hidden behind sms:/mailto: buttons, which fail on desktop. */
+.demo-page .contact-card {
+  max-width: 34rem;
+  margin: 0 auto 1.75rem;
+  padding: clamp(1.5rem, 4vw, 2rem);
+  background: var(--bg-card);
+  border: 1px solid var(--border-red);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 0 0 1px rgba(212, 20, 20, 0.08) inset, 0 20px 60px rgba(0, 0, 0, 0.45),
+    0 0 50px var(--demo-red-glow-soft);
+  text-align: left;
+}
+
+.demo-page .contact-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.15rem);
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  text-align: center;
+  margin-bottom: 1.35rem;
+}
+
+.demo-page .contact-list {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  justify-content: center;
-  margin-bottom: 1.5rem;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.demo-page .contact-list li {
+  display: grid;
+  gap: 0.15rem;
+  padding-left: 0.9rem;
+  border-left: 3px solid var(--demo-red);
+}
+
+.demo-page .contact-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--demo-red);
+}
+
+.demo-page .contact-value {
+  font-size: clamp(1.05rem, 2.6vw, 1.2rem);
+  font-weight: 600;
+  color: var(--text);
+  /* Long email/phone values stay selectable and never overflow the card. */
+  overflow-wrap: anywhere;
+}
+
+.demo-page .contact-link {
+  transition: color 0.2s var(--ease);
+}
+
+.demo-page .contact-link:hover {
+  color: var(--demo-red);
+}
+
+.demo-page .contact-sub {
+  font-size: 0.87rem;
+  color: var(--text-muted);
+  line-height: 1.5;
 }
 
 .demo-page .cta-note {
