@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
+import ChromeGate from "@/components/ChromeGate";
 import JsonLd from "@/components/JsonLd";
 import { baseMetadata } from "@/lib/metadata";
 import { SITE_URL } from "@/lib/site";
@@ -51,10 +52,15 @@ export default function RootLayout({
     <html lang="en" className={`h-full ${nunito.variable}`}>
       <body className="min-h-full flex flex-col antialiased">
         <JsonLd data={getLocalBusinessSchema()} />
-        <Navbar />
+        {/* /demo ships its own dark-themed header and footer — see ChromeGate. */}
+        <ChromeGate>
+          <Navbar />
+        </ChromeGate>
         <main className="flex-1">{children}</main>
-        <Footer />
-        <StickyMobileCTA />
+        <ChromeGate>
+          <Footer />
+          <StickyMobileCTA />
+        </ChromeGate>
         {GA_ID !== "G-XXXXXXXXXX" && <GoogleAnalytics gaId={GA_ID} />}
       </body>
     </html>

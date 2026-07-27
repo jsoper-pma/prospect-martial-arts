@@ -1,21 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { programLinksLong as programLinks, quickLinks } from "@/lib/nav";
 import { ADDRESS, BOOKING_URL, EMAIL, PHONE_DISPLAY, PHONE_HREF, SOCIALS } from "@/lib/site";
-
-const quickLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About Us" },
-  { href: "/team", label: "Our Team" },
-  { href: "/blog", label: "Blog" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/contact", label: "Contact & Location" },
-];
-
-const programLinks = [
-  { href: "/preschool", label: "Preschool — Ages 3–7" },
-  { href: "/kids", label: "Kids & Teens — Ages 8+" },
-  { href: "/adults", label: "Adults — Ages 17+" },
-];
 
 export default function Footer() {
   return (

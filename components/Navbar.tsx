@@ -5,23 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, Phone, X } from "lucide-react";
+import { mainLinks as links, programLinks } from "@/lib/nav";
 import { BOOKING_URL, PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
-
-const programLinks = [
-  { href: "/preschool", label: "Preschool (Ages 3–7)" },
-  { href: "/kids", label: "Kids & Teens (Ages 8+)" },
-  { href: "/adults", label: "Adults (Ages 17+)" },
-];
-
-const links = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/team", label: "Team" },
-  // Programs dropdown rendered separately
-  { href: "/blog", label: "Blog" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/contact", label: "Contact" },
-];
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);

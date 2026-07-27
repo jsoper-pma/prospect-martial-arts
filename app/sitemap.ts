@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/preschool`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE_URL}/kids`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE_URL}/adults`, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${SITE_URL}/demo`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/about`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/team`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/faq`, changeFrequency: "monthly", priority: 0.7 },
