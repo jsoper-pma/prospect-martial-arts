@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { programLinksLong as programLinks, quickLinks } from "@/lib/nav";
-import { ADDRESS, BOOKING_URL, EMAIL, PHONE_DISPLAY, PHONE_HREF, SOCIALS } from "@/lib/site";
+import BookTrialLink from "@/components/BookTrialLink";
+import { ADDRESS, EMAIL, PHONE_DISPLAY, PHONE_HREF, SOCIALS } from "@/lib/site";
 
 export default function Footer() {
   return (
@@ -35,14 +36,9 @@ export default function Footer() {
             height={80}
             className="rounded-full"
           />
-          <a
-            href={BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-pma-red text-white text-sm font-bold px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity shadow-md"
-          >
+          <BookTrialLink className="bg-pma-red text-white text-sm font-bold px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity shadow-md">
             Book a Free Trial
-          </a>
+          </BookTrialLink>
         </div>
 
         {/* Programs */}

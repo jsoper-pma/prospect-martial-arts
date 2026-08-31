@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Check, HeartHandshake, Medal, PersonStanding, Target } from "lucide-react";
-import GymDeskWidget from "@/components/GymDeskWidget";
+import TrialSplit from "@/components/TrialSplit";
 import PricingSection from "@/components/PricingSection";
 import JsonLd from "@/components/JsonLd";
 import { preschoolTiers } from "@/lib/pricing";
@@ -545,16 +545,16 @@ export default function PreschoolPage() {
 
       {/* ── BOOKING WIDGET ─────────────────────────────────────────── */}
       <section id="trial" className="py-16 px-4 bg-white">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-pma-navy">
-            Ready to Try a Free Class?
-          </h2>
-          <p className="text-gray-600 text-lg mb-10 leading-relaxed">
-            The first class is always on us. Book your free trial below — no commitment, no pressure. Just come meet us, see the school, and let your child try something great.
-          </p>
-          <div className="rounded-2xl shadow-lg p-6 bg-gray-50">
-            <GymDeskWidget />
+        <div className="max-w-6xl mx-auto">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-pma-navy">
+              Ready to Try a Free Class?
+            </h2>
+            <p className="text-gray-600 text-lg mb-10 leading-relaxed">
+              The first class is always on us. Book your free trial below — no commitment, no pressure. Just come meet us, see the school, and let your child try something great.
+            </p>
           </div>
+          <TrialSplit />
         </div>
       </section>
 

@@ -5,6 +5,18 @@ export const SITE_URL = "https://prospectma.com";
 
 export const BOOKING_URL = "https://prospect-martial-arts.gymdesk.com/book/v/Ayw2q";
 
+// Official Gymdesk embed IDs (trial schedule + trial booking form).
+export const GYMDESK_WIDGET = {
+  gym: "AngPo",
+  schedule: "lQwyO",
+  form: "Ayw2q",
+  labelColor: "#FFFFFF",
+  placeholderColor: "#FFFFFF",
+} as const;
+
+export const TRIAL_HASH = "#trial";
+export const TRIAL_HOME_HREF = "/#trial";
+
 export const PHONE_DISPLAY = "(203) 441-5358";
 export const PHONE_HREF = "tel:2034415358";
 export const EMAIL = "info@prospectma.com";

@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
+import Script from "next/script";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
+import TrialNudge from "@/components/TrialNudge";
 import ChromeGate from "@/components/ChromeGate";
 import JsonLd from "@/components/JsonLd";
 import { baseMetadata } from "@/lib/metadata";
@@ -60,7 +62,9 @@ export default function RootLayout({
         <ChromeGate>
           <Footer />
           <StickyMobileCTA />
+          <TrialNudge />
         </ChromeGate>
+        <Script src="https://app.gymdesk.com/js/widgets.js" strategy="afterInteractive" />
         {GA_ID !== "G-XXXXXXXXXX" && <GoogleAnalytics gaId={GA_ID} />}
       </body>
     </html>

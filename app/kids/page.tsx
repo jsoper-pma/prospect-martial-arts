@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Brain, Check, HeartHandshake, Medal, Shield, Sprout, Trophy } from "lucide-react";
-import GymDeskWidget from "@/components/GymDeskWidget";
+import TrialSplit from "@/components/TrialSplit";
 import PricingSection from "@/components/PricingSection";
 import ScheduleTable from "@/components/ScheduleTable";
 import JsonLd from "@/components/JsonLd";
@@ -150,11 +150,11 @@ export default function KidsPage() {
           </div>
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
             <Image
-              src="/images/gallery/20250717_194337.jpg"
-              alt="Kids training Tang Soo Do at Prospect Martial Arts"
+              src="/images/gallery/promo-jump.jpg"
+              alt="Kids jumping during Tang Soo Do class at Prospect Martial Arts"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover object-top"
+              className="object-cover object-center"
             />
           </div>
         </div>
@@ -191,11 +191,11 @@ export default function KidsPage() {
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl order-2 md:order-1">
             <Image
-              src="/images/gallery/20250717_194507.jpg"
-              alt="Students in formation at Prospect Martial Arts"
+              src="/images/gallery/promo-board-break.jpg"
+              alt="Student breaking a board during class at Prospect Martial Arts"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover object-top"
+              className="object-cover object-center"
             />
           </div>
           <div className="order-1 md:order-2">
@@ -217,6 +217,45 @@ export default function KidsPage() {
                 and pushed forward from there.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── PHOTO STRIP ───────────────────────────────────────── */}
+      <section className="py-12 px-4 bg-white overflow-hidden">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-extrabold text-center mb-8 text-pma-navy">
+            Life on the Mat
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {[
+              {
+                src: "/images/gallery/promo-kids-jump.jpg",
+                alt: "Two students mid-jump during class at Prospect Martial Arts",
+              },
+              {
+                src: "/images/gallery/promo-punch-line.jpg",
+                alt: "Kids punching together in class at Prospect Martial Arts",
+              },
+              {
+                src: "/images/gallery/promo-green-belt.jpg",
+                alt: "Green belt student practicing a form during class at Prospect Martial Arts",
+              },
+              {
+                src: "/images/gallery/promo-weapons.jpg",
+                alt: "Student practicing nunchaku during class at Prospect Martial Arts",
+              },
+            ].map((photo) => (
+              <div key={photo.src} className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-md">
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  className="object-cover object-center hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -276,18 +315,18 @@ export default function KidsPage() {
 
       {/* ── FREE TRIAL BOOKING ────────────────────────────────── */}
       <section id="trial" className="py-16 px-4 bg-white">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-pma-navy">
-            Start with a Free Class
-          </h2>
-          <p className="text-gray-600 text-lg mb-10 leading-relaxed">
-            The first class is on us. Come in, try it out, and see if it&apos;s the right fit. No
-            commitment. No pressure. No experience needed.
-          </p>
-          <div className="rounded-2xl shadow-lg p-6 bg-pma-cream">
-            <GymDeskWidget />
+        <div className="max-w-6xl mx-auto">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-pma-navy">
+              Start with a Free Class
+            </h2>
+            <p className="text-gray-600 text-lg mb-10 leading-relaxed">
+              The first class is on us. Come in, try it out, and see if it&apos;s the right fit. No
+              commitment. No pressure. No experience needed.
+            </p>
           </div>
-          <p className="mt-6 text-gray-500 text-sm">
+          <TrialSplit />
+          <p className="mt-6 text-gray-500 text-sm text-center">
             Have a question first?{" "}
             <a href={PHONE_HREF} className="font-semibold hover:underline text-pma-navy">
               Text us at {PHONE_DISPLAY}

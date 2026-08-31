@@ -27,6 +27,18 @@ html {
   scroll-behavior: smooth;
 }
 
+.gymdesk-booking,
+.gymdesk-frame-container {
+  width: 100%;
+}
+
+.gymdesk-booking iframe,
+.gymdesk-frame-container iframe {
+  width: 100%;
+  min-height: 640px;
+  border: 0;
+}
+
 body {
   font-family: var(--font-nunito), "Segoe UI", system-ui, -apple-system, sans-serif;
   color: #1f2937;

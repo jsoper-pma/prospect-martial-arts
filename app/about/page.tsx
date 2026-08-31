@@ -84,17 +84,17 @@ export default function AboutPage() {
               <p>
                 Named after the town we call home, Prospect Martial Arts is a school by the
                 community, for the community. We are proud to serve Prospect and the surrounding
-                towns of Connecticut — and proud to be home to over 140 students who train with us
-                every week.
+                towns of Connecticut.
               </p>
             </div>
           </div>
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
             <Image
-              src="/images/gallery/20250717_194337.jpg"
-              alt="Prospect Martial Arts instructor"
+              src="/images/gallery/promo-group.jpg"
+              alt="Promotion day at Prospect Martial Arts"
               fill
-              className="object-cover object-top"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover object-center"
             />
           </div>
         </div>
@@ -105,10 +105,11 @@ export default function AboutPage() {
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl order-2 md:order-1">
             <Image
-              src="/images/gallery/20250717_194507.jpg"
+              src="/images/gallery/promo-class.jpg"
               alt="Students training in disciplined formation at Prospect Martial Arts"
               fill
-              className="object-cover object-top"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover object-center"
             />
           </div>
           <div className="order-1 md:order-2">
@@ -265,22 +266,40 @@ export default function AboutPage() {
             We invite you to come in, watch a class, and meet the team.
           </p>
           <div className="grid md:grid-cols-2 gap-4 mb-8">
-            <div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
               <Image
                 src="/images/gallery/20250717_194421.jpg"
                 alt="Students training at Prospect Martial Arts"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
+                className="object-cover object-center"
               />
             </div>
-            <div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
+              <Image
+                src="/images/gallery/promo-board-break.jpg"
+                alt="Student breaking a board with a side kick at Prospect Martial Arts"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover object-center"
+              />
+            </div>
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
+              <Image
+                src="/images/gallery/promo-flying-kick.jpg"
+                alt="Student performing a flying kick to a board at Prospect Martial Arts"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover object-center"
+              />
+            </div>
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
               <Image
                 src="/images/storefront.jpg"
                 alt={`Prospect Martial Arts storefront at ${ADDRESS.full}`}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
+                className="object-cover object-center"
               />
             </div>
           </div>

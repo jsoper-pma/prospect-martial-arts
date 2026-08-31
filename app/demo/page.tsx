@@ -364,8 +364,7 @@ export default function DemoTeamPage() {
           <div className="uniform-card">
             <p>
               <strong>Full Demo Team members</strong> are required to purchase a special Demo Team
-              uniform. They may wear it to regular classes. Details will be released once the first
-              team is selected.
+              uniform. They may wear it to regular classes. The team is currently training. Talk to Mr. Soper about uniforms.
             </p>
           </div>
         </div>
@@ -375,7 +374,6 @@ export default function DemoTeamPage() {
       <section className="final-cta" id="ready" aria-labelledby="ready-heading">
         <div className="container final-cta-inner">
           <h2 id="ready-heading">Ready to Earn Your Spot?</h2>
-          <p className="audition-window">Auditions are now open and will close early August.</p>
           <p>
             This is an elite team. The standards are real. The work is real. If you&rsquo;re ready
             to push yourself, talk to Mr. Soper.

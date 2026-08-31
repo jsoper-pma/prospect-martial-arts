@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { CheckCircle2, Users, Medal, Sparkles, Swords } from "lucide-react";
-import GymDeskWidget from "@/components/GymDeskWidget";
+import TrialSplit from "@/components/TrialSplit";
 import ScheduleTable from "@/components/ScheduleTable";
-import { BOOKING_URL, PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Kids & Adult Martial Arts in Prospect, CT | Prospect Martial Arts",
@@ -35,7 +34,7 @@ const programs = [
     href: "/preschool",
   },
   {
-    image: "/images/program-card-tang-soo-do-youth.png",
+    image: "/images/gallery/promo-forms.jpg",
     title: "Tang Soo Do",
     ages: "Ages 8+",
     desc: "Traditional Tang Soo Do for kids and teens. Students learn forms, self-defense, and sparring while developing focus, respect, and the discipline that carries into every area of life.",
@@ -121,8 +120,8 @@ export default function HomePage() {
       {/* ── HERO ──────────────────────────────────────────────── */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
         <Image
-          src="/images/gallery/20250717_194337.jpg"
-          alt="Prospect Martial Arts instructor"
+          src="/images/gallery/promo-group.jpg"
+          alt="Students training together at Prospect Martial Arts"
           fill
           className="object-cover object-center"
           sizes="100vw"
@@ -149,7 +148,7 @@ export default function HomePage() {
             Learn Tang Soo Do &nbsp;·&nbsp; Build Confidence &nbsp;·&nbsp; Join Our Community
           </p>
           <p className="text-sm text-blue-300 mb-6 font-medium">
-            Traditional Korean martial arts in Prospect, CT — 140+ students strong
+            Traditional Korean martial arts in Prospect, CT
           </p>
 
           {/* Trust row */}
@@ -164,9 +163,7 @@ export default function HomePage() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href={BOOKING_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#trial"
               className="bg-pma-red text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:opacity-90 transition-opacity"
             >
               Book Your Free Trial Class
@@ -204,7 +201,7 @@ export default function HomePage() {
                     alt={`${program.title} program at Prospect Martial Arts`}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <div className="p-5 bg-white">
@@ -299,20 +296,40 @@ export default function HomePage() {
           <h2 className="text-3xl font-extrabold text-center mb-8 text-pma-navy">
             Life at Prospect Martial Arts
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {[
-              "/images/gallery/20250717_194421.jpg",
-              "/images/gallery/20250620_195300.jpg",
-              "/images/gallery/20250808_195450.jpg",
-              "/images/gallery/2025_TSDMAFUNDRAISER_1-35.jpg",
-            ].map((src, i) => (
-              <div key={i} className="relative aspect-square rounded-xl overflow-hidden shadow-md">
+              {
+                src: "/images/gallery/promo-group.jpg",
+                alt: "Promotion day group in the Prospect Martial Arts dojo",
+              },
+              {
+                src: "/images/gallery/promo-class.jpg",
+                alt: "Kids class punching in formation at Prospect Martial Arts",
+              },
+              {
+                src: "/images/gallery/promo-jump.jpg",
+                alt: "Students jumping during class at Prospect Martial Arts",
+              },
+              {
+                src: "/images/gallery/promo-forms.jpg",
+                alt: "Mixed-age class practicing Tang Soo Do forms",
+              },
+              {
+                src: "/images/gallery/promo-board-break.jpg",
+                alt: "Student breaking a board with a side kick",
+              },
+              {
+                src: "/images/gallery/promo-flying-kick.jpg",
+                alt: "Student performing a flying kick to a board",
+              },
+            ].map((photo) => (
+              <div key={photo.src} className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-md">
                 <Image
-                  src={src}
-                  alt={`Prospect Martial Arts photo ${i + 1}`}
+                  src={photo.src}
+                  alt={photo.alt}
                   fill
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                  className="object-cover object-center hover:scale-105 transition-transform duration-300"
                 />
               </div>
             ))}
@@ -347,24 +364,18 @@ export default function HomePage() {
 
       {/* ── FREE TRIAL BOOKING ────────────────────────────────── */}
       <section id="trial" className="py-16 px-4 bg-white">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-pma-navy">
-            Try a Free Class — On Us
-          </h2>
-          <p className="text-gray-600 text-lg mb-10 leading-relaxed">
-            The best way to experience Prospect Martial Arts is to come in. Book below and we&apos;ll
-            get you set up for a free trial class. No commitment, no pressure — just come see what
-            we&apos;re all about.
-          </p>
-          <div className="rounded-2xl shadow-lg p-6 bg-pma-cream">
-            <GymDeskWidget />
+        <div className="max-w-6xl mx-auto">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-pma-navy">
+              Try a Free Class — On Us
+            </h2>
+            <p className="text-gray-600 text-lg mb-10 leading-relaxed">
+              The best way to experience Prospect Martial Arts is to come in. Book below and we&apos;ll
+              get you set up for a free trial class. No commitment, no pressure — just come see what
+              we&apos;re all about.
+            </p>
           </div>
-          <p className="mt-6 text-gray-500 text-sm">
-            Prefer to talk first?{" "}
-            <a href={PHONE_HREF} className="font-semibold text-pma-navy hover:underline">
-              Call or text {PHONE_DISPLAY}
-            </a>
-          </p>
+          <TrialSplit />
         </div>
       </section>
 
@@ -376,9 +387,7 @@ export default function HomePage() {
           families call Prospect Martial Arts their second home.
         </p>
         <a
-          href={BOOKING_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+          href="#trial"
           className="bg-white text-pma-red font-bold text-lg px-10 py-4 rounded-full shadow-lg hover:bg-gray-100 transition-colors inline-block"
         >
           Book Your Free Trial Now

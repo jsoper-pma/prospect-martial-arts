@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Brain, Dumbbell, HeartHandshake, Shield, Swords, TrendingUp } from "lucide-react";
-import GymDeskWidget from "@/components/GymDeskWidget";
+import TrialSplit from "@/components/TrialSplit";
 import FoundersPricing from "@/components/FoundersPricing";
 import ScheduleTable from "@/components/ScheduleTable";
 import { adultsSchedule } from "@/lib/schedule";
@@ -86,8 +86,8 @@ export default function AdultsPage() {
       {/* ── HERO ─────────────────────────────────────────────── */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
         <Image
-          src="/images/gallery/2025_TSDMAFUNDRAISER_1-35.jpg"
-          alt="Adult Tang Soo Do at Prospect Martial Arts"
+          src="/images/gallery/promo-forms.jpg"
+          alt="Students practicing Tang Soo Do forms at Prospect Martial Arts"
           fill
           sizes="100vw"
           className="object-cover object-center"
@@ -218,17 +218,17 @@ export default function AdultsPage() {
 
       {/* ── TRIAL BOOKING ────────────────────────────────────── */}
       <section id="trial" className="py-16 px-4 bg-white">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-pma-navy">
-            Your First Class Is Free
-          </h2>
-          <p className="text-gray-600 text-lg mb-10 leading-relaxed">
-            Come try a class before you commit to anything. Meet the instructors, see the school,
-            and find out if Tang Soo Do is right for you.
-          </p>
-          <div className="rounded-2xl shadow-lg p-6 bg-pma-cream">
-            <GymDeskWidget />
+        <div className="max-w-6xl mx-auto">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-pma-navy">
+              Your First Class Is Free
+            </h2>
+            <p className="text-gray-600 text-lg mb-10 leading-relaxed">
+              Come try a class before you commit to anything. Meet the instructors, see the school,
+              and find out if Tang Soo Do is right for you.
+            </p>
           </div>
+          <TrialSplit />
         </div>
       </section>
 

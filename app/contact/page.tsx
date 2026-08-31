@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Mail, MapPin, Phone, Globe } from "lucide-react";
+import TrialSplit from "@/components/TrialSplit";
 import JsonLd from "@/components/JsonLd";
 import ScheduleTable from "@/components/ScheduleTable";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
 import {
   ADDRESS,
-  BOOKING_URL,
   EMAIL,
   MAPS_EMBED_URL,
   MAPS_LINK,
@@ -46,9 +46,7 @@ export default function ContactPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href={BOOKING_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#trial"
               className="bg-pma-red text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:opacity-90 transition-opacity"
             >
               Book a Free Trial Class
@@ -166,9 +164,7 @@ export default function ContactPage() {
                   </a>{" "}
                   — we respond to all messages within 24 hours. Or skip the wait entirely and{" "}
                   <a
-                    href={BOOKING_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="#trial"
                     className="underline font-semibold text-pma-navy"
                   >
                     book your free trial class online
@@ -230,29 +226,24 @@ export default function ContactPage() {
       </section>
 
       {/* ── FREE TRIAL CTA ────────────────────────────────────── */}
-      <section className="py-16 px-4 text-center bg-pma-cream">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl font-extrabold mb-4 text-pma-navy">Ready to Try a Free Class?</h2>
-          <p className="text-gray-600 text-lg mb-8">
-            No commitment, no experience needed — just come see what we&apos;re all about. Booking
-            takes less than a minute.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href={BOOKING_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-pma-red text-white font-bold text-lg px-10 py-4 rounded-full shadow-lg hover:opacity-90 transition-opacity"
-            >
-              Book Your Free Trial Class
-            </a>
+      <section id="trial" className="py-16 px-4 text-center bg-pma-cream">
+        <div className="max-w-6xl mx-auto">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-3xl font-extrabold mb-4 text-pma-navy">Ready to Try a Free Class?</h2>
+            <p className="text-gray-600 text-lg mb-8">
+              No commitment, no experience needed — just come see what we&apos;re all about. Booking
+              takes less than a minute.
+            </p>
+          </div>
+          <TrialSplit />
+          <p className="mt-6">
             <a
               href={PHONE_HREF}
               className="inline-block text-pma-navy font-bold text-lg px-10 py-4 rounded-full border-2 border-pma-navy hover:bg-pma-navy hover:text-white transition-colors"
             >
               Call {PHONE_DISPLAY}
             </a>
-          </div>
+          </p>
         </div>
       </section>
     </>

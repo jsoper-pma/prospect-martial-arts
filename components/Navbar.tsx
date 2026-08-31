@@ -6,7 +6,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, Phone, X } from "lucide-react";
 import { mainLinks as links, programLinks } from "@/lib/nav";
-import { BOOKING_URL, PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
+import BookTrialLink from "@/components/BookTrialLink";
+import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -116,14 +117,9 @@ export default function Navbar() {
           >
             {PHONE_DISPLAY}
           </a>
-          <a
-            href={BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-pma-red text-white text-sm font-bold px-5 py-2 rounded-full hover:opacity-90 transition-opacity duration-200 shadow-md"
-          >
+          <BookTrialLink className="bg-pma-red text-white text-sm font-bold px-5 py-2 rounded-full hover:opacity-90 transition-opacity duration-200 shadow-md">
             Book Free Trial
-          </a>
+          </BookTrialLink>
         </div>
 
         {/* Mobile Hamburger Button */}
@@ -188,15 +184,12 @@ export default function Navbar() {
           >
             <Phone className="w-4 h-4" aria-hidden /> {PHONE_DISPLAY}
           </a>
-          <a
-            href={BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <BookTrialLink
             onClick={() => setMenuOpen(false)}
             className="bg-pma-red text-white text-sm font-bold text-center px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity mt-3"
           >
             Book Free Trial
-          </a>
+          </BookTrialLink>
         </div>
       )}
     </header>

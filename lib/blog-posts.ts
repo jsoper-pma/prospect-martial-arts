@@ -338,8 +338,8 @@ ${CTA_END}`,
       "No experience, not in shape, worried you'll look silly? Every adult student started with the same doubts. Here's what beginning martial arts as an adult actually looks like.",
     publishedAt: "2026-07-01",
     author: "Prospect Martial Arts",
-    image: "/images/gallery/2025_TSDMAFUNDRAISER_1-35.jpg",
-    imageAlt: "Adult students training Tang Soo Do at Prospect Martial Arts",
+    image: "/images/gallery/promo-forms.jpg",
+    imageAlt: "Students practicing Tang Soo Do forms at Prospect Martial Arts",
     tags: ["adults", "fitness", "getting-started"],
     content: `There's a version of this story we hear all the time in Prospect, CT: "I always wanted to try martial arts as a kid, but I never got the chance. Now I'm 35 / 42 / 58, and I figure that ship has sailed."
 
@@ -639,7 +639,6 @@ But "local" means more than geography. PMA is a genuinely hometown operation:
 - Named for the town it calls home
 - Born from the 2025 union of two long-standing Connecticut martial arts communities — Prospect Martial Arts (founded 2013) and Bunker Hill Karate (roots to 1988)
 - Part of a Connecticut Tang Soo Do lineage that traces to the Charland Institute in Watertown
-- Home to more than 140 students from Prospect and surrounding towns
 - Rated **5.0 stars across 64 Google reviews** by local families
 
 When you walk in, the instructors will learn your kids' names in the first week. By the second month, they'll know their goals, their quirks, and how their school day went. That's not a franchise script — it's just how a small-town school works.
