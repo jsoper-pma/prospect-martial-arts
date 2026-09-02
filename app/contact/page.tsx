@@ -4,6 +4,7 @@ import { Mail, MapPin, Phone, Globe } from "lucide-react";
 import TrialSplit from "@/components/TrialSplit";
 import JsonLd from "@/components/JsonLd";
 import ScheduleTable from "@/components/ScheduleTable";
+import SchoolNotices from "@/components/SchoolNotices";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
 import {
   ADDRESS,
@@ -210,6 +211,8 @@ export default function ContactPage() {
           <p className="text-blue-200 text-center mb-10 text-sm">
             Classes run Monday through Thursday evenings — each class has its own color.
           </p>
+
+          <SchoolNotices />
 
           {/* Weekday table */}
           <div className="mb-8">

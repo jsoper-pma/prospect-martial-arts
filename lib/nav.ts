@@ -1,7 +1,8 @@
 // ── Shared navigation link data ────────────────────────────────────
 // Single source of truth for site navigation. Consumed by Navbar,
-// Footer, DemoHeader, and DemoFooter so the demo page's chrome cannot
-// drift from the main site's as pages are added.
+// Footer, DemoHeader, and DemoFooter so chrome cannot drift as pages
+// are added. Demo Team is not in the public Programs lists — /demo
+// stays reachable by URL (and sitemap) only.
 
 export type NavLink = { href: string; label: string };
 
@@ -21,8 +22,6 @@ export const programLinks: NavLink[] = [
   { href: "/preschool", label: "Preschool (Ages 3–7)" },
   { href: "/kids", label: "Kids & Teens (Ages 8+)" },
   { href: "/adults", label: "Adults (Ages 17+)" },
-  // Audition-only, so it carries no age tier like the enrollment programs above.
-  { href: "/demo", label: "Demo & Competition Team" },
 ];
 
 /** Program pages with the longer labels used in footers. */
@@ -30,7 +29,6 @@ export const programLinksLong: NavLink[] = [
   { href: "/preschool", label: "Preschool — Ages 3–7" },
   { href: "/kids", label: "Kids & Teens — Ages 8+" },
   { href: "/adults", label: "Adults — Ages 17+" },
-  { href: "/demo", label: "Demo & Competition Team" },
 ];
 
 /** Top-level pages with the descriptive labels used in footers. */

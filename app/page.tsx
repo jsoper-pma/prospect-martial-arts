@@ -4,6 +4,7 @@ import Link from "next/link";
 import { CheckCircle2, Users, Medal, Sparkles, Swords } from "lucide-react";
 import TrialSplit from "@/components/TrialSplit";
 import ScheduleTable from "@/components/ScheduleTable";
+import SchoolNotices from "@/components/SchoolNotices";
 
 export const metadata: Metadata = {
   title: "Kids & Adult Martial Arts in Prospect, CT | Prospect Martial Arts",
@@ -346,6 +347,8 @@ export default function HomePage() {
           <p className="text-blue-200 text-center mb-10 text-sm">
             Classes run Monday through Thursday evenings — each class has its own color.
           </p>
+
+          <SchoolNotices />
 
           {/* Weekday table */}
           <div className="mb-8">
