@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
     return [
       { source: "/founders", destination: "/adults", permanent: true },
       { source: "/pricing", destination: "/kids", permanent: true },
+      // Do NOT put /Saturday → /saturday here: Next matches redirects
+      // case-insensitively, which loops /saturday → /saturday (308).
+      // Case-exact redirect lives in middleware.ts instead.
     ];
   },
 };
