@@ -40,5 +40,6 @@ export const quickLinks: NavLink[] = [
   { href: "/team", label: "Our Team" },
   { href: "/blog", label: "Blog" },
   { href: "/faq", label: "FAQ" },
+  { href: "/merch", label: "Merch" },
   { href: "/contact", label: "Contact & Location" },
 ];
