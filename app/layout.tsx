@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import Script from "next/script";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -23,6 +22,13 @@ const nunito = Nunito({
 // GA4 property ID — replace the placeholder with the real ID (starts with G-),
 // or set NEXT_PUBLIC_GA_ID in the environment.
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-XXXXXXXXXX";
+
+// Google Ads tag (account 432-134-1345). One gtag.js loader for the whole site;
+// GA4 (when a real ID is set) is configured on this same tag, never a second one.
+const GOOGLE_ADS_ID = "AW-17438681850";
+const gtagConfig = [GOOGLE_ADS_ID, ...(GA_ID !== "G-XXXXXXXXXX" ? [GA_ID] : [])]
+  .map((id) => `gtag('config', '${id}');`)
+  .join("\n");
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -52,6 +58,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`h-full ${nunito.variable}`}>
+      <head>
+        {/* Google tag (gtag.js) */}
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+${gtagConfig}`,
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col antialiased">
         <JsonLd data={getLocalBusinessSchema()} />
         {/* /demo ships its own dark-themed header and footer — see ChromeGate. */}
@@ -65,7 +83,6 @@ export default function RootLayout({
           <TrialNudge />
         </ChromeGate>
         <Script src="https://app.gymdesk.com/js/widgets.js" strategy="afterInteractive" />
-        {GA_ID !== "G-XXXXXXXXXX" && <GoogleAnalytics gaId={GA_ID} />}
       </body>
     </html>
   );
