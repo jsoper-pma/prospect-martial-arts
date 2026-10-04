@@ -320,10 +320,6 @@ export default function DemoTeamPage() {
               Prep Group
             </h2>
             <p className="prep-text">
-              Students who fall short of the benchmarks can still train in the Prep Group —{" "}
-              <strong>same training, same Saturday time</strong> as the Demo Team.
-            </p>
-            <p className="prep-text">
               Prep Group members will not have a spot on the Demo Team. This path builds the
               strength, endurance, and skills they need for the next time auditions open up.
             </p>
@@ -331,29 +327,6 @@ export default function DemoTeamPage() {
               Same work. Clear pathway. No team status or uniform until they earn it at the next
               audition.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ========== TRAINING SCHEDULE ========== */}
-      <section className="section" id="schedule" aria-labelledby="schedule-heading">
-        <div className="container">
-          <p className="section-label">When We Train</p>
-          <h2 className="section-title" id="schedule-heading">
-            Saturday Morning Practice
-          </h2>
-
-          <div className="schedule-card">
-            <p className="schedule-when">
-              Every Saturday <span className="sep">•</span>{" "}
-              <span className="nb">9:00 – 10:00 AM</span>
-            </p>
-            <p className="schedule-detail">Demo Team + Prep Group</p>
-            <div className="schedule-pills">
-              <span className="pill">Demo Team</span>
-              <span className="pill">Prep Group</span>
-            </div>
-            <p className="schedule-note">Times may change with plenty of advance notice.</p>
           </div>
         </div>
       </section>

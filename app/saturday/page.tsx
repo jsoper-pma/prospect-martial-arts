@@ -11,7 +11,7 @@ import { BOOKING_URL, PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Saturday Classes | Tang Soo Do Schedule in Prospect, CT",
   description:
-    "Saturday Tang Soo Do schedule at Prospect Martial Arts — Demo Team, Sparring and Endurance, and Weapons. See the next four Saturdays.",
+    "Saturday Tang Soo Do schedule at Prospect Martial Arts — Basics & Competition Training, Sparring and Endurance, and Weapons. See the next four Saturdays.",
   alternates: { canonical: "/saturday" },
   openGraph: {
     title: "Saturday Classes — Prospect Martial Arts",
@@ -33,7 +33,7 @@ export default function SaturdayPage() {
             Saturday Classes
           </h1>
           <p className="text-blue-200 text-lg max-w-xl mx-auto">
-            Tang Soo Do training every Saturday morning — Demo Team, Sparring and
+            Tang Soo Do training every Saturday morning — Basics &amp; Competition Training, Sparring and
             Endurance, and Weapons. Check the next four Saturdays below.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
@@ -65,12 +65,7 @@ export default function SaturdayPage() {
             Standing Saturday Schedule
           </h2>
           <p className="text-center text-gray-600 mb-10 max-w-xl mx-auto">
-            When Saturday classes run, this is the block. Demo Team details and tryout
-            rules stay on the{" "}
-            <Link href="/demo" className="text-pma-red font-semibold hover:underline">
-              Demo Team page
-            </Link>
-            .
+            When Saturday classes run, this is the block.
           </p>
 
           <ul className="space-y-4">
