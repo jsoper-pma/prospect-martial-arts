@@ -26,7 +26,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Demo & Competition Team",
   description:
-    "Prospect Martial Arts Demo & Competition Team — elite high-performance Tang Soo Do. Public demonstrations and TSDMA tournaments. Hard training. Real standards. Earn your spot.",
+    "The Prospect Martial Arts Demo & Competition Team has wrapped for the season. See what the team did, and keep training Tang Soo Do with us on Saturday mornings.",
 };
 
 export const viewport: Viewport = {
@@ -62,14 +62,14 @@ export default function DemoTeamPage() {
           </h1>
 
           <p className="hero-sub">
-            This is not for everyone. This is for the students who want to train harder, move
-            sharper, and represent Prospect Martial Arts at the highest level — in front of a crowd
-            and on the tournament floor.
+            The Demo Team has wrapped for the season. Thank you to every student who trained
+            harder, moved sharper, and represented Prospect Martial Arts in front of a crowd and
+            on the tournament floor.
           </p>
 
           <div className="hero-cta">
-            <a className="btn btn-primary" href="#ready">
-              Ready to Rise →
+            <a className="btn btn-primary" href="/saturday">
+              Saturday Classes →
             </a>
           </div>
         </div>
@@ -84,7 +84,7 @@ export default function DemoTeamPage() {
       <section className="festival" aria-labelledby="festival-heading">
         <div className="container festival-inner">
           <div>
-            <p className="festival-label">First Goal</p>
+            <p className="festival-label">Season Finale</p>
             <h2 id="festival-heading">Prospect Pumpkin Festival</h2>
             <div className="festival-meta">
               <span>October 17, 2026</span>
@@ -92,12 +92,12 @@ export default function DemoTeamPage() {
               <span>4:00–8:00 PM</span>
             </div>
             <p>
-              Our mission is to deliver a powerful, polished demonstration that shows the town what
-              Tang Soo Do looks like when excellence is the standard.
+              The team closed its season with a demonstration on the Town Green, showing the town
+              what Tang Soo Do looks like when excellence is the standard.
             </p>
           </div>
           <div className="festival-badge" aria-hidden="true">
-            MISSION 01
+            2026
           </div>
         </div>
       </section>
@@ -111,9 +111,9 @@ export default function DemoTeamPage() {
               What the Team Does
             </h2>
             <p className="section-intro">
-              Two jobs, one standard. The team represents Prospect Martial Arts in public
-              demonstrations, and it competes at Tang Soo Do Masters Alliance tournaments. The same
-              three skills carry both.
+              Two jobs, one standard. The team represented Prospect Martial Arts in public
+              demonstrations and competed at Tang Soo Do Masters Alliance tournaments. The same
+              three skills carried both.
             </p>
           </header>
 
@@ -154,202 +154,17 @@ export default function DemoTeamPage() {
         </div>
       </section>
 
-      {/* ========== ELIGIBILITY ========== */}
-      <section className="section" id="eligibility" aria-labelledby="eligibility-heading">
-        <div className="container">
-          <p className="section-label">Eligibility</p>
-          <h2 className="section-title" id="eligibility-heading">
-            Who Can Try Out
-          </h2>
-          <p className="section-intro">
-            Auditions are open to Prospect Martial Arts students currently training in Tang Soo Do.
-          </p>
-
-          <div className="schedule-card">
-            <p className="schedule-when">
-              Ages 8+ <span className="sep">•</span>{" "}
-              <span className="nb">White Belt or Above</span>
-            </p>
-            <p className="schedule-detail">
-              That is the floor, not the ceiling — and it is not a hard line.
-            </p>
-            <p className="eligibility-note">
-              If a younger or newer student can hit the physical benchmarks and perform Kicho Hyung
-              Il Bu with real power and control, we want to see it. Talk to Mr. Soper and we will
-              take a look.
-            </p>
-            <p className="schedule-note">
-              The minimum exists for a practical reason: the audition requires a form students have
-              not yet learned at the earliest stages. Learn it first, then come see us. The same
-              minimum applies to the Prep Group.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ========== PHYSICAL BENCHMARKS ========== */}
-      <section className="section benchmarks" id="benchmarks" aria-labelledby="benchmarks-heading">
-        <div className="container">
-          <header className="benchmarks-header">
-            <p className="section-label">The Standard</p>
-            <h2 className="section-title" id="benchmarks-heading">
-              Physical Benchmarks
-            </h2>
-            <p className="section-intro">
-              Every candidate must hit these numbers. No exceptions. Same standards for every
-              student.
-            </p>
-          </header>
-
-          <div className="bench-grid">
-            <article className="bench-card">
-              <div className="bench-num">01</div>
-              <h3>20 Full Push-Ups</h3>
-              <p>Within 60 seconds. Full range only. No knee push-ups.</p>
-            </article>
-
-            <article className="bench-card">
-              <div className="bench-num">02</div>
-              <h3>30 Sit-Ups</h3>
-              <p>Within 60 seconds.</p>
-            </article>
-
-            <article className="bench-card">
-              <div className="bench-num">03</div>
-              <h3>60-Second Plank</h3>
-              <p>Proper form.</p>
-            </article>
-
-            <article className="bench-card">
-              <div className="bench-num">04</div>
-              <h3>Sit &amp; Reach</h3>
-              <p>Must touch toes.</p>
-            </article>
-
-            <article className="bench-card">
-              <div className="bench-num">05</div>
-              <h3>Kicho Hyung Il Bu</h3>
-              <p>With power, speed, and clean technique.</p>
-            </article>
-
-            <article className="bench-card">
-              <div className="bench-num">06</div>
-              <h3>Cardio &amp; Endurance</h3>
-              <p>Second part of the audition — scheduled separately.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      {/* ========== NON-NEGOTIABLES + PREP GROUP ========== */}
-      <section className="section two-col" aria-label="Requirements and Prep Group">
-        <div className="container two-col-grid">
-          <div className="panel panel-red">
-            <h2>
-              <span className="bar" aria-hidden="true"></span>
-              Non-Negotiables
-            </h2>
-            <ul className="check-list">
-              <li>
-                <span className="check-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </span>
-                <span>
-                  <strong>Consistent attendance</strong> in regular classes — two times a week
-                  minimum
-                </span>
-              </li>
-              <li>
-                <span className="check-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </span>
-                <span>
-                  <strong>Positive attitude</strong> &amp; coachability
-                </span>
-              </li>
-              <li>
-                <span className="check-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </span>
-                <span>
-                  <strong>Respect</strong> for instructors and teammates
-                </span>
-              </li>
-              <li>
-                <span className="check-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </span>
-                <span>
-                  <strong>Willingness</strong> to do short home practice
-                </span>
-              </li>
-              <li>
-                <span className="check-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </span>
-                <span>
-                  <strong>Parent support</strong> for Saturday practices and events
-                </span>
-              </li>
-              <li>
-                <span className="check-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </span>
-                <span>
-                  <strong>Competition</strong> — every team member competes at TSDMA tournaments
-                </span>
-              </li>
-            </ul>
-          </div>
-
-          <div className="panel">
-            <h2>
-              <span className="bar" aria-hidden="true"></span>
-              Prep Group
-            </h2>
-            <p className="prep-text">
-              Prep Group members will not have a spot on the Demo Team. This path builds the
-              strength, endurance, and skills they need for the next time auditions open up.
-            </p>
-            <p className="prep-highlight">
-              Same work. Clear pathway. No team status or uniform until they earn it at the next
-              audition.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ========== UNIFORM NOTE ========== */}
-      <section className="section uniform" aria-label="Uniform requirements">
-        <div className="container">
-          <div className="uniform-card">
-            <p>
-              <strong>Full Demo Team members</strong> are required to purchase a special Demo Team
-              uniform. They may wear it to regular classes. The team is currently training. Talk to Mr. Soper about uniforms.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* ========== FINAL CTA ========== */}
       <section className="final-cta" id="ready" aria-labelledby="ready-heading">
         <div className="container final-cta-inner">
-          <h2 id="ready-heading">Ready to Earn Your Spot?</h2>
+          <h2 id="ready-heading">Keep Training on Saturdays</h2>
           <p>
-            This is an elite team. The standards are real. The work is real. If you&rsquo;re ready
-            to push yourself, talk to Mr. Soper.
+            Saturday mornings keep going. Basics &amp; Competition Training starts at 9:15 AM,
+            followed by Sparring and Endurance and Weapons. See the full schedule on our{" "}
+            <a href="/saturday" className="contact-link">
+              Saturday Classes page
+            </a>
+            .
           </p>
 
           {/* Plain, visible contact details rather than sms:/mailto: buttons —
@@ -378,11 +193,6 @@ export default function DemoTeamPage() {
               </li>
             </ul>
           </div>
-
-          <p className="cta-note">
-            Physical benchmarks can be observed after class or by arrangement. Cardio &amp;
-            endurance testing will be scheduled separately.
-          </p>
         </div>
       </section>
 
