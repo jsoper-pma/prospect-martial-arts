@@ -29,11 +29,9 @@ export type SaturdayDateEntry = {
 
 /**
  * Rolling window: exactly the next 4 Saturdays (refresh weekly).
- * Seeded 2026-09-22: Oct 3/10/17 Open; Oct 24 No classes (Charland).
- * Do not include Sep 27 — classes start Oct 3.
+ * Rolled 2026-10-05: Oct 10/17 Open; Oct 24 No classes (Charland); Oct 31 Open.
  */
 export const saturdayUpcoming: SaturdayDateEntry[] = [
-  { date: "2026-10-03", label: "October 3, 2026", status: "Open" },
   { date: "2026-10-10", label: "October 10, 2026", status: "Open" },
   { date: "2026-10-17", label: "October 17, 2026", status: "Open" },
   {
@@ -42,6 +40,7 @@ export const saturdayUpcoming: SaturdayDateEntry[] = [
     status: "No classes",
     reason: "TSDMA Charland interclub Watertown",
   },
+  { date: "2026-10-31", label: "October 31, 2026", status: "Open" },
 ];
 
 /** @deprecated Use saturdayUpcoming — kept as alias for older imports. */
