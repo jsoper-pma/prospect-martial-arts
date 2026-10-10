@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
 import TrialNudge from "@/components/TrialNudge";
 import ChromeGate from "@/components/ChromeGate";
+import ClosingBanner from "@/components/ClosingBanner";
 import JsonLd from "@/components/JsonLd";
 import { baseMetadata } from "@/lib/metadata";
 import { SITE_URL } from "@/lib/site";
@@ -73,6 +74,7 @@ ${gtagConfig}`,
       <body className="min-h-full flex flex-col antialiased">
         <JsonLd data={getLocalBusinessSchema()} />
         {/* /demo ships its own dark-themed header and footer — see ChromeGate. */}
+        <ClosingBanner />
         <ChromeGate>
           <Navbar />
         </ChromeGate>

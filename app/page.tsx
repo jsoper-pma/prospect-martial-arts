@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PromoBanner from "@/components/PromoBanner";
+import { HideDuringClosing } from "@/components/ClosingBanner";
 import Image from "next/image";
 import Link from "next/link";
 import { CheckCircle2, Users, Medal, Sparkles, Swords } from "lucide-react";
@@ -7,7 +8,7 @@ import TrialSplit from "@/components/TrialSplit";
 import ScheduleTable from "@/components/ScheduleTable";
 import SchoolNotices from "@/components/SchoolNotices";
 
-export const revalidate = 3600; // re-check promo dates hourly
+export const revalidate = 300; // re-check promo dates every 5 min (closing banner checks in the browser)
 
 export const metadata: Metadata = {
   title: "Kids & Adult Martial Arts in Prospect, CT | Prospect Martial Arts",
@@ -121,7 +122,9 @@ function Stars() {
 export default function HomePage() {
   return (
     <>
-      <PromoBanner />
+      <HideDuringClosing>
+        <PromoBanner />
+      </HideDuringClosing>
       {/* ── HERO ──────────────────────────────────────────────── */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
         <Image
