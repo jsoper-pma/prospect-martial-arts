@@ -303,8 +303,20 @@ export default function AboutPage() {
               />
             </div>
           </div>
-          <p className="text-gray-500 text-sm mb-8">
+          <p className="text-gray-500 text-sm mb-4">
             Find us at {ADDRESS.full} — on Route 69, minutes from Waterbury, Naugatuck, and Cheshire.
+          </p>
+          <p className="text-gray-500 text-sm mb-8">
+            Our website is built and maintained by{" "}
+            <a
+              href="https://pageorchard.com"
+              target="_blank"
+              rel="noopener nofollow"
+              className="font-semibold text-pma-navy underline"
+            >
+              PageOrchard
+            </a>
+            , a web studio owned by Mr. Soper.
           </p>
           <a
             href={BOOKING_URL}

@@ -130,7 +130,8 @@ export default function Footer() {
 
       {/* Bottom bar — extra bottom padding on mobile clears the sticky CTA */}
       <div className="bg-pma-navy-dark text-center text-blue-300 text-xs py-4 px-4 pb-24 md:pb-4">
-        © {new Date().getFullYear()} Prospect Martial Arts · {ADDRESS.full} · All Rights Reserved
+        <p>© {new Date().getFullYear()} Prospect Martial Arts · {ADDRESS.full} · All Rights Reserved</p>
+        <p className="mt-1">Website built and cared for by <a href="https://pageorchard.com" target="_blank" rel="noopener nofollow" className="text-blue-200 hover:text-white hover:underline transition-colors">PageOrchard</a></p>
       </div>
     </footer>
   );
