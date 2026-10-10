@@ -6,7 +6,9 @@
 export type Promo = {
   id: string;
   active: boolean;
+  label?: string; // small label above headline
   headline: string;
+  headlineEmphasis?: string; // substring of headline shown in red
   text: string;
   start: string; // ISO, inclusive
   end: string; // ISO, inclusive
@@ -14,12 +16,14 @@ export type Promo = {
   ctaHref: string;
 };
 
-// Source: Marketing final copy, relayed 10/10/2026.
+// Source: Marketing copy 10/10/2026, reworded per Jason 10/10 (offer for all ages, $50 is the hero).
 export const CURRENT_PROMO: Promo = {
   id: "oct-2026-free-trial",
   active: true,
-  headline: "October at Prospect Martial Arts: Try a FREE Tang Soo Do Class!",
-  text: "Kids get a free trial class, then $50 for their first month.",
+  label: "October Offer",
+  headline: "$50 for Your First Month",
+  headlineEmphasis: "$50",
+  text: "New students of every age pay just $50 for their first month of Tang Soo Do. Come try a free class first, then join for $50.",
   start: "2026-10-01T00:00:00-04:00",
   end: "2026-10-31T23:59:59-04:00",
   ctaLabel: "Book Your Free Trial",
