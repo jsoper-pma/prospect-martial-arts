@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PromoBanner from "@/components/PromoBanner";
 import Image from "next/image";
 import Link from "next/link";
 import { Brain, Check, HeartHandshake, Medal, Shield, Sprout, Trophy } from "lucide-react";
@@ -10,6 +11,8 @@ import { youthTiers } from "@/lib/pricing";
 import { kidsSchedule } from "@/lib/schedule";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
 import { BOOKING_URL, PHONE_DISPLAY, PHONE_HREF, SITE_URL } from "@/lib/site";
+
+export const revalidate = 3600; // re-check promo dates hourly
 
 export const metadata: Metadata = {
   title: "Kids & Teen Martial Arts Classes in Prospect, CT | Ages 8+",
@@ -74,6 +77,7 @@ const reviews = [
 export default function KidsPage() {
   return (
     <>
+      <PromoBanner />
       <JsonLd
         data={getBreadcrumbSchema([
           { name: "Home", url: SITE_URL },

@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+import PromoBanner from "@/components/PromoBanner";
 import Image from "next/image";
 import Link from "next/link";
 import { CheckCircle2, Users, Medal, Sparkles, Swords } from "lucide-react";
 import TrialSplit from "@/components/TrialSplit";
 import ScheduleTable from "@/components/ScheduleTable";
 import SchoolNotices from "@/components/SchoolNotices";
+
+export const revalidate = 3600; // re-check promo dates hourly
 
 export const metadata: Metadata = {
   title: "Kids & Adult Martial Arts in Prospect, CT | Prospect Martial Arts",
@@ -118,6 +121,7 @@ function Stars() {
 export default function HomePage() {
   return (
     <>
+      <PromoBanner />
       {/* ── HERO ──────────────────────────────────────────────── */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
         <Image
