@@ -18,9 +18,11 @@ export const weekdaySchedule: ScheduleRow[] = [
   { time: "7:45 – 8:30 PM", monWed: "Advanced", tuesThu: "Advanced" },
 ];
 
-// Kids & Teens page shows only the 8+ program rows.
+// Kids & Teens page shows the 8+ program rows plus the 7:00 row, so families
+// see Mon/Wed Leadership runs alongside Adult Gups and Tue/Thu 7:00 is the
+// Black Belt class (no Leadership Tue/Thu).
 export const kidsSchedule: ScheduleRow[] = weekdaySchedule.filter((row) =>
-  ["Beginners", "Intermediate", "Leadership", "Advanced"].includes(row.monWed)
+  ["Beginners", "Intermediate", "Leadership", "Adult Gups 17+", "Advanced"].includes(row.monWed)
 );
 
 // Adults page shows the classes adult students can join — no preschool
