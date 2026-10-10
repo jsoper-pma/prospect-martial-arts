@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import PromoBanner from "@/components/PromoBanner";
 import Image from "next/image";
 import TrialSplit from "@/components/TrialSplit";
 import {
@@ -115,7 +114,6 @@ function PhotoTile({
 export default function KidsTrialPage() {
   return (
     <>
-      <PromoBanner hideCta />
       {/* ── HERO ──────────────────────────────────────────────── */}
       <section className="py-20 px-4 text-center text-white relative overflow-hidden bg-pma-navy">
         <div className="max-w-3xl mx-auto relative z-10">

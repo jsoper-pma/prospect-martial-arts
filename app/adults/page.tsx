@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PromoBanner from "@/components/PromoBanner";
 import Image from "next/image";
 import { Brain, Dumbbell, HeartHandshake, Shield, Swords, TrendingUp } from "lucide-react";
 import TrialSplit from "@/components/TrialSplit";
@@ -213,6 +214,7 @@ export default function AdultsPage() {
         </div>
       </section>
 
+      <PromoBanner band />
       {/* ── PRICING ──────────────────────────────────────────── */}
       <FoundersPricing />
 

@@ -77,7 +77,6 @@ const reviews = [
 export default function KidsPage() {
   return (
     <>
-      <PromoBanner />
       <JsonLd
         data={getBreadcrumbSchema([
           { name: "Home", url: SITE_URL },
@@ -310,6 +309,7 @@ export default function KidsPage() {
         </div>
       </section>
 
+      <PromoBanner band />
       {/* ── PRICING ───────────────────────────────────────────── */}
       <PricingSection
         title="Kids & Teens Membership Pricing"

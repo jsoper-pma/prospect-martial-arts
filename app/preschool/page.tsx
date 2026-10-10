@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PromoBanner from "@/components/PromoBanner";
 import Image from "next/image";
 import { Check, HeartHandshake, Medal, PersonStanding, Target } from "lucide-react";
 import TrialSplit from "@/components/TrialSplit";
@@ -536,6 +537,7 @@ export default function PreschoolPage() {
         </div>
       </section>
 
+      <PromoBanner band />
       {/* ── PRICING ────────────────────────────────────────────────── */}
       <PricingSection
         title="Preschool Membership Pricing"

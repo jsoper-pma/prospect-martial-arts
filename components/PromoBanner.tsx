@@ -1,36 +1,45 @@
 import Link from "next/link";
 import { getActivePromo } from "@/lib/promo";
 
-// Prominent monthly promo banner. Renders nothing when no promo is active.
-export default function PromoBanner({ hideCta = false }: { hideCta?: boolean }) {
+// Calm monthly promo card (content comes from lib/promo.ts). Renders nothing when
+// no promo is active. The red full-width top strip style is reserved for
+// school closings (components/ClosingBanner.tsx).
+// band=true wraps the card in a cream band so it sits directly above a pricing section.
+export default function PromoBanner({
+  hideCta = false,
+  band = false,
+  className = "",
+}: {
+  hideCta?: boolean;
+  band?: boolean;
+  className?: string;
+}) {
   const promo = getActivePromo();
   if (!promo) return null;
-  return (
-    <section
+  const card = (
+    <aside
       aria-label="Current promotion"
-      className="relative overflow-hidden text-white"
-      style={{ background: "linear-gradient(90deg, #E22D33 0%, #b81d23 50%, #E22D33 100%)" }}
+      className={`max-w-4xl mx-auto rounded-2xl bg-white border border-slate-200 border-l-[6px] shadow-sm px-6 py-5 md:px-8 md:py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left ${className}`}
+      style={{ borderLeftColor: "#E22D33", color: "#003B6F" }}
     >
-      <div className="h-1.5 w-full" style={{ background: "#003B6F" }} />
-      <div className="max-w-6xl mx-auto px-4 py-5 md:py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-        <div>
-          <p className="inline-block mb-2 px-3 py-0.5 rounded-full text-xs font-extrabold uppercase tracking-widest bg-white" style={{ color: "#E22D33" }}>
-            Limited-time offer
-          </p>
-          <h2 className="text-2xl md:text-3xl font-extrabold leading-tight drop-shadow">{promo.headline}</h2>
-          <p className="mt-1 text-lg md:text-xl font-semibold">{promo.text}</p>
-        </div>
-        {!hideCta && (
-          <Link
-            href={promo.ctaHref}
-            className="shrink-0 px-7 py-3.5 rounded-lg text-lg font-extrabold uppercase tracking-wide text-white shadow-lg ring-2 ring-white hover:scale-105 transition-transform"
-            style={{ background: "#003B6F" }}
-          >
-            {promo.ctaLabel}
-          </Link>
-        )}
+      <div>
+        <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "#E22D33" }}>
+          This month&apos;s offer
+        </p>
+        <h2 className="text-xl md:text-2xl font-extrabold leading-snug">{promo.headline}</h2>
+        <p className="mt-1 text-base md:text-lg text-slate-600">{promo.text}</p>
       </div>
-      <div className="h-1.5 w-full" style={{ background: "#003B6F" }} />
-    </section>
+      {!hideCta && (
+        <Link
+          href={promo.ctaHref}
+          className="shrink-0 px-6 py-3 rounded-full font-bold text-white shadow hover:opacity-90 transition-opacity"
+          style={{ background: "#E22D33" }}
+        >
+          {promo.ctaLabel}
+        </Link>
+      )}
+    </aside>
   );
+  if (!band) return card;
+  return <div className="bg-pma-cream px-4 pt-12">{card}</div>;
 }
