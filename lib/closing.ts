@@ -2,7 +2,16 @@
 //
 // HOW TO POST A CLOSING (one edit, then push):
 //   1. Set active: true
-//   2. Set message (and optional detail, e.g. modified hours)
+//   2. Set message (line 1, large) and detail (line 2, underneath). Wording cleared by Scribe:
+//      avoid "canceled"; swap "due to weather" for the real reason ("for the holiday",
+//      "due to a power outage"). The phone number in detail becomes a tap-to-call link.
+//
+//      FULL CLOSING:
+//        message: "Prospect Martial Arts is closed today due to weather",
+//        detail:  "We will not hold any classes today. Stay safe! Questions? Call or text (203) 441-5358.",
+//      MODIFIED HOURS (replace [TIME]):
+//        message: "Modified class hours today due to weather",
+//        detail:  "We will not hold classes before [TIME]. Classes from [TIME] on will run as usual. Questions? Call or text (203) 441-5358.",
 //   3. Set date to today's date "YYYY-MM-DD". The banner auto-hides at 9:00 PM
 //      New York time that day (endsAt), even without another push.
 //      To end at a different time, set endsAt to an ISO time, e.g. "2026-12-01T21:00:00-05:00".
@@ -22,14 +31,14 @@ export type Closing = {
 export const closing: Closing = {
   active: false,
   message: "Prospect Martial Arts is closed today due to weather",
-  detail: "All Tang Soo Do classes are canceled. Stay safe! Questions? Call (203) 441-5358.",
+  detail: "We will not hold any classes today. Stay safe! Questions? Call or text (203) 441-5358.",
   date: "2026-10-10",
 };
 
 export const sampleClosing: Closing = {
   active: true,
   message: "Prospect Martial Arts is closed today due to weather",
-  detail: "All Tang Soo Do classes are canceled. Stay safe! Questions? Call (203) 441-5358.",
+  detail: "We will not hold any classes today. Stay safe! Questions? Call or text (203) 441-5358.",
   date: "2099-01-01",
 };
 

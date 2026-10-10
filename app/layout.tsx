@@ -74,10 +74,10 @@ ${gtagConfig}`,
       <body className="min-h-full flex flex-col antialiased">
         <JsonLd data={getLocalBusinessSchema()} />
         {/* /demo ships its own dark-themed header and footer — see ChromeGate. */}
-        <ClosingBanner />
         <ChromeGate>
           <Navbar />
         </ChromeGate>
+        <ClosingBanner />
         <main className="flex-1">{children}</main>
         <ChromeGate>
           <Footer />
