@@ -32,7 +32,12 @@ export default function PromoBanner({
     <aside
       aria-label="Current promotion"
       className={`max-w-4xl mx-auto rounded-2xl bg-white border-4 border-l-[10px] px-6 py-5 md:px-8 md:py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left ${className}`}
-      style={{ boxShadow: "0 0 24px rgba(226,45,51,0.35), 0 0 40px rgba(0,59,111,0.18)", borderColor: "#003B6F", borderLeftColor: "#E22D33", color: "#003B6F" }}
+      style={{
+        boxShadow: "0 0 36px rgba(226,45,51,0.53), 0 0 60px rgba(0,59,111,0.27)",
+        borderColor: "#003B6F",
+        borderLeftColor: "#E22D33",
+        color: "#003B6F",
+      }}
     >
       <div>
         <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "#E22D33" }}>
@@ -52,6 +57,9 @@ export default function PromoBanner({
       )}
     </aside>
   );
-  if (!band) return card;
-  return <div className="bg-pma-cream px-4 pt-12">{card}</div>;
+  // Room around the card so the 60px glow is not clipped on any side (~40px below).
+  if (!band) {
+    return <div className="overflow-visible px-2 pt-2 pb-10">{card}</div>;
+  }
+  return <div className="bg-pma-cream overflow-visible px-6 pt-12 pb-10">{card}</div>;
 }
