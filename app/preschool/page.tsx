@@ -9,6 +9,8 @@ import { preschoolTiers } from "@/lib/pricing";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
 import { BOOKING_URL, EMAIL, PHONE_DISPLAY, SITE_URL } from "@/lib/site";
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: "Preschool Martial Arts Ages 3–7 | Little Tigers & Little Dragons",
   description:

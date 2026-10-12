@@ -10,6 +10,8 @@ import JsonLd from "@/components/JsonLd";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
 import { ADDRESS, BOOKING_URL, EMAIL, PHONE_DISPLAY, PHONE_HREF, SITE_URL } from "@/lib/site";
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: "Adult Martial Arts Classes in Prospect, CT | Ages 17+",
   description:
