@@ -30,19 +30,36 @@ export const CURRENT_PROMO: Promo = {
   ctaHref: "/kids-trial",
 };
 
-// NOT APPROVED by Jason yet - placeholders only, keep active: false.
-// Details from pma-promos/nov-dec-2026-plan.md; copy is TBD until Marketing/Jason sign off.
+// Source: Marketing copy 10/12/2026; November BOGO approved by Jason 10/12 (per Marketing).
+// Listed before CURRENT_PROMO so it wins inside its window. The "last chance" entry is listed
+// first so it overrides the main November entry Nov 27-30.
+// Note: DST ends Nov 1 at 2am, so Nov 1 00:00 is still -04:00; later dates are -05:00.
+const NOV_BOGO_BASE = {
+  headline: "November at Prospect Martial Arts: Buy One Month, Get One Free!",
+  headlineEmphasis: "Get One Free",
+  text: "Join in November, and your second month of Tang Soo Do is free.",
+  ctaLabel: "Book Your Free Trial",
+  ctaHref: "/kids-trial?utm_source=website&utm_campaign=nov-bogo",
+};
+
 export const UPCOMING_PROMOS: Promo[] = [
   {
+    id: "nov-2026-bogo-last-chance",
+    active: true,
+    label: "Last chance: ends Monday",
+    ...NOV_BOGO_BASE,
+    start: "2026-11-27T00:00:00-05:00",
+    end: "2026-11-30T23:59:59-05:00",
+  },
+  {
     id: "nov-2026-bogo",
-    active: false,
-    headline: "TBD - November BOGO (not approved)",
-    text: "TBD",
+    active: true,
+    label: "November Offer",
+    ...NOV_BOGO_BASE,
     start: "2026-11-01T00:00:00-04:00",
     end: "2026-11-30T23:59:59-05:00",
-    ctaLabel: "TBD",
-    ctaHref: "/kids-trial",
   },
+  // NOT APPROVED by Jason - keep active: false. Must not override November BOGO.
   {
     id: "black-friday-2026",
     active: false,
@@ -67,11 +84,24 @@ export const UPCOMING_PROMOS: Promo[] = [
 
 export function getActivePromo(now: Date = new Date()): Promo | null {
   const t = now.getTime();
-  // Upcoming first so a specific window (e.g. Black Friday) can override the monthly one.
+  // Upcoming first so a specific window (e.g. Nov 27-30 last chance) can override the monthly one.
   const all = [...UPCOMING_PROMOS, CURRENT_PROMO];
   return (
     all.find(
       (p) => p.active && t >= new Date(p.start).getTime() && t <= new Date(p.end).getTime()
     ) ?? null
   );
+}
+
+// Preview-only: ?promoPreview=<key> shows that promo early (local review). No param = no effect.
+export const PROMO_PREVIEWS: Record<string, string> = {
+  nov: "nov-2026-bogo",
+  "nov-last": "nov-2026-bogo-last-chance",
+};
+
+export function getPreviewPromo(key: string | null | undefined): Promo | null {
+  if (!key) return null;
+  const id = PROMO_PREVIEWS[key];
+  if (!id) return null;
+  return [...UPCOMING_PROMOS, CURRENT_PROMO].find((p) => p.id === id) ?? null;
 }

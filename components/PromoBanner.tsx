@@ -1,22 +1,14 @@
-import Link from "next/link";
+import { Suspense } from "react";
 import { getActivePromo } from "@/lib/promo";
+import PromoCard from "@/components/PromoCard";
+import PromoPreviewSwitch from "@/components/PromoPreviewSwitch";
 
 // Calm monthly promo card (content comes from lib/promo.ts). Renders nothing when
 // no promo is active. The red full-width top strip style is reserved for
 // school closings (components/ClosingBanner.tsx).
 // band=true wraps the card in a cream band so it sits directly above a pricing section.
-function renderHeadline(h: string, em?: string) {
-  if (!em || !h.includes(em)) return h;
-  const i = h.indexOf(em);
-  return (
-    <>
-      {h.slice(0, i)}
-      <span style={{ color: "#E22D33" }}>{em}</span>
-      {h.slice(i + em.length)}
-    </>
-  );
-}
-
+// ?promoPreview=nov / nov-last swaps in that promo client-side for review; without the
+// param the server-rendered card (fallback) is exactly what shows.
 export default function PromoBanner({
   hideCta = false,
   band = false,
@@ -27,39 +19,10 @@ export default function PromoBanner({
   className?: string;
 }) {
   const promo = getActivePromo();
-  if (!promo) return null;
-  const card = (
-    <aside
-      aria-label="Current promotion"
-      className={`max-w-4xl mx-auto rounded-2xl bg-white border-4 border-l-[10px] px-6 py-5 md:px-8 md:py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left ${className}`}
-      style={{
-        boxShadow: "0 0 36px rgba(226,45,51,0.53), 0 0 60px rgba(0,59,111,0.27)",
-        borderColor: "#003B6F",
-        borderLeftColor: "#E22D33",
-        color: "#003B6F",
-      }}
-    >
-      <div>
-        <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "#E22D33" }}>
-          {promo.label ?? "This month\u2019s offer"}
-        </p>
-        <h2 className="text-3xl md:text-4xl font-extrabold leading-tight">{renderHeadline(promo.headline, promo.headlineEmphasis)}</h2>
-        <p className="mt-1 text-base md:text-lg text-slate-600">{promo.text}</p>
-      </div>
-      {!hideCta && (
-        <Link
-          href={promo.ctaHref}
-          className="shrink-0 px-6 py-3 rounded-full font-bold text-white shadow hover:opacity-90 transition-opacity"
-          style={{ background: "#E22D33" }}
-        >
-          {promo.ctaLabel}
-        </Link>
-      )}
-    </aside>
+  const props = { hideCta, band, className };
+  return (
+    <Suspense fallback={<PromoCard promo={promo} {...props} />}>
+      <PromoPreviewSwitch promo={promo} {...props} />
+    </Suspense>
   );
-  // Room around the card so the 60px glow is not clipped on any side (~40px below).
-  if (!band) {
-    return <div className="overflow-visible px-2 pt-2 pb-10">{card}</div>;
-  }
-  return <div className="bg-pma-cream overflow-visible px-6 pt-12 pb-10">{card}</div>;
 }
