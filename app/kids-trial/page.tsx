@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import TrialSplit from "@/components/TrialSplit";
+import TrialConversion from "@/components/TrialConversion";
 import {
   ADDRESS,
   PHONE_DISPLAY,
@@ -114,6 +115,7 @@ function PhotoTile({
 export default function KidsTrialPage() {
   return (
     <>
+      <TrialConversion />
       {/* ── HERO ──────────────────────────────────────────────── */}
       <section className="py-20 px-4 text-center text-white relative overflow-hidden bg-pma-navy">
         <div className="max-w-3xl mx-auto relative z-10">
