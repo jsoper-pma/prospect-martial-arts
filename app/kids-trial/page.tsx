@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import TrialSplit from "@/components/TrialSplit";
 import TrialConversion from "@/components/TrialConversion";
+import TrialOffer from "@/components/TrialOffer";
+import { getTrialOfferKey, TRIAL_META } from "@/lib/trialOffer";
 import {
   ADDRESS,
   PHONE_DISPLAY,
@@ -10,18 +12,21 @@ import {
 
 export const revalidate = 3600; // re-check promo dates hourly
 
-export const metadata: Metadata = {
-  title: "Free Kids Trial Class | Prospect Martial Arts — Prospect, CT",
-  description:
-    "Book a free Tang Soo Do trial class for preschool and kids in Prospect, CT. Little Tigers, Little Dragons, and kids programs. After the free trial class, the first month is $50.",
-  alternates: { canonical: "/kids-trial" },
-  openGraph: {
-    title: "Free Kids Trial Class — Prospect Martial Arts",
-    description:
-      "Free trial class for Little Tigers, Little Dragons, and kids. After the free trial, first month is $50. Prospect, CT.",
-  },
-  robots: { index: true, follow: true },
-};
+// Offer wording (metadata + page copy) follows the lib/promo.ts windows: October $50,
+// November BOGO, then plain free-trial wording. Re-evaluated on each hourly revalidate.
+export function generateMetadata(): Metadata {
+  const meta = TRIAL_META[getTrialOfferKey()];
+  return {
+    title: "Free Kids Trial Class | Prospect Martial Arts — Prospect, CT",
+    description: meta.description,
+    alternates: { canonical: "/kids-trial" },
+    openGraph: {
+      title: "Free Kids Trial Class — Prospect Martial Arts",
+      description: meta.ogDescription,
+    },
+    robots: { index: true, follow: true },
+  };
+}
 
 /** Prefer wide / face-safe shots. CSS uses object-top so heads stay in frame. */
 const studentPhotos = [
@@ -120,7 +125,7 @@ export default function KidsTrialPage() {
       <section className="py-20 px-4 text-center text-white relative overflow-hidden bg-pma-navy">
         <div className="max-w-3xl mx-auto relative z-10">
           <span className="inline-block text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-widest bg-pma-red">
-            Special Offer · Preschool &amp; Kids
+            <TrialOffer slot="badge" />
           </span>
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
             Your Child&apos;s Free Trial Class
@@ -131,12 +136,7 @@ export default function KidsTrialPage() {
             trial.
           </p>
           <p className="text-white text-base md:text-lg font-semibold max-w-xl mx-auto mb-8">
-            Book the free class today. After they try it, the first month is{" "}
-            <span className="text-yellow-300">only $50</span>
-            <span className="font-normal text-blue-100">
-              {" "}
-              if you enroll — nothing to pay just to book.
-            </span>
+            <TrialOffer slot="hero" />
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -213,11 +213,7 @@ export default function KidsTrialPage() {
                   3
                 </span>
                 <span>
-                  <strong className="text-pma-navy">
-                    Love it? First month is $50
-                  </strong>{" "}
-                  when you enroll after class. Regular tuition follows — the $50
-                  is never required just to take the free trial.
+                  <TrialOffer slot="step3" />
                 </span>
               </li>
             </ol>
@@ -284,7 +280,7 @@ export default function KidsTrialPage() {
               time that works for your family.
             </p>
             <p className="text-pma-navy font-semibold mb-8">
-              Free trial first · $50 first month only if you enroll after class ·{" "}
+              <TrialOffer slot="form" />{" "}
               <a href={PHONE_HREF} className="underline hover:text-pma-red">
                 {PHONE_DISPLAY}
               </a>
