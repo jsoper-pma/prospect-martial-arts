@@ -3,6 +3,9 @@
 
 export const SITE_URL = "https://prospectma.com";
 
+// Meta Pixel (Events Manager) for prospectma.com — single source for init + Lead.
+export const META_PIXEL_ID = "698413945020673";
+
 export const BOOKING_URL = "https://prospect-martial-arts.gymdesk.com/book/v/Ayw2q";
 
 // Official Gymdesk embed IDs (trial schedule + trial booking form).
