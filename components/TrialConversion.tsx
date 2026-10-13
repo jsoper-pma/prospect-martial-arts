@@ -21,7 +21,7 @@ declare global {
  * events once per page load and show a confirmation note.
  *
  * Meta Pixel base (fbq init + PageView) loads site-wide from app/layout.tsx.
- * This component only fires Lead — it must not re-init the pixel.
+ * This component only fires Lead â€” it must not re-init the pixel.
  */
 export default function TrialConversion() {
   const [done, setDone] = useState(false);
@@ -33,9 +33,17 @@ export default function TrialConversion() {
     fired.current = true;
     setDone(true);
 
-    if (META_PIXEL_ID && typeof window.fbq === "function") {
-      window.fbq("track", "Lead");
-    }
+    // fbq is defined in <head>; still retry briefly in case a script was delayed.
+    let tries = 0;
+    const fireLead = () => {
+      if (!META_PIXEL_ID) return;
+      if (typeof window.fbq === "function") {
+        window.fbq("track", "Lead");
+      } else if (tries++ < 50) {
+        setTimeout(fireLead, 200); // no cleanup: must survive StrictMode re-run
+      }
+    };
+    fireLead();
 
     if (typeof window.gtag === "function") {
       // enable when Marketing provides the trial conversion label
