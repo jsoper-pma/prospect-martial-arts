@@ -76,7 +76,7 @@ export const adultFoundersTier: PricingTier = {
   ],
 };
 
-export const FOUNDERS_SPOTS = { total: 15, remaining: 6 };
+export const FOUNDERS_SPOTS = { total: 15, remaining: 5 };
 
 export interface FamilyDiscountRow {
   plan: string;
