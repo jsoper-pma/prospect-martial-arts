@@ -29,17 +29,10 @@ export type SaturdayDateEntry = {
 
 /**
  * Rolling window: exactly the next 4 Saturdays (refresh weekly).
-<<<<<<< HEAD
- * Rolled 2026-10-12: Oct 17 Open; Oct 24 No classes (Charland interclub); Oct 31 Open; Nov 7 Open.
+ * Rolled 2026-10-18: Oct 24 No classes (TSDMA Interclub); Oct 31, Nov 7, Nov 14 Open.
+ * New standing block: Basics & Competition Training 9:15 from Oct 31.
  */
 export const saturdayUpcoming: SaturdayDateEntry[] = [
-  { date: "2026-10-17", label: "October 17, 2026", status: "Open" },
-=======
- * Oct 18 2026 schedule: Oct 24 No classes (TSDMA Interclub); Oct 31 starts the new 9:15 block.
- * Do not include Sep 27 — classes start Oct 3.
- */
-export const saturdayUpcoming: SaturdayDateEntry[] = [
->>>>>>> e57dc4e (New Saturday schedule from Oct 31: Basics & Competition Training 9:15; drop Demo Team practice block.)
   {
     date: "2026-10-24",
     label: "October 24, 2026",
@@ -48,10 +41,7 @@ export const saturdayUpcoming: SaturdayDateEntry[] = [
   },
   { date: "2026-10-31", label: "October 31, 2026", status: "Open" },
   { date: "2026-11-07", label: "November 7, 2026", status: "Open" },
-<<<<<<< HEAD
-=======
   { date: "2026-11-14", label: "November 14, 2026", status: "Open" },
->>>>>>> e57dc4e (New Saturday schedule from Oct 31: Basics & Competition Training 9:15; drop Demo Team practice block.)
 ];
 
 /** @deprecated Use saturdayUpcoming — kept as alias for older imports. */
