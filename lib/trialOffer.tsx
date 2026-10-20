@@ -4,7 +4,7 @@ import { getActivePromo, getPreviewPromo } from "@/lib/promo";
 // /kids-trial offer wording, driven by the lib/promo.ts windows so it switches with the
 // promo card (no rebuild; pages revalidate hourly):
 //   oct-50   = October $50 first month (through 2026-10-31 23:59:59 ET)
-//   nov-bogo = November Buy One Month, Get One Free (2026-11-01 00:00 to 11-30 23:59:59 ET)
+//   nov-bogo = November Buy One Month, Get One Free (2026-11-01 00:00 to 11-25 23:59:59 ET; Black Friday week Nov 26-30 falls back to none - TODO BF wording)
 //   none     = plain free-trial wording (no promo active)
 export type TrialOfferKey = "oct-50" | "nov-bogo" | "none";
 export type TrialOfferSlot = "badge" | "hero" | "step3" | "form";
@@ -20,7 +20,7 @@ export function getTrialOfferKey(now: Date = new Date()): TrialOfferKey {
   return keyForPromoId(getActivePromo(now)?.id);
 }
 
-// ?promoPreview=nov / nov-last -> November wording (client-side preview only).
+// ?promoPreview=nov -> November wording (client-side preview only).
 export function getPreviewTrialOfferKey(param: string | null | undefined): TrialOfferKey | null {
   const p = getPreviewPromo(param);
   return p ? keyForPromoId(p.id) : null;
@@ -86,7 +86,7 @@ export const TRIAL_COPY: Record<TrialOfferKey, Record<TrialOfferSlot, ReactNode>
         Nothing is required to take the free trial.
       </>
     ),
-    form: <>Free trial first · 2nd month free when you join by Nov 30 ·</>,
+    form: <>Free trial first · following month free when you sign up in November ·</>,
   },
   none: {
     badge: <>Free Trial · Preschool &amp; Kids</>,

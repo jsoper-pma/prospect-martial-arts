@@ -3,6 +3,7 @@ import Image from "next/image";
 import TrialSplit from "@/components/TrialSplit";
 import TrialConversion from "@/components/TrialConversion";
 import TrialOffer from "@/components/TrialOffer";
+import PromoBanner from "@/components/PromoBanner";
 import { getTrialOfferKey, TRIAL_META } from "@/lib/trialOffer";
 import {
   ADDRESS,
@@ -121,6 +122,7 @@ export default function KidsTrialPage() {
   return (
     <>
       <TrialConversion />
+      <div className="pt-6 bg-white"><PromoBanner /></div>
       {/* ── HERO ──────────────────────────────────────────────── */}
       <section className="py-20 px-4 text-center text-white relative overflow-hidden bg-pma-navy">
         <div className="max-w-3xl mx-auto relative z-10">
