@@ -35,7 +35,7 @@ html {
 .gymdesk-booking iframe,
 .gymdesk-frame-container iframe {
   width: 100%;
-  min-height: 640px;
+  min-height: 0;
   border: 0;
 }
 

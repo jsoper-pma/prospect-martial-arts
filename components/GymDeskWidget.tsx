@@ -45,7 +45,7 @@ function mountOfficialIframe(el: HTMLDivElement) {
   iframe.setAttribute("scrolling", "no");
   iframe.title = "Book a free trial class";
   iframe.style.width = "100%";
-  iframe.style.minHeight = "640px";
+  iframe.style.minHeight = "560px"; // fallback iframe has no auto-resize
   iframe.style.border = "0";
   el.classList.add("gymdesk-frame-container");
   el.appendChild(iframe);
@@ -99,7 +99,7 @@ export default function GymDeskWidget() {
     <div className="w-full">
       <div
         ref={hostRef}
-        className="gymdesk-booking w-full min-h-[640px]"
+        className="gymdesk-booking w-full min-h-[420px]"
       />
       <p className="mt-4 text-center text-gray-600 text-xs">
         Prefer to book on Gymdesk?{" "}

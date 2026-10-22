@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 import NovBogoOffer from "@/components/NovBogoOffer";
+import ClassPhotos from "@/components/ClassPhotos";
 import { isBfLive, isNovBogoLive, showNovBogo } from "@/lib/promo";
 import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 
@@ -52,6 +53,7 @@ export default async function NovemberPage({ searchParams }: Props) {
           </div>
         </div>
       </section>
+      <ClassPhotos />
       <NovBogoOffer ctaHref={CTA} />
       <section className="py-12 px-4 bg-white">
         <div className="max-w-3xl mx-auto text-center text-gray-700">

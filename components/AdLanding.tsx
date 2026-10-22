@@ -3,6 +3,7 @@ import TrialSplit from "@/components/TrialSplit";
 import TrialConversion from "@/components/TrialConversion";
 import NovBogoOffer from "@/components/NovBogoOffer";
 import UtmDefaults from "@/components/UtmDefaults";
+import ClassPhotos from "@/components/ClassPhotos";
 import { showBf, showNovBogo } from "@/lib/promo";
 import { ADDRESS, PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 
@@ -73,6 +74,7 @@ export default function AdLanding({
           </p>
         </div>
       </section>
+      <ClassPhotos />
       {bogo && <NovBogoOffer ctaHref="#trial" />}
       <section id="trial" className="py-16 px-4 bg-white scroll-mt-24">
         <div className="max-w-6xl mx-auto">
