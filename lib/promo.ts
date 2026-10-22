@@ -59,17 +59,20 @@ export const UPCOMING_PROMOS: Promo[] = [
     start: "2026-11-27T00:00:00-05:00",
     end: "2026-11-30T23:59:59-05:00",
   },
-  // TODO(Black Friday): fill in headline/text/CTA from Marketing's checkout details and set
-  // active: true after Jason approves. Until then Nov 26-30 falls back to plain free-trial wording.
+  // Black Friday flash sale, Thanksgiving Nov 26 00:00 ET through Cyber Monday Nov 30 23:59:59 ET.
+  // Copy from the bf-flash-sale draft (38ee296). Card links to /black-friday, where the Gymdesk
+  // checkout slot is still a placeholder (TODO: BF_SIGNUP_URL in app/black-friday/SaleWindow.tsx).
   {
     id: "black-friday-2026",
-    active: false,
-    headline: "TBD - Black Friday flash sale (not approved)",
-    text: "TBD",
+    active: true,
+    label: "Black Friday Flash Sale \u00b7 5 days only",
+    headline: "Start Tang Soo Do for $50. Train free through December.",
+    headlineEmphasis: "$50",
+    text: "Thanksgiving through Cyber Monday: $50 uniform, classes free through Dec 31, regular tuition starts Jan 1.",
     start: BLACK_FRIDAY_START,
     end: BLACK_FRIDAY_END,
-    ctaLabel: "TBD",
-    ctaHref: "TBD",
+    ctaLabel: "Get the Deal",
+    ctaHref: "/black-friday",
   },
   {
     id: "nov-2026-bogo",
@@ -109,6 +112,7 @@ export function isNovBogoLive(now: Date = new Date()): boolean {
 // Preview-only: ?promoPreview=<key> shows that promo early (local review). No param = no effect.
 export const PROMO_PREVIEWS: Record<string, string> = {
   nov: "nov-2026-bogo",
+  bf: "black-friday-2026",
 };
 
 export function getPreviewPromo(key: string | null | undefined): Promo | null {
@@ -116,6 +120,17 @@ export function getPreviewPromo(key: string | null | undefined): Promo | null {
   const id = PROMO_PREVIEWS[key];
   if (!id) return null;
   return [...UPCOMING_PROMOS, CURRENT_PROMO].find((p) => p.id === id) ?? null;
+}
+
+/** True during the Black Friday flash sale (Nov 26 - Nov 30 ET). */
+export function isBfLive(now: Date = new Date()): boolean {
+  return getActivePromo(now)?.id === "black-friday-2026";
+}
+
+/** Black Friday visible for this request: live window, or ?promoPreview=bf. */
+export function showBf(previewParam: string | string[] | undefined, now: Date = new Date()): boolean {
+  const p = Array.isArray(previewParam) ? previewParam[0] : previewParam;
+  return isBfLive(now) || p === "bf";
 }
 
 /** BOGO visible for this request: live window, or ?promoPreview=nov. */
@@ -127,8 +142,6 @@ export function showNovBogo(previewParam: string | string[] | undefined, now: Da
 // Offer terms shown on /november and the ad landing pages (Marketing brief 10/20).
 export const NOV_BOGO_TERMS: string[] = [
   "Sign up in November, and the following month is free.",
-  "Former students qualify after 90 days away from training.",
-  "Training must start by December 7.",
   "Autopay is required.",
   "Family discounts stack with this offer.",
   "The Adult Founders rate is included.",

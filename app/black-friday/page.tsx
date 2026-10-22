@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { showBf } from "@/lib/promo";
 import Image from "next/image";
 import SaleWindow from "./SaleWindow";
 import {
@@ -90,7 +92,13 @@ const steps = [
   },
 ];
 
-export default function BlackFridayFlashSalePage() {
+type Props = { searchParams: Promise<Record<string, string | string[] | undefined>> };
+
+// Hidden (404) outside Nov 26 00:00 - Nov 30 23:59:59 ET unless ?promoPreview=bf (or the
+// draft's own ?preview=before|open|ended). Card/banner/ad pages link here during the sale.
+export default async function BlackFridayFlashSalePage({ searchParams }: Props) {
+  const sp = await searchParams;
+  if (!showBf(sp.promoPreview) && !sp.preview) notFound();
   return (
     <>
       {/* ── HERO ──────────────────────────────────────────────── */}

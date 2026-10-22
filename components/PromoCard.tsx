@@ -56,7 +56,7 @@ export default function PromoCard({
   );
   // Room around the card so the 60px glow is not clipped on any side (~40px below).
   if (!band) {
-    return <div className="overflow-visible px-2 pt-2 pb-10">{card}</div>;
+    return <div className="overflow-visible px-2 pt-0 pb-5 md:pb-8">{card}</div>;
   }
   return <div className="bg-pma-cream overflow-visible px-6 pt-12 pb-10">{card}</div>;
 }

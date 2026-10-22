@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import NovBogoOffer from "@/components/NovBogoOffer";
-import { isNovBogoLive, showNovBogo } from "@/lib/promo";
+import { isBfLive, isNovBogoLive, showNovBogo } from "@/lib/promo";
 import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 
 // November BOGO landing page. Hidden (404) before Nov 1 00:00 ET and again from Nov 26
-// (Black Friday week) unless ?promoPreview=nov. noindex until the offer is live.
-// TODO(Black Friday): decide whether /november redirects to the BF page Nov 26-30.
+// (Black Friday week, redirect) unless ?promoPreview=nov. noindex until the offer is live.
+// Nov 26-30 (Black Friday week) /november redirects to /black-friday; ?promoPreview=bf previews that.
 const CTA = "/kids-trial?utm_source=website&utm_campaign=nov-bogo";
 
 type Props = { searchParams: Promise<Record<string, string | string[] | undefined>> };
@@ -24,6 +24,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function NovemberPage({ searchParams }: Props) {
   const sp = await searchParams;
+  const pv = Array.isArray(sp.promoPreview) ? sp.promoPreview[0] : sp.promoPreview;
+  if (pv === "bf") redirect("/black-friday?promoPreview=bf");
+  if (isBfLive()) redirect("/black-friday");
   if (!showNovBogo(sp.promoPreview)) notFound();
   return (
     <>

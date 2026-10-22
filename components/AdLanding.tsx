@@ -3,13 +3,13 @@ import TrialSplit from "@/components/TrialSplit";
 import TrialConversion from "@/components/TrialConversion";
 import NovBogoOffer from "@/components/NovBogoOffer";
 import UtmDefaults from "@/components/UtmDefaults";
-import { showNovBogo } from "@/lib/promo";
+import { showBf, showNovBogo } from "@/lib/promo";
 import { ADDRESS, PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 
 // Paid-ad landing page body for /lp/meta and /lp/google. Always noindex; not in nav/sitemap.
-// Hidden (404) before Nov 1 00:00 ET unless ?promoPreview=nov. Nov 26-30 (Black Friday week)
-// and after November it falls back to plain free-trial wording.
-// TODO(Black Friday): swap in BF headline/terms Nov 26-30 once Marketing sends checkout details.
+// Nov 1-25 ET: November BOGO. Nov 26-30 ET: Black Friday flash sale (links to /black-friday
+// checkout). Hidden (404) before Nov 1 unless ?promoPreview=nov or bf. After Nov 30: plain
+// free-trial wording.
 const LAUNCH = new Date("2026-11-01T00:00:00-04:00").getTime();
 
 export default function AdLanding({
@@ -19,9 +19,14 @@ export default function AdLanding({
   source: "meta" | "google";
   preview: string | string[] | undefined;
 }) {
-  const bogo = showNovBogo(preview);
-  if (!bogo && Date.now() < LAUNCH) notFound();
-  const utm = { utm_source: source, utm_medium: "paid", utm_campaign: "nov-bogo" };
+  const bf = showBf(preview);
+  const bogo = !bf && showNovBogo(preview);
+  if (!bogo && !bf && Date.now() < LAUNCH) notFound();
+  const campaign = bf ? "black-friday" : "nov-bogo";
+  const utm = { utm_source: source, utm_medium: "paid", utm_campaign: campaign };
+  const bfHref = `/black-friday?utm_source=${source}&utm_medium=paid&utm_campaign=black-friday${
+    bf && preview ? "&promoPreview=bf" : ""
+  }#checkout`;
   return (
     <>
       <UtmDefaults defaults={utm} />
@@ -29,10 +34,14 @@ export default function AdLanding({
       <section className="py-16 px-4 text-center text-white bg-pma-navy">
         <div className="max-w-3xl mx-auto">
           <span className="inline-block text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-widest bg-pma-red">
-            {bogo ? "November Offer" : "Free Trial Class"}
+            {bf ? "Black Friday Flash Sale · 5 days only" : bogo ? "November Offer" : "Free Trial Class"}
           </span>
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
-            {bogo ? (
+            {bf ? (
+              <>
+                Start Tang Soo Do for <span style={{ color: "#E22D33" }}>$50</span>
+              </>
+            ) : bogo ? (
               <>
                 Buy One Month, <span style={{ color: "#E22D33" }}>Get One Free</span>
               </>
@@ -41,13 +50,24 @@ export default function AdLanding({
             )}
           </h1>
           <p className="text-blue-100 text-lg max-w-xl mx-auto mb-8">
-            {bogo
-              ? "Book a free Tang Soo Do trial class in Prospect, CT. Sign up in November, and the following month is free."
-              : "Book a free Tang Soo Do trial class in Prospect, CT. Nothing to pay to book."}
+            {bf
+              ? "Thanksgiving through Cyber Monday: $50 for your uniform, classes free through Dec 31, regular tuition starts Jan 1. For new and former students, ages 3 through adult."
+              : bogo
+                ? "Book a free Tang Soo Do trial class in Prospect, CT. Sign up in November, and the following month is free."
+                : "Book a free Tang Soo Do trial class in Prospect, CT. Nothing to pay to book."}
           </p>
-          <a href="#trial" className="inline-block bg-pma-red text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:opacity-90">
-            Book Your Free Trial
+          <a
+            href={bf ? bfHref : "#trial"}
+            className="inline-block bg-pma-red text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:opacity-90"
+          >
+            {bf ? "Get the Deal" : "Book Your Free Trial"}
           </a>
+          {bf && (
+            <p className="mt-4 text-blue-100 text-sm">
+              Sale ends Mon Nov 30 at 11:59 PM ET.{" "}
+              <a href="#trial" className="underline text-white">Rather try a free class first?</a>
+            </p>
+          )}
           <p className="mt-6 text-blue-200 text-sm">
             {ADDRESS.street} · {ADDRESS.city}, {ADDRESS.state} {ADDRESS.zip}
           </p>

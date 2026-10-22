@@ -184,10 +184,10 @@ export default function HomePage() {
       </section>
 
       {/* ── PROGRAM CARDS ─────────────────────────────────────── */}
-      <section className="py-14 px-4 bg-white">
+      <section className="pt-8 pb-14 md:py-14 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <HideDuringClosing>
-            <PromoBanner className="mb-10" />
+            <PromoBanner className="mb-4 md:mb-8" />
           </HideDuringClosing>
           <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-3 text-pma-navy">
             Find Your Program

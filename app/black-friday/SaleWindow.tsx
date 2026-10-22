@@ -88,7 +88,7 @@ export default function SaleWindow() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const preview = params.get("preview");
+    const preview = params.get("preview") ?? (params.get("promoPreview") === "bf" ? "open" : null);
     setDone(params.get("done") === "1");
 
     const tick = () => {
@@ -199,7 +199,7 @@ export default function SaleWindow() {
         // Replace with the Black Friday 2026 Gymdesk website sign-up form
         // link (BF_SIGNUP_URL above). Form should show only the Black
         // Friday plan option(s), collect the card, and redirect back to
-        // https://prospectma.com/black-friday-k7q2?done=1
+        // https://prospectma.com/black-friday?done=1
         <div className="mx-auto max-w-xl rounded-xl border-2 border-dashed border-pma-navy/40 bg-pma-light px-6 py-10 text-pma-navy">
           <p className="font-extrabold text-lg mb-1">
             Gymdesk checkout goes here
