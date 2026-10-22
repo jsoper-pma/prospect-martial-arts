@@ -40,7 +40,7 @@ const faqs = [
   {
     question: "How long does it take to earn a black belt?",
     answer:
-      "For a student who trains consistently, earning a black belt realistically takes about four years. This varies depending on how often a student attends and how quickly they progress — but the belt system is designed to reward real skill and character development, not just time in class. The journey is the point.",
+      "For a student who trains consistently, earning a black belt realistically takes about four years. This varies depending on how often a student attends and how quickly they progress — but the belt system is designed to reward real skill and character development, not time in class alone. The journey is the point.",
   },
   {
     question: "Is martial arts safe for kids?",
@@ -90,7 +90,7 @@ const faqs = [
   {
     question: "What if we need to pause or cancel our membership?",
     answer:
-      "We know life gets busy. Memberships are month-to-month unless you choose a multi-month package, so you're never locked in. If your student needs a break — a sports season, a school crunch, whatever life brings — you can freeze your account (typically up to 30 days) or simply cancel and rejoin when you're ready; the mat will be here waiting. Cancellations just require seven days' notice: they take effect immediately when done in person, or you can email info@prospectma.com and we'll take care of it.",
+      "We know life gets busy. Memberships are month-to-month unless you choose a multi-month package, so you're never locked in. If your student needs a break — a sports season, a school crunch, whatever life brings — you can freeze your account (typically up to 30 days) or simply cancel and rejoin when you're ready; the mat will be here waiting. Cancellations require only seven days' notice: they take effect immediately when done in person, or you can email info@prospectma.com and we'll take care of it.",
   },
   {
     question: "How do I get started?",
@@ -165,7 +165,7 @@ export default function FaqPage() {
               {EMAIL}
             </a>{" "}
             and we&apos;ll get back to you within 24 hours.
-            Or just come in — your first class is free.
+            Or stop by — your first class is free.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

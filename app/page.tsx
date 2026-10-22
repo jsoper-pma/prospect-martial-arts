@@ -98,7 +98,7 @@ const pillars = [
   {
     icon: Medal,
     title: "Confidence That Lasts",
-    desc: "We build confident, disciplined people — not just on the mat, but in school, at work, and in everyday life.",
+    desc: "We build confident, disciplined people — not only on the mat, but in school, at work, and in everyday life.",
   },
   {
     icon: Sparkles,
@@ -381,7 +381,7 @@ export default function HomePage() {
             </h2>
             <p className="text-gray-600 text-lg mb-10 leading-relaxed">
               The best way to experience Prospect Martial Arts is to come in. Book below and we&apos;ll
-              get you set up for a free trial class. No commitment, no pressure — just come see what
+              get you set up for a free trial class. No commitment, no pressure — come see what
               we&apos;re all about.
             </p>
           </div>

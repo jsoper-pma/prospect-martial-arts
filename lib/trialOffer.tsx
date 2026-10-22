@@ -56,7 +56,7 @@ export const TRIAL_COPY: Record<TrialOfferKey, Record<TrialOfferSlot, ReactNode>
         <span className="text-yellow-300">only $50</span>
         <span className="font-normal text-blue-100">
           {" "}
-          if you enroll — nothing to pay just to book.
+          if you enroll — nothing to pay to book.
         </span>
       </>
     ),
@@ -64,7 +64,7 @@ export const TRIAL_COPY: Record<TrialOfferKey, Record<TrialOfferSlot, ReactNode>
       <>
         <strong className="text-pma-navy">Love it? First month is $50</strong>{" "}
         when you enroll after class. Regular tuition follows — the $50 is never
-        required just to take the free trial.
+        required to take the free trial.
       </>
     ),
     form: <>Free trial first · $50 first month only if you enroll after class ·</>,

@@ -149,7 +149,7 @@ export default function PreschoolPage() {
             </a>
           </div>
           <p className="text-blue-200 text-sm mt-5">
-            First class is always free. Just show up in comfortable clothes — we take care of everything else.
+            First class is always free. Show up in comfortable clothes — we take care of everything else.
           </p>
         </div>
       </section>
@@ -177,7 +177,7 @@ export default function PreschoolPage() {
             Two Programs. One Great School.
           </h2>
           <p className="text-center text-gray-500 mb-12 max-w-xl mx-auto">
-            Both programs are designed for preschool-age children and rooted in the same Tang Soo Do tradition — just tailored to the right age.
+            Both programs are designed for preschool-age children and rooted in the same Tang Soo Do tradition — tailored to the right age.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -263,7 +263,7 @@ export default function PreschoolPage() {
                 Your First Class
               </p>
               <h2 className="text-3xl md:text-4xl font-extrabold mb-5 text-pma-navy">
-                Just show up.<br />We&apos;ll handle the rest.
+                Show up.<br />We&apos;ll handle the rest.
               </h2>
               <p className="text-gray-600 leading-relaxed mb-6">
                 There is nothing you need to prepare, buy, or bring. All we ask is that your child wears comfortable clothing they can move in. Our instructors will take care of everything from there.
@@ -277,7 +277,7 @@ export default function PreschoolPage() {
                   </div>
                   <div>
                     <p className="font-bold text-gray-800">Comfortable clothes — that&apos;s it</p>
-                    <p className="text-gray-500 text-sm">No uniform, no gear, no equipment. Just clothes your child can move in.</p>
+                    <p className="text-gray-500 text-sm">No uniform, no gear, no equipment. Comfortable clothes your child can move in.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -402,7 +402,7 @@ export default function PreschoolPage() {
             More Than Kicks and Punches
           </h2>
           <p className="text-blue-200 text-center mb-12 max-w-xl mx-auto">
-            Parents notice real changes — not just in the school, but at home, in school, and everywhere in between.
+            Parents notice real changes — not only in the school, but at home, in school, and everywhere in between.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {benefits.map((b) => (
@@ -555,7 +555,7 @@ export default function PreschoolPage() {
               Ready to Try a Free Class?
             </h2>
             <p className="text-gray-600 text-lg mb-10 leading-relaxed">
-              The first class is always on us. Book your free trial below — no commitment, no pressure. Just come meet us, see the school, and let your child try something great.
+              The first class is always on us. Book your free trial below — no commitment, no pressure. Come meet us, see the school, and let your child try something great.
             </p>
           </div>
           <TrialSplit />

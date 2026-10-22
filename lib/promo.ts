@@ -23,7 +23,7 @@ export const CURRENT_PROMO: Promo = {
   label: "October Offer",
   headline: "$50 for Your First Month",
   headlineEmphasis: "$50",
-  text: "New students of every age pay just $50 for their first month of Tang Soo Do. Come try a free class first, then join for $50.",
+  text: "New students of every age pay $50 for their first month of Tang Soo Do. Come try a free class first, then join for $50.",
   start: "2026-10-01T00:00:00-04:00",
   end: "2026-10-31T23:59:59-04:00",
   ctaLabel: "Book Your Free Trial",

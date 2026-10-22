@@ -40,7 +40,7 @@ const benefits = [
   {
     icon: Shield,
     title: "Real Self-Defense Skills",
-    desc: "Students learn practical striking, kicking, blocking, and self-defense techniques — not just choreography. They graduate knowing they can handle themselves.",
+    desc: "Students learn practical striking, kicking, blocking, and self-defense techniques — not only choreography. They graduate knowing they can handle themselves.",
   },
   {
     icon: Sprout,
@@ -50,7 +50,7 @@ const benefits = [
   {
     icon: HeartHandshake,
     title: "Respect & Character",
-    desc: "Every class begins and ends with respect — for instructors, for training partners, and for themselves. These aren't just mat rules. They become habits.",
+    desc: "Every class begins and ends with respect — for instructors, for training partners, and for themselves. These are more than mat rules. They become habits.",
   },
   {
     icon: Trophy,

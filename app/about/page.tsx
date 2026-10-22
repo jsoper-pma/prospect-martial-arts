@@ -37,7 +37,7 @@ const values = [
   {
     icon: Sprout,
     title: "Personal Growth",
-    desc: "Progress here is measured as a person, not just as a martial artist. We celebrate every step of the journey.",
+    desc: "Progress here is measured as a person, not only as a martial artist. We celebrate every step of the journey.",
   },
 ];
 
@@ -125,7 +125,7 @@ export default function AboutPage() {
               <p>
                 Unlike some martial arts that focus purely on competition, Tang Soo Do is a complete
                 system that develops the whole person. Students learn striking, kicking, blocks,
-                forms (called <em>hyungs</em>), self-defense, and weapons — but just as importantly,
+                forms (called <em>hyungs</em>), self-defense, and weapons — but equally important,
                 they develop discipline, focus, respect, and inner strength.
               </p>
               <p>

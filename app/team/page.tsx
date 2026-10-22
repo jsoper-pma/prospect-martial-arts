@@ -90,7 +90,7 @@ export default function TeamPage() {
         <div className="max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">Our Team</h1>
           <p className="text-blue-200 text-lg max-w-xl mx-auto">
-            Our instructors don&apos;t just teach martial arts — they invest in people.
+            Our instructors do more than teach martial arts — they invest in people.
             They know your name, your goals, and your story.
           </p>
         </div>
@@ -100,7 +100,7 @@ export default function TeamPage() {
       <section className="py-12 px-4 bg-white">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-gray-700 text-lg leading-relaxed">
-            At Prospect Martial Arts, you are never just a number. From your very first class, you
+            At Prospect Martial Arts, you are never a number. From your very first class, you
             will have instructors who genuinely know you — who celebrate your wins, push you past
             your limits, and are honored to be part of your journey. That personal connection is
             what sets PMA apart.

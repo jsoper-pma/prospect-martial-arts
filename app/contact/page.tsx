@@ -234,7 +234,7 @@ export default function ContactPage() {
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-extrabold mb-4 text-pma-navy">Ready to Try a Free Class?</h2>
             <p className="text-gray-600 text-lg mb-8">
-              No commitment, no experience needed — just come see what we&apos;re all about. Booking
+              No commitment, no experience needed — come see what we&apos;re all about. Booking
               takes less than a minute.
             </p>
           </div>

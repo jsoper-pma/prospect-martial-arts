@@ -34,7 +34,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/gallery/20250717_194507.jpg",
     imageAlt: "Students training in formation at Prospect Martial Arts in Prospect, CT",
     tags: ["tang-soo-do", "martial-arts", "education"],
-    content: `If you're researching martial arts classes in the Prospect or Waterbury, CT area, you've probably noticed that schools teach different styles — Karate, Taekwondo, Tang Soo Do, Jiu-Jitsu, and more. The names can blur together, and most parents just want to know one thing: which one is right for my family?
+    content: `If you're researching martial arts classes in the Prospect or Waterbury, CT area, you've probably noticed that schools teach different styles — Karate, Taekwondo, Tang Soo Do, Jiu-Jitsu, and more. The names can blur together, and most parents want to know one thing: which one is right for my family?
 
 Here's an honest, plain-English comparison of three of the most popular traditional styles.
 
@@ -102,7 +102,7 @@ ${CTA_END}`,
     tags: ["adhd", "kids", "focus", "parenting"],
     content: `If your child has ADHD, you've probably heard the suggestion from a teacher, pediatrician, or another parent: "Have you tried martial arts?"
 
-It's common advice for a reason. For many children with ADHD, martial arts isn't just another activity — it's the first one that actually clicks. Here's why, and how we approach it at Prospect Martial Arts in Prospect, CT.
+It's common advice for a reason. For many children with ADHD, martial arts is more than another activity — it's the first one that actually clicks. Here's why, and how we approach it at Prospect Martial Arts in Prospect, CT.
 
 ## Why Martial Arts Works for Kids with ADHD
 
@@ -143,7 +143,7 @@ Our instructors have real experience teaching children with ADHD, sensory proces
 - **Classes grouped by age and rank**, so no student is overwhelmed or bored
 - **Multiple instructors on the floor** in every class, so students who need extra attention get it
 - **Clear, consistent expectations** — the same rules, the same respect rituals, every single class
-- **Celebration of small wins.** We notice effort, not just results
+- **Celebration of small wins.** We notice effort, not only results
 
 Parents tell us the changes show up at home and school: better listening, more patience, a child who's proud of themselves. One of our parents put it simply — the confidence her daughter gained in her first five classes was "amazing."
 
@@ -237,9 +237,9 @@ Arrive about 10 minutes early. That gives your child time to see the space, meet
 
 ## The First Five Minutes
 
-A new student is never just tossed into the group. An instructor will greet your child by name, show them where to line up, and pair them with the class in a way that matches their age and comfort level.
+A new student is never tossed into the group. An instructor will greet your child by name, show them where to line up, and pair them with the class in a way that matches their age and comfort level.
 
-Every class starts the same way: students line up, bow, and go through a warm-up together. The routine itself is reassuring — your child just follows along, and within minutes they're moving, not worrying.
+Every class starts the same way: students line up, bow, and go through a warm-up together. The routine itself is reassuring — your child follows along, and within minutes they're moving, not worrying.
 
 ## What Happens During Class
 
@@ -422,7 +422,7 @@ If your child does either one seriously, they're better off than a child doing n
 
 In dance, discipline is what you need *in order to* learn the art. In traditional martial arts, discipline *is* the art. Tang Soo Do classes are explicitly built around self-control: students bow in and out, respond to instructors with "yes sir / yes ma'am," wait in ready position, and learn that power means nothing without restraint.
 
-A martial arts instructor doesn't just expect focus — they teach it, correct it, and grade it. Focus is literally part of what students are tested on at every belt level.
+A martial arts instructor doesn't only expect focus — they teach it, correct it, and grade it. Focus is literally part of what students are tested on at every belt level.
 
 ### Individual accountability at every step
 
@@ -469,7 +469,7 @@ ${CTA_END}`,
     tags: ["kids", "confidence", "parenting"],
     content: `If you're the parent of a shy child, you know the ache of watching them hang back — at the birthday party, on the playground, in the classroom where they know the answer but won't raise their hand.
 
-You've probably also noticed that pushing doesn't work. "Just go play with them!" has never once cured shyness. What shy kids need isn't a push. It's a place where confidence can grow at their pace — with structure, safety, and small wins stacked patiently on top of each other.
+You've probably also noticed that pushing doesn't work. "Go play with them!" has never once cured shyness. What shy kids need isn't a push. It's a place where confidence can grow at their pace — with structure, safety, and small wins stacked patiently on top of each other.
 
 That's a precise description of a good martial arts program. Here's how it works.
 
@@ -537,7 +537,7 @@ Here's a complete guide to how belt ranking works in Tang Soo Do — the traditi
 
 ## Where Belt Ranks Come From
 
-The colored belt system is younger than most people think. It was introduced in the early 1900s by Jigoro Kano, the founder of Judo, and spread to Karate, Taekwondo, Tang Soo Do, and nearly every modern martial art. Before that, many arts had just two ranks: student and teacher.
+The colored belt system is younger than most people think. It was introduced in the early 1900s by Jigoro Kano, the founder of Judo, and spread to Karate, Taekwondo, Tang Soo Do, and nearly every modern martial art. Before that, many arts had only two ranks: student and teacher.
 
 The genius of the system is motivational. Instead of one impossibly distant goal, students climb a staircase of achievable ones — each belt close enough to reach, meaningful enough to matter.
 
@@ -582,11 +582,11 @@ Could it be faster? Some schools promote faster — and we'd gently suggest that
 
 ## What Happens at a Belt Test
 
-Students demonstrate their curriculum in front of instructors and families: forms, techniques, self-defense, sparring at appropriate ranks, and — just as important — attitude and effort. Testing is a performance under pressure, and learning to deliver one is part of the training. When a student ties on a new belt in front of the people who watched them earn it, that moment sticks for life.
+Students demonstrate their curriculum in front of instructors and families: forms, techniques, self-defense, sparring at appropriate ranks, and — equally important — attitude and effort. Testing is a performance under pressure, and learning to deliver one is part of the training. When a student ties on a new belt in front of the people who watched them earn it, that moment sticks for life.
 
 ## The Belt Is a Byproduct
 
-Parents sometimes ask how fast their child can get a black belt. We'd offer a reframe: the belt is a byproduct. The four years of showing up, failing, adjusting, and succeeding — the focus, resilience, and confidence built along the way — that's the product. The belt just makes it visible.
+Parents sometimes ask how fast their child can get a black belt. We'd offer a reframe: the belt is a byproduct. The four years of showing up, failing, adjusting, and succeeding — the focus, resilience, and confidence built along the way — that's the product. The belt makes it visible.
 
 Come watch it happen. Our [Kids & Teens program](/kids) and [adult program](/adults) both follow the full TSDMA-recognized Tang Soo Do curriculum.
 
@@ -608,7 +608,7 @@ Here's the case for Tang Soo Do as the right fit for Connecticut families — an
 
 ## One Activity, Every Family Member
 
-Most kids' activities are just that — for kids, one age band at a time. Soccer runs by birth year. Dance splits by level and age. Parents drive, wait, and repeat, often to different places on different nights.
+Most kids' activities are exactly that — for kids, one age band at a time. Soccer runs by birth year. Dance splits by level and age. Parents drive, wait, and repeat, often to different places on different nights.
 
 Tang Soo Do is one of the few activities the *whole family* can do, under one roof:
 
@@ -641,7 +641,7 @@ But "local" means more than geography. PMA is a genuinely hometown operation:
 - Part of a Connecticut Tang Soo Do lineage that traces to the Charland Institute in Watertown
 - Rated **5.0 stars across 64 Google reviews** by local families
 
-When you walk in, the instructors will learn your kids' names in the first week. By the second month, they'll know their goals, their quirks, and how their school day went. That's not a franchise script — it's just how a small-town school works.
+When you walk in, the instructors will learn your kids' names in the first week. By the second month, they'll know their goals, their quirks, and how their school day went. That's not a franchise script — it's how a small-town school works.
 
 ## Traditional Values, Without the Time Capsule
 

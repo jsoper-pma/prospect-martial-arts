@@ -6,7 +6,7 @@ const STEPS = [
   "Fill out the short form",
   "We confirm your free trial class date and time",
   "Show up — we take care of the rest",
-  "No uniform needed, just comfortable clothes",
+  "No uniform needed. Wear comfortable clothes.",
 ] as const;
 
 export default function TrialSplit() {
