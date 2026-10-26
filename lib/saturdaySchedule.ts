@@ -12,7 +12,7 @@ export type SaturdayStandingClass = {
 
 /** Standing Saturday block — always shown on /saturday. */
 export const saturdayStandingSchedule: SaturdayStandingClass[] = [
-  { name: "Basics & Competition Training", time: "9:15–10:00 AM" },
+  { name: "Basics and Tournament Prep", time: "9:15–10:00 AM" },
   { name: "Sparring and Endurance", time: "10:00–10:45 AM" },
   { name: "Weapons", time: "10:45–11:30 AM" },
 ];
@@ -29,19 +29,18 @@ export type SaturdayDateEntry = {
 
 /**
  * Rolling window: exactly the next 4 Saturdays (refresh weekly).
- * Rolled 2026-10-18: Oct 24 No classes (TSDMA Interclub); Oct 31, Nov 7, Nov 14 Open.
- * New standing block: Basics & Competition Training 9:15 from Oct 31.
+ * Rolled 2026-10-26: Oct 31 Open; Nov 7 Open; Nov 14 No classes (TSDMA Dan Classing #62 Graduation, master schedule "No AM classes"); Nov 21 Open.
  */
 export const saturdayUpcoming: SaturdayDateEntry[] = [
-  {
-    date: "2026-10-24",
-    label: "October 24, 2026",
-    status: "No classes",
-    reason: "TSDMA Charland interclub Watertown",
-  },
   { date: "2026-10-31", label: "October 31, 2026", status: "Open" },
   { date: "2026-11-07", label: "November 7, 2026", status: "Open" },
-  { date: "2026-11-14", label: "November 14, 2026", status: "Open" },
+  {
+    date: "2026-11-14",
+    label: "November 14, 2026",
+    status: "No classes",
+    reason: "TSDMA Dan Classing graduation",
+  },
+  { date: "2026-11-21", label: "November 21, 2026", status: "Open" },
 ];
 
 /** @deprecated Use saturdayUpcoming — kept as alias for older imports. */

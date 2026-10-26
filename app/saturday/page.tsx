@@ -11,7 +11,7 @@ import { BOOKING_URL, PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Saturday Classes | Tang Soo Do Schedule in Prospect, CT",
   description:
-    "Saturday Tang Soo Do schedule at Prospect Martial Arts — Basics & Competition Training, Sparring and Endurance, and Weapons. See the next four Saturdays.",
+    "Saturday Tang Soo Do schedule at Prospect Martial Arts — Basics and Tournament Prep, Sparring and Endurance, and Weapons. See the next four Saturdays.",
   alternates: { canonical: "/saturday" },
   openGraph: {
     title: "Saturday Classes — Prospect Martial Arts",
@@ -33,7 +33,7 @@ export default function SaturdayPage() {
             Saturday Classes
           </h1>
           <p className="text-blue-200 text-lg max-w-xl mx-auto">
-            Tang Soo Do training every Saturday morning — Basics &amp; Competition Training, Sparring and
+            Tang Soo Do training every Saturday morning — Basics and Tournament Prep, Sparring and
             Endurance, and Weapons. Check the next four Saturdays below.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
