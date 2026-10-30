@@ -24,7 +24,7 @@ export function generateMetadata(): Metadata {
       title: "Free Kids Trial Class — Prospect Martial Arts",
       description: meta.ogDescription,
     },
-    robots: { index: true, follow: true },
+    robots: { index: false, follow: false },
   };
 }
 
