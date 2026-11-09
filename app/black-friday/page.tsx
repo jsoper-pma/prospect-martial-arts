@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { showBf } from "@/lib/promo";
 import Image from "next/image";
+import ClassPhotos from "@/components/ClassPhotos";
 import SaleWindow from "./SaleWindow";
 import {
   adultFoundersTier,
@@ -10,27 +11,23 @@ import {
 } from "@/lib/pricing";
 import { ADDRESS, EMAIL, PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 
-// ── Black Friday 2026 flash sale (HIDDEN DRAFT) ───────────────────────
-// - noindex/nofollow, not in nav, footer, home page, or app/sitemap.ts
-//   (the sitemap is a hard-coded list, so this route is not included).
-// - Nothing goes live until Jason approves the preview and the push.
-// - Items wrapped in <Confirm> are open decisions for Jason; they render
-//   as yellow highlights so they can't be missed in preview.
+// ── Black Friday 2026 $50 offer (HIDDEN DRAFT) ────────────────────────
+// - noindex/nofollow, not in nav, footer, home page, or app/sitemap.ts.
+// - Local draft only. Nothing goes live until Jason approves a push.
+// - Public copy from /workspace/pma-promos/bf-50-offer/public-copy.md
+//   (Chuck, Nov 9, 2026). Offer: $50 per student to train through Dec 31,
+//   uniform included. Sale Fri Nov 27–Sun Dec 14, 2026.
+// - Site-wide promo windows in lib/promo.ts, the /november redirect, and
+//   /lp ad copy still use the older Nov 26–30 flash-sale window. Those
+//   were left unchanged on this branch (live redirect behavior). Flag
+//   for Chuck before any push.
 
 export const metadata: Metadata = {
-  title: "Black Friday Flash Sale | Prospect Martial Arts",
+  title: "Black Friday Offer: Train through December 31 for $50",
   description:
-    "Thanksgiving through Cyber Monday: $50 for your uniform, Tang Soo Do classes free through Dec 31, regular tuition starts Jan 1. New and former students.",
+    "Train in Tang Soo Do at Prospect Martial Arts through December 31 for $50 per student, uniform included, plus the usual card-processing fee. New students and former students gone more than three months. Offer ends December 14.",
   robots: { index: false, follow: false },
 };
-
-function Confirm({ children }: { children: React.ReactNode }) {
-  return (
-    <mark className="bg-yellow-200 text-gray-900 px-1 rounded">
-      [JASON TO CONFIRM: {children}]
-    </mark>
-  );
-}
 
 const programs = [
   {
@@ -75,65 +72,108 @@ const tuitionRows = [
 
 const steps = [
   {
-    title: "Check out by Mon Nov 30",
-    body: "Pay $50 for your uniform and pick your program.",
+    title: "Check out by Sun Dec 14",
+    body: "$50 per student to train through December 31, plus the usual card-processing fee. A uniform is included.",
   },
   {
-    title: "We call you",
+    title: "Choose your plan",
+    body: "Pick Silver, Gold, or the plan that fits when you register. Gold students receive Gold’s usual uniform.",
+  },
+  {
+    title: "We get you started",
     body: "We set your class times and get your uniform size.",
   },
   {
-    title: "Train free through Dec 31",
-    body: "Come to class as much as your program allows. No tuition in December.",
+    title: "Regular tuition starts Jan 1",
+    body: "Tuition for the plan you choose begins January 1, with our usual family discounts from then.",
+  },
+];
+
+const faqs: { q: string; a: string }[] = [
+  {
+    q: "Who is this for?",
+    a: "New students, and former students whose last day with us was more than three months ago. Current and recently frozen students do not qualify for this offer.",
   },
   {
-    title: "Tuition starts Jan 1",
-    body: "Regular monthly tuition begins automatically on Fri Jan 1, 2027.",
+    q: "What does the $50 cover?",
+    a: "Training through December 31, with a uniform included. It is not a uniform-only purchase.",
+  },
+  {
+    q: "What uniform do I get?",
+    a: "The standard uniform for your plan. Gold students receive Gold’s usual uniform.",
+  },
+  {
+    q: "Do I pick Silver or Gold now?",
+    a: "Yes. You choose your membership plan at registration. Regular tuition for that plan begins January 1.",
+  },
+  {
+    q: "Is there a card fee?",
+    a: "Yes. The usual card-processing fee is added on top of the $50.",
+  },
+  {
+    q: "Can my whole family join?",
+    a: "Yes. Each student is $50. A family of four pays $200 for the offer period.",
+  },
+  {
+    q: "Can I combine this with November’s buy-one-month-get-one-free?",
+    a: "No. You choose one new-student offer.",
+  },
+  {
+    q: "When does the sale end?",
+    a: "Sunday, December 14, 2026.",
+  },
+  {
+    q: "What about the holiday break?",
+    a: "We close from Christmas Eve. Training under this offer runs through Wednesday, December 23.",
+  },
+  {
+    q: "Can I try a class first?",
+    a: "Yes. Your first class is always free. Call or text (203) 441-5358 or book a free first class with us.",
   },
 ];
 
 type Props = { searchParams: Promise<Record<string, string | string[] | undefined>> };
 
-// Hidden (404) outside Nov 26 00:00 - Nov 30 23:59:59 ET unless ?promoPreview=bf (or the
-// draft's own ?preview=before|open|ended). Card/banner/ad pages link here during the sale.
+// Hidden (404) outside the site-wide Black Friday window in lib/promo.ts
+// (currently Nov 26–30 ET) unless ?promoPreview=bf or the draft's own
+// ?preview=before|open|ended. Local review: /black-friday?promoPreview=bf&preview=open
 export default async function BlackFridayFlashSalePage({ searchParams }: Props) {
   const sp = await searchParams;
   if (!showBf(sp.promoPreview) && !sp.preview) notFound();
   return (
     <>
       {/* ── HERO ──────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-pma-navy text-white px-4 py-20">
+      <section className="relative overflow-hidden bg-pma-navy text-white px-4 pt-20 pb-28 md:py-20">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
           <div className="text-center md:text-left">
             <span className="inline-block text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-widest bg-pma-red">
-              Black Friday Flash Sale · 5 days only
+              Black Friday Offer · Nov 27–Dec 14
             </span>
             <h1 className="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
-              Start Tang Soo Do for $50.
-              <br />
-              Train free through December.
+              Train through December 31 for $50
             </h1>
             <p className="text-lg text-blue-100 mb-6">
-              <strong className="text-white">
-                $50 uniform, classes free through Dec 31, regular tuition
-                starts Jan 1.
-              </strong>{" "}
-              For new students and former students, ages 3 through adult.
+              Tang Soo Do at Prospect Martial Arts — uniform included. New
+              students and former students gone more than three months.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <a
                 href="#checkout"
                 className="inline-block bg-pma-red text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:opacity-90 transition-opacity"
               >
-                Get the Deal
+                Start now
               </a>
               <a
-                href={PHONE_HREF}
+                href="/kids-trial"
                 className="inline-block text-white font-bold text-lg px-8 py-4 rounded-full border-2 border-white hover:bg-white hover:text-pma-navy transition-colors"
               >
-                Call {PHONE_DISPLAY}
+                Book a free first class
               </a>
             </div>
+            <p className="mt-5 text-sm text-blue-200">
+              Offer Nov 27–Dec 14 · $50 per student · usual card fee added ·
+              cannot combine with November buy-one-get-one
+            </p>
           </div>
           <div className="relative aspect-[3/2] rounded-2xl overflow-hidden shadow-xl border-4 border-white/20">
             <Image
@@ -153,22 +193,40 @@ export default async function BlackFridayFlashSalePage({ searchParams }: Props) 
         <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 text-center">
           <div>
             <p className="text-xs font-bold uppercase tracking-widest opacity-90">
-              Starts Thanksgiving
+              Starts Black Friday
             </p>
-            <p className="text-2xl font-extrabold">Thu Nov 26, 2026</p>
+            <p className="text-2xl font-extrabold">Fri Nov 27, 2026</p>
           </div>
-          <span className="text-2xl font-extrabold hidden sm:block">→</span>
+          <span className="text-2xl font-extrabold hidden sm:block" aria-hidden="true">
+            →
+          </span>
           <div>
             <p className="text-xs font-bold uppercase tracking-widest opacity-90">
-              Ends Cyber Monday
+              Ends Sunday
             </p>
-            <p className="text-2xl font-extrabold">Mon Nov 30, 2026</p>
+            <p className="text-2xl font-extrabold">Sun Dec 14, 2026</p>
           </div>
         </div>
       </section>
 
+      {/* ── HERO SUPPORT ──────────────────────────────────────── */}
+      <section className="py-12 px-4 bg-white">
+        <div className="max-w-3xl mx-auto text-center text-gray-700">
+          <p className="text-lg">
+            For a limited time, join us for{" "}
+            <strong className="text-pma-navy">$50 per student</strong> and train
+            through <strong className="text-pma-navy">December 31</strong>. A
+            uniform is included (Gold students receive Gold’s usual uniform).
+            Choose your plan when you register; regular tuition starts{" "}
+            <strong className="text-pma-navy">January 1</strong>, with our usual
+            family discounts from then. A family of four pays{" "}
+            <strong className="text-pma-navy">$200</strong>.
+          </p>
+        </div>
+      </section>
+
       {/* ── HOW IT WORKS ──────────────────────────────────────── */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-16 px-4 bg-pma-cream">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-extrabold text-center text-pma-navy mb-10">
             How it works
@@ -177,7 +235,7 @@ export default async function BlackFridayFlashSalePage({ searchParams }: Props) 
             {steps.map((s, i) => (
               <li
                 key={s.title}
-                className="rounded-2xl bg-pma-cream border border-gray-100 p-6 shadow-sm"
+                className="rounded-2xl bg-white border border-gray-100 p-6 shadow-sm"
               >
                 <span className="w-9 h-9 rounded-full bg-pma-red text-white font-bold flex items-center justify-center mb-3">
                   {i + 1}
@@ -191,7 +249,7 @@ export default async function BlackFridayFlashSalePage({ searchParams }: Props) 
       </section>
 
       {/* ── WHO IT'S FOR ──────────────────────────────────────── */}
-      <section className="py-16 px-4 bg-pma-cream" aria-labelledby="who-heading">
+      <section className="py-16 px-4 bg-white" aria-labelledby="who-heading">
         <div className="max-w-5xl mx-auto">
           <h2
             id="who-heading"
@@ -200,37 +258,19 @@ export default async function BlackFridayFlashSalePage({ searchParams }: Props) 
             Who it&apos;s for
           </h2>
           <p className="text-center text-gray-600 max-w-2xl mx-auto mb-10">
-            This sale is for <strong>new students</strong> and{" "}
-            <strong>former students</strong> who aren&apos;t currently
-            enrolled. If you&apos;re a current student, thank you for training
-            with us. This offer isn&apos;t for current students, so please ask
-            us at the front desk instead.
+            This offer is for <strong>new students</strong> and{" "}
+            <strong>former students</strong>
+            {" "}
+            whose last day with us was more than three months ago. Current and
+            recently frozen students do not qualify. If you&apos;re training
+            with us now, thank you — please ask us at the front desk about what
+            is open for you.
           </p>
-          <div className="grid md:grid-cols-2 gap-6 mb-10">
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-sm">
-              <Image
-                src="/images/preschool/tigers-group.jpg"
-                alt="Little Tigers students lined up at Prospect Martial Arts"
-                fill
-                className="object-cover object-top"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </div>
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-sm">
-              <Image
-                src="/images/preschool/dragons-group.jpg"
-                alt="Little Dragons students training together"
-                fill
-                className="object-cover object-top"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </div>
-          </div>
           <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {programs.map((p) => (
               <li
                 key={p.name}
-                className="rounded-2xl bg-white border border-gray-100 p-5 shadow-sm"
+                className="rounded-2xl bg-pma-cream border border-gray-100 p-5 shadow-sm"
               >
                 <p className="text-xs font-bold uppercase tracking-widest text-pma-red mb-1">
                   {p.ages}
@@ -243,15 +283,18 @@ export default async function BlackFridayFlashSalePage({ searchParams }: Props) 
         </div>
       </section>
 
+      <ClassPhotos heading="Our students on the mats" />
+
       {/* ── CHECKOUT ──────────────────────────────────────────── */}
       <section id="checkout" className="py-16 px-4 bg-white scroll-mt-24">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-extrabold text-center text-pma-navy mb-3">
-            Claim your spot
+            Start now
           </h2>
           <p className="text-center text-gray-600 mb-8">
-            $50 today for your uniform. Classes free through Dec 31. Regular
-            tuition starts Jan 1, 2027.
+            $50 per student to train through December 31, uniform included,
+            plus the usual card-processing fee. Choose your plan at
+            registration. Regular tuition starts January 1.
           </p>
           <SaleWindow />
         </div>
@@ -264,11 +307,11 @@ export default async function BlackFridayFlashSalePage({ searchParams }: Props) 
             id="tuition-heading"
             className="text-2xl font-extrabold text-center text-pma-navy mb-2"
           >
-            Regular monthly tuition from Jan 1, 2027
+            Regular monthly tuition from January 1, 2027
           </h2>
           <p className="text-center text-gray-600 mb-6 text-sm">
-            Billed automatically each month on the plan you choose. Month to
-            month, no long-term contract.
+            Billed automatically each month on the plan you choose. Our usual
+            family discounts apply from January 1.
           </p>
           <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white">
             <table className="w-full text-left text-sm">
@@ -293,49 +336,60 @@ export default async function BlackFridayFlashSalePage({ searchParams }: Props) 
         </div>
       </section>
 
+      {/* ── FAQ ───────────────────────────────────────────────── */}
+      <section className="py-16 px-4 bg-white" aria-labelledby="faq-heading">
+        <div className="max-w-3xl mx-auto">
+          <h2
+            id="faq-heading"
+            className="text-3xl font-extrabold text-center text-pma-navy mb-10"
+          >
+            Questions we hear
+          </h2>
+          <dl className="space-y-6">
+            {faqs.map((item) => (
+              <div key={item.q}>
+                <dt className="font-extrabold text-pma-navy">{item.q}</dt>
+                <dd className="text-gray-700 mt-1">{item.a}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
       {/* ── FINE PRINT ────────────────────────────────────────── */}
-      <section className="py-12 px-4 bg-white" aria-labelledby="fine-print">
+      <section className="py-12 px-4 bg-pma-cream" aria-labelledby="fine-print">
         <div className="max-w-3xl mx-auto">
           <h2 id="fine-print" className="text-xl font-extrabold text-pma-navy mb-4">
             The fine print
           </h2>
           <ul className="list-disc pl-5 space-y-2 text-sm text-gray-700">
             <li>
-              Checkout is open from Thu Nov 26, 2026 at 12:00 AM ET through Mon
-              Nov 30, 2026 at 11:59 PM ET.
+              Offer runs Friday, November 27, 2026 through Sunday, December 14,
+              2026 at 11:59 PM ET.
             </li>
             <li>
-              The $50 is a one-time payment for your student&apos;s uniform.
-              Classes are free from the day you enroll through Thu Dec 31,
-              2026.
+              $50 per student covers training through December 31, 2026, with a
+              uniform included. The usual card-processing fee is added on top
+              of the $50. A family of four pays $200 for the offer period.
             </li>
             <li>
-              Regular monthly tuition starts automatically on Fri Jan 1, 2027,
-              charged to the card you enter at checkout, at the regular rate
-              for the plan you choose (see the table above).
+              You choose your membership plan at registration. Regular monthly
+              tuition for that plan starts automatically on Friday, January 1,
+              2027, and our usual family discounts apply from then.
             </li>
             <li>
-              Open to new students and former students who aren&apos;t
-              currently enrolled. We review every order before it&apos;s
-              final. <Confirm>what happens if a current student checks out
-              (for example, a full refund of the $50)</Confirm>
+              Open to new students and former students whose last day with us
+              was more than three months ago. Current and recently frozen
+              students do not qualify. We review every order before it is
+              final.
             </li>
             <li>
-              This is a separate offer from our November &quot;buy one month,
-              get one free&quot; and December &quot;50% off your first
-              month&quot; specials. One new-student offer per student, so it
-              can&apos;t be combined with either.{" "}
-              <Confirm>one-offer-per-student rule</Confirm>
+              This offer cannot be combined with our November buy-one-month,
+              get-one-free special. You choose one new-student offer.
             </li>
             <li>
-              Family discounts apply to regular tuition starting Jan 1.{" "}
-              <Confirm>family discounts apply from Jan 1</Confirm>
-            </li>
-            <li>
-              Changed your mind? Call or text us before{" "}
-              <Confirm>cancel-by date, e.g. Dec 31, 2026</Confirm> and no
-              tuition will be charged. After that, our regular cancellation
-              policy applies.
+              We close from Christmas Eve. Training under this offer runs
+              through Wednesday, December 23.
             </li>
             <li>
               Questions? Call or text{" "}
@@ -364,12 +418,20 @@ export default async function BlackFridayFlashSalePage({ searchParams }: Props) 
               {PHONE_DISPLAY}
             </a>
           </p>
-          <a
-            href="#checkout"
-            className="inline-block bg-pma-red text-white font-bold px-8 py-3 rounded-full hover:opacity-90 transition-opacity"
-          >
-            Get the Deal
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="#checkout"
+              className="inline-block bg-pma-red text-white font-bold px-8 py-3 rounded-full hover:opacity-90 transition-opacity"
+            >
+              Start now
+            </a>
+            <a
+              href="/kids-trial"
+              className="inline-block text-white font-bold px-8 py-3 rounded-full border-2 border-white hover:bg-white hover:text-pma-navy transition-colors"
+            >
+              Book a free first class
+            </a>
+          </div>
         </div>
       </section>
     </>

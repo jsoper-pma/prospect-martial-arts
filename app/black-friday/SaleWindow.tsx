@@ -3,25 +3,28 @@
 import { useEffect, useState } from "react";
 import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 
-// ── Black Friday 2026 flash sale: sale window + checkout slot ─────────
+// ── Black Friday 2026 $50 offer: sale window + checkout slot ──────────
 // HIDDEN DRAFT. Nothing here goes live until Jason approves.
 //
-// Window (Eastern Time, EST in late November = UTC-5):
-//   opens  Thu Nov 26, 2026 12:00 AM ET
-//   closes Mon Nov 30, 2026 11:59 PM ET (we flip to "ended" at midnight)
+// Window (Eastern Time, EST in late November / December = UTC-5):
+//   opens  Fri Nov 27, 2026 12:00 AM ET
+//   closes Sun Dec 14, 2026 11:59 PM ET (we flip to "ended" at midnight)
 //
 // The page is statically rendered, so all date logic runs client-side
-// after mount. The server render shows a neutral placeholder.
+// after mount. The server render shows a compact placeholder (not a tall frame).
 //
 // Preview the three states with ?preview=before | open | ended
 // (preview only; it does not unlock anything in Gymdesk).
 //
 // IMPORTANT: this client-side gate only changes what this page shows.
 // It does not stop anyone who already has the Gymdesk form link. The
-// Gymdesk form / plan must also be hidden after Nov 30 inside Gymdesk.
+// Gymdesk form / plan must also be hidden after Dec 14 inside Gymdesk.
+//
+// Site-wide promo auto-switch and the /november redirect in lib/promo.ts
+// still use the older Nov 26–30 window and were left unchanged on this branch.
 
-const SALE_OPENS = new Date("2026-11-26T00:00:00-05:00");
-const SALE_CLOSES = new Date("2026-12-01T00:00:00-05:00");
+const SALE_OPENS = new Date("2026-11-27T00:00:00-05:00");
+const SALE_CLOSES = new Date("2026-12-15T00:00:00-05:00");
 
 // TODO(Jason/Chuck): paste the standalone URL of the dedicated Gymdesk
 // "Black Friday 2026" WEBSITE SIGN-UP FORM here once it is created in
@@ -134,13 +137,17 @@ export default function SaleWindow() {
           Sale not open yet
         </p>
         <h3 className="text-2xl font-extrabold text-pma-navy mb-5">
-          Checkout opens Thanksgiving morning, Thu Nov 26
+          Checkout opens Black Friday morning, Fri Nov 27
         </h3>
         <Countdown target={SALE_OPENS} now={now} />
         <p className="mt-6 text-gray-600">
           Want a reminder or have a question? Call or text{" "}
           <a href={PHONE_HREF} className="font-semibold text-pma-navy underline">
             {PHONE_DISPLAY}
+          </a>
+          . You can also{" "}
+          <a href="/kids-trial" className="font-semibold text-pma-navy underline">
+            book a free first class
           </a>
           .
         </p>
@@ -155,7 +162,7 @@ export default function SaleWindow() {
           Sale ended
         </p>
         <h3 className="text-2xl font-extrabold text-pma-navy mb-3">
-          Our Black Friday flash sale ended Mon Nov 30
+          Our Black Friday offer ended Sunday, December 14
         </h3>
         <p className="text-gray-700 mb-6">
           Thank you to every family who joined us. Your first Tang Soo Do class
@@ -175,7 +182,7 @@ export default function SaleWindow() {
   return (
     <div className="rounded-2xl bg-white border border-pma-red/40 px-6 py-8 text-center shadow-sm">
       <p className="text-sm font-bold uppercase tracking-widest text-pma-red mb-2">
-        Sale is open · ends Mon Nov 30 at 11:59 PM ET
+        Sale is open · ends Sun Dec 14 at 11:59 PM ET
       </p>
       <div className="mb-6">
         <Countdown target={SALE_CLOSES} now={now} />
@@ -187,11 +194,12 @@ export default function SaleWindow() {
             href={BF_SIGNUP_URL}
             className="inline-block bg-pma-red text-white font-bold text-lg px-10 py-4 rounded-full shadow-lg hover:opacity-90 transition-opacity"
           >
-            Check Out: $50
+            Start now: $50
           </a>
           <p className="mt-3 text-xs text-gray-500">
-            Secure checkout on our Gymdesk sign-up form. You&apos;ll come right
-            back here when you&apos;re done.
+            Secure checkout on our Gymdesk sign-up form. The usual
+            card-processing fee is added on top of the $50. You&apos;ll come
+            right back here when you&apos;re done.
           </p>
         </>
       ) : (
@@ -206,7 +214,8 @@ export default function SaleWindow() {
           </p>
           <p className="text-sm">
             Placeholder: waiting on the Black Friday 2026 sign-up form link
-            from Gymdesk. No payment is collected on this draft.
+            from Gymdesk. No payment is collected on this draft. The usual
+            card-processing fee will be added on top of the $50 at checkout.
           </p>
         </div>
       )}
@@ -215,6 +224,10 @@ export default function SaleWindow() {
         Rather check out by phone? Call or text{" "}
         <a href={PHONE_HREF} className="font-semibold text-pma-navy underline">
           {PHONE_DISPLAY}
+        </a>
+        . Or{" "}
+        <a href="/kids-trial" className="font-semibold text-pma-navy underline">
+          book a free first class
         </a>
         .
       </p>
