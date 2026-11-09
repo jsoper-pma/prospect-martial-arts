@@ -1,10 +1,20 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { programLinksLong as programLinks, quickLinks } from "@/lib/nav";
 import BookTrialLink from "@/components/BookTrialLink";
 import { ADDRESS, EMAIL, PHONE_DISPLAY, PHONE_HREF, SOCIALS } from "@/lib/site";
 
 export default function Footer() {
+  const pathname = usePathname();
+  // Match StickyMobileCTA: no extra bottom padding on pages where the
+  // mobile bar is hidden, so the copyright strip is not a tall empty gap.
+  const stickyHidden =
+    pathname === "/" ||
+    pathname?.startsWith("/black-friday") ||
+    pathname?.startsWith("/lp");
   return (
     <footer className="bg-pma-navy text-white mt-auto">
       {/* ── QUOTE BAND ────────────────────────────────────────── */}
@@ -128,8 +138,12 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom bar — extra bottom padding on mobile clears the sticky CTA */}
-      <div className="bg-pma-navy-dark text-center text-blue-300 text-xs py-4 px-4 pb-24 md:pb-4">
+      {/* Bottom bar — extra mobile padding only when the sticky CTA is shown */}
+      <div
+        className={`bg-pma-navy-dark text-center text-blue-300 text-xs py-4 px-4 ${
+          stickyHidden ? "" : "pb-24 md:pb-4"
+        }`}
+      >
         <p>© {new Date().getFullYear()} Prospect Martial Arts · {ADDRESS.full} · All Rights Reserved</p>
         <p className="mt-1">Website built and cared for by <a href="https://pageorchard.com" target="_blank" rel="noopener nofollow" className="text-blue-200 hover:text-white hover:underline transition-colors">PageOrchard</a></p>
       </div>

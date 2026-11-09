@@ -154,16 +154,6 @@ export const UPCOMING_PROMOS: Promo[] = [
     start: NOV_BOGO_START,
     end: NOV_BOGO_END,
   },
-  {
-    id: "dec-2026-50-off",
-    active: false,
-    headline: "TBD - December 50% off (not approved)",
-    text: "TBD",
-    start: "2026-12-01T00:00:00-05:00",
-    end: "2026-12-31T23:59:59-05:00",
-    ctaLabel: "TBD",
-    ctaHref: "/kids-trial",
-  },
 ];
 
 export function getActivePromo(now: Date = new Date()): Promo | null {

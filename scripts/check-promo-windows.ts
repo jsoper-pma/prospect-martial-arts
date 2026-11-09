@@ -20,7 +20,9 @@ const rows: Row[] = [
   { label: "Nov 27 12:00 AM ET", iso: "2026-11-27T00:00:00-05:00", expect: "black-friday-2026" },
   { label: "Dec 14 12:00 PM ET", iso: "2026-12-14T12:00:00-05:00", expect: "black-friday-2026" },
   { label: "Dec 14 11:59:59 PM ET", iso: "2026-12-14T23:59:59-05:00", expect: "black-friday-2026" },
+  // After BLACK_FRIDAY_END, no follow-on promo is scheduled.
   { label: "Dec 15 12:00 AM ET", iso: "2026-12-15T00:00:00-05:00", expect: null },
+  { label: "Dec 20 12:00 PM ET", iso: "2026-12-20T12:00:00-05:00", expect: null },
 ];
 
 function trialExpect(id: string | null): string {
