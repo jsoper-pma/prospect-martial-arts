@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
-import AdLanding from "@/components/AdLanding";
+import AdLanding, { getAdLandingMetadata } from "@/components/AdLanding";
 
-export const metadata: Metadata = {
-  title: "Free Tang Soo Do Trial Class | Prospect Martial Arts",
-  description: "Book a free Tang Soo Do trial class at Prospect Martial Arts in Prospect, CT.",
-  robots: { index: false, follow: false },
-};
+export const generateMetadata = (): Metadata => getAdLandingMetadata();
 
 type Props = { searchParams: Promise<Record<string, string | string[] | undefined>> };
 

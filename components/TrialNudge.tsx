@@ -7,8 +7,8 @@ import BookTrialLink from "@/components/BookTrialLink";
 
 // Small desktop-only corner card. Not a modal, not an overlay.
 // Shows after ~20s OR ~50% scroll (whichever first). Once per 30 days.
-// Hidden on /demo (custom chrome) and /black-friday (promo landing; the card
-// overlapped offer copy on desktop preview).
+// Hidden on /demo (custom chrome), /black-friday, and /lp/* (promo/ad pages;
+// the card overlapped offer photos and copy on desktop preview).
 const DISMISS_KEY = "pma-trial-nudge-dismissed";
 const INTENT_KEY = "pma-trial-intent";
 const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
@@ -66,7 +66,7 @@ export default function TrialNudge() {
   const armedRef = useRef(false);
 
   useEffect(() => {
-    if (pathname?.startsWith("/demo") || pathname?.startsWith("/black-friday")) return;
+    if (pathname?.startsWith("/demo") || pathname?.startsWith("/black-friday") || pathname?.startsWith("/lp")) return;
     if (armedRef.current) return;
     if (hasRecentDismiss() || hasTrialIntent()) return;
 
@@ -129,7 +129,7 @@ export default function TrialNudge() {
     };
   }, [pathname]);
 
-  if (pathname?.startsWith("/demo") || pathname?.startsWith("/black-friday") || !visible) return null;
+  if (pathname?.startsWith("/demo") || pathname?.startsWith("/black-friday") || pathname?.startsWith("/lp") || !visible) return null;
 
   const dismiss = () => {
     dismissFor30Days();

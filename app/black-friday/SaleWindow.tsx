@@ -2,14 +2,18 @@
 
 import { useEffect, useState } from "react";
 import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
+import {
+  BLACK_FRIDAY_START,
+  BF_END_DISPLAY,
+  BF_END_DISPLAY_LONG,
+  BF_START_DISPLAY,
+  blackFridayClosesAt,
+} from "@/lib/promo";
 
 // ── Black Friday 2026 $50 offer: sale window + checkout slot ──────────
 // HIDDEN DRAFT. Nothing here goes live until Jason approves.
 //
-// Window (Eastern Time, EST in late November / December = UTC-5):
-//   opens  Fri Nov 27, 2026 12:00 AM ET
-//   closes Sun Dec 14, 2026 11:59 PM ET (we flip to "ended" at midnight)
-//
+// Window comes from lib/promo.ts (BLACK_FRIDAY_START / BLACK_FRIDAY_END).
 // The page is statically rendered, so all date logic runs client-side
 // after mount. The server render shows a compact placeholder (not a tall frame).
 //
@@ -18,13 +22,10 @@ import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 //
 // IMPORTANT: this client-side gate only changes what this page shows.
 // It does not stop anyone who already has the Gymdesk form link. The
-// Gymdesk form / plan must also be hidden after Dec 14 inside Gymdesk.
-//
-// Site-wide promo auto-switch and the /november redirect in lib/promo.ts
-// still use the older Nov 26–30 window and were left unchanged on this branch.
+// Gymdesk form / plan must also be hidden after BLACK_FRIDAY_END inside Gymdesk.
 
-const SALE_OPENS = new Date("2026-11-27T00:00:00-05:00");
-const SALE_CLOSES = new Date("2026-12-15T00:00:00-05:00");
+const SALE_OPENS = new Date(BLACK_FRIDAY_START);
+const SALE_CLOSES = blackFridayClosesAt();
 
 // TODO(Jason/Chuck): paste the standalone URL of the dedicated Gymdesk
 // "Black Friday 2026" WEBSITE SIGN-UP FORM here once it is created in
@@ -137,7 +138,7 @@ export default function SaleWindow() {
           Sale not open yet
         </p>
         <h3 className="text-2xl font-extrabold text-pma-navy mb-5">
-          Checkout opens Black Friday morning, Fri Nov 27
+          Checkout opens Black Friday morning, {BF_START_DISPLAY}
         </h3>
         <Countdown target={SALE_OPENS} now={now} />
         <p className="mt-6 text-gray-600">
@@ -162,7 +163,7 @@ export default function SaleWindow() {
           Sale ended
         </p>
         <h3 className="text-2xl font-extrabold text-pma-navy mb-3">
-          Our Black Friday offer ended Sunday, December 14
+          Our Black Friday offer ended {BF_END_DISPLAY_LONG}
         </h3>
         <p className="text-gray-700 mb-6">
           Thank you to every family who joined us. Your first Tang Soo Do class
@@ -182,7 +183,7 @@ export default function SaleWindow() {
   return (
     <div className="rounded-2xl bg-white border border-pma-red/40 px-6 py-8 text-center shadow-sm">
       <p className="text-sm font-bold uppercase tracking-widest text-pma-red mb-2">
-        Sale is open · ends Sun Dec 14 at 11:59 PM ET
+        Sale is open · ends {BF_END_DISPLAY} at 11:59 PM ET
       </p>
       <div className="mb-6">
         <Countdown target={SALE_CLOSES} now={now} />

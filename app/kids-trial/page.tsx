@@ -14,7 +14,8 @@ import {
 export const revalidate = 3600; // re-check promo dates hourly
 
 // Offer wording (metadata + page copy) follows the lib/promo.ts windows: October $50,
-// November BOGO, then plain free-trial wording. Re-evaluated on each hourly revalidate.
+// November BOGO, Black Friday $50 offer, then plain free-trial wording.
+// Re-evaluated on each hourly revalidate.
 export function generateMetadata(): Metadata {
   const meta = TRIAL_META[getTrialOfferKey()];
   return {

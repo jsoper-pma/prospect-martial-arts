@@ -1,17 +1,46 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import TrialSplit from "@/components/TrialSplit";
 import TrialConversion from "@/components/TrialConversion";
 import NovBogoOffer from "@/components/NovBogoOffer";
 import UtmDefaults from "@/components/UtmDefaults";
 import ClassPhotos from "@/components/ClassPhotos";
-import { showBf, showNovBogo } from "@/lib/promo";
+import {
+  BF_COPY,
+  BF_META,
+  NOV_BOGO_START,
+  isBfLive,
+  isNovBogoLive,
+  showBf,
+  showNovBogo,
+} from "@/lib/promo";
 import { ADDRESS, PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 
 // Paid-ad landing page body for /lp/meta and /lp/google. Always noindex; not in nav/sitemap.
-// Nov 1-25 ET: November BOGO. Nov 26-30 ET: Black Friday flash sale (links to /black-friday
-// checkout). Hidden (404) before Nov 1 unless ?promoPreview=nov or bf. After Nov 30: plain
-// free-trial wording.
-const LAUNCH = new Date("2026-11-01T00:00:00-04:00").getTime();
+// Windows come from lib/promo.ts: November BOGO through NOV_BOGO_END, then the
+// Black Friday offer (links to /black-friday checkout) through BLACK_FRIDAY_END.
+// Hidden (404) before NOV_BOGO_START unless ?promoPreview=nov or bf. After the
+// Black Friday window: plain free-trial wording.
+
+export function getAdLandingMetadata(): Metadata {
+  const robots = { index: false as const, follow: false as const };
+  if (isBfLive()) {
+    return { title: BF_META.title, description: BF_META.description, robots };
+  }
+  if (isNovBogoLive()) {
+    return {
+      title: "November Offer: Buy One Month, Get One Free | Prospect Martial Arts",
+      description:
+        "Sign up for Tang Soo Do in November at Prospect Martial Arts and the following month is free. Book a free trial class in Prospect, CT.",
+      robots,
+    };
+  }
+  return {
+    title: "Free Tang Soo Do Trial Class | Prospect Martial Arts",
+    description: "Book a free Tang Soo Do trial class at Prospect Martial Arts in Prospect, CT.",
+    robots,
+  };
+}
 
 export default function AdLanding({
   source,
@@ -22,10 +51,10 @@ export default function AdLanding({
 }) {
   const bf = showBf(preview);
   const bogo = !bf && showNovBogo(preview);
-  if (!bogo && !bf && Date.now() < LAUNCH) notFound();
+  if (!bogo && !bf && Date.now() < new Date(NOV_BOGO_START).getTime()) notFound();
   const campaign = bf ? "black-friday" : "nov-bogo";
   const utm = { utm_source: source, utm_medium: "paid", utm_campaign: campaign };
-  const bfHref = `/black-friday?utm_source=${source}&utm_medium=paid&utm_campaign=black-friday${
+  const bfHref = `${BF_COPY.ctaHref}?utm_source=${source}&utm_medium=paid&utm_campaign=black-friday${
     bf && preview ? "&promoPreview=bf" : ""
   }#checkout`;
   return (
@@ -35,12 +64,12 @@ export default function AdLanding({
       <section className="py-16 px-4 text-center text-white bg-pma-navy">
         <div className="max-w-3xl mx-auto">
           <span className="inline-block text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-widest bg-pma-red">
-            {bf ? "Black Friday Flash Sale · 5 days only" : bogo ? "November Offer" : "Free Trial Class"}
+            {bf ? BF_COPY.label : bogo ? "November Offer" : "Free Trial Class"}
           </span>
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
             {bf ? (
               <>
-                Start Tang Soo Do for <span style={{ color: "#E22D33" }}>$50</span>
+                Train through December 31 for <span style={{ color: "#E22D33" }}>$50</span>
               </>
             ) : bogo ? (
               <>
@@ -52,7 +81,7 @@ export default function AdLanding({
           </h1>
           <p className="text-blue-100 text-lg max-w-xl mx-auto mb-8">
             {bf
-              ? "Thanksgiving through Cyber Monday: $50 for your uniform, classes free through Dec 31, regular tuition starts Jan 1. For new and former students, ages 3 through adult."
+              ? BF_COPY.text
               : bogo
                 ? "Book a free Tang Soo Do trial class in Prospect, CT. Sign up in November, and the following month is free."
                 : "Book a free Tang Soo Do trial class in Prospect, CT. Nothing to pay to book."}
@@ -61,11 +90,11 @@ export default function AdLanding({
             href={bf ? bfHref : "#trial"}
             className="inline-block bg-pma-red text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:opacity-90"
           >
-            {bf ? "Get the Deal" : "Book Your Free Trial"}
+            {bf ? BF_COPY.ctaLabel : "Book Your Free Trial"}
           </a>
           {bf && (
             <p className="mt-4 text-blue-100 text-sm">
-              Sale ends Mon Nov 30 at 11:59 PM ET.{" "}
+              {BF_COPY.endsLine}{" "}
               <a href="#trial" className="underline text-white">Rather try a free class first?</a>
             </p>
           )}

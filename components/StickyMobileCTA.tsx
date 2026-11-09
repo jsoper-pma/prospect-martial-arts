@@ -6,11 +6,11 @@ import BookTrialLink from "@/components/BookTrialLink";
 import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 
 // Fixed bottom bar on mobile only. Two actions: book a trial (#trial)
-// and click-to-call. Hidden on /black-friday so it does not cover the
-// promo hero photo (the page already has Start now, free-class, and call CTAs).
+// and click-to-call. Hidden on /black-friday and /lp/* so it does not cover
+// promo photos (those pages already have Start now, free-class, and call CTAs).
 export default function StickyMobileCTA() {
   const pathname = usePathname();
-  if (pathname?.startsWith("/black-friday")) return null;
+  if (pathname?.startsWith("/black-friday") || pathname?.startsWith("/lp")) return null;
 
   return (
     <div className="fixed bottom-0 inset-x-0 z-40 md:hidden bg-pma-navy-dark/95 backdrop-blur border-t border-white/10 px-3 py-2.5 flex gap-2 [padding-bottom:calc(0.625rem+env(safe-area-inset-bottom))]">

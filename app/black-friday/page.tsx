@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { showBf } from "@/lib/promo";
+import {
+  BF_COPY,
+  BF_END_DISPLAY,
+  BF_END_WEEKDAY,
+  BF_END_DISPLAY_LONG,
+  BF_META,
+  BF_START_DISPLAY,
+  showBf,
+} from "@/lib/promo";
 import Image from "next/image";
 import ClassPhotos from "@/components/ClassPhotos";
 import SaleWindow from "./SaleWindow";
@@ -15,17 +23,12 @@ import { ADDRESS, EMAIL, PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 // - noindex/nofollow, not in nav, footer, home page, or app/sitemap.ts.
 // - Local draft only. Nothing goes live until Jason approves a push.
 // - Public copy from /workspace/pma-promos/bf-50-offer/public-copy.md
-//   (Chuck, Nov 9, 2026). Offer: $50 per student to train through Dec 31,
-//   uniform included. Sale Fri Nov 27–Sun Dec 14, 2026.
-// - Site-wide promo windows in lib/promo.ts, the /november redirect, and
-//   /lp ad copy still use the older Nov 26–30 flash-sale window. Those
-//   were left unchanged on this branch (live redirect behavior). Flag
-//   for Chuck before any push.
+//   (Chuck, Nov 9, 2026). Offer and sale window come from lib/promo.ts
+//   (BLACK_FRIDAY_START / BLACK_FRIDAY_END and BF_COPY / BF_META).
 
 export const metadata: Metadata = {
-  title: "Black Friday Offer: Train through December 31 for $50",
-  description:
-    "Train in Tang Soo Do at Prospect Martial Arts through December 31 for $50 per student, uniform included, plus the usual card-processing fee. New students and former students gone more than three months. Offer ends December 14.",
+  title: BF_META.title,
+  description: BF_META.description,
   robots: { index: false, follow: false },
 };
 
@@ -72,7 +75,7 @@ const tuitionRows = [
 
 const steps = [
   {
-    title: "Check out by Sun Dec 14",
+    title: `Check out by ${BF_END_DISPLAY}`,
     body: "$50 per student to train through December 31, plus the usual card-processing fee. A uniform is included.",
   },
   {
@@ -120,7 +123,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "When does the sale end?",
-    a: "Sunday, December 14, 2026.",
+    a: `${BF_END_DISPLAY_LONG}.`,
   },
   {
     q: "What about the holiday break?",
@@ -135,8 +138,8 @@ const faqs: { q: string; a: string }[] = [
 type Props = { searchParams: Promise<Record<string, string | string[] | undefined>> };
 
 // Hidden (404) outside the site-wide Black Friday window in lib/promo.ts
-// (currently Nov 26–30 ET) unless ?promoPreview=bf or the draft's own
-// ?preview=before|open|ended. Local review: /black-friday?promoPreview=bf&preview=open
+// unless ?promoPreview=bf or the draft's own ?preview=before|open|ended.
+// Local review: /black-friday?promoPreview=bf&preview=open
 export default async function BlackFridayFlashSalePage({ searchParams }: Props) {
   const sp = await searchParams;
   if (!showBf(sp.promoPreview) && !sp.preview) notFound();
@@ -147,21 +150,20 @@ export default async function BlackFridayFlashSalePage({ searchParams }: Props) 
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
           <div className="text-center md:text-left">
             <span className="inline-block text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-widest bg-pma-red">
-              Black Friday Offer · Nov 27–Dec 14
+              {BF_COPY.label}
             </span>
             <h1 className="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
-              Train through December 31 for $50
+              {BF_COPY.headline}
             </h1>
             <p className="text-lg text-blue-100 mb-6">
-              Tang Soo Do at Prospect Martial Arts — uniform included. New
-              students and former students gone more than three months.
+              {BF_COPY.subhead}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <a
                 href="#checkout"
                 className="inline-block bg-pma-red text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:opacity-90 transition-opacity"
               >
-                Start now
+                {BF_COPY.ctaLabel}
               </a>
               <a
                 href="/kids-trial"
@@ -171,8 +173,7 @@ export default async function BlackFridayFlashSalePage({ searchParams }: Props) 
               </a>
             </div>
             <p className="mt-5 text-sm text-blue-200">
-              Offer Nov 27–Dec 14 · $50 per student · usual card fee added ·
-              cannot combine with November buy-one-get-one
+              {BF_COPY.finePrint}
             </p>
           </div>
           <div className="relative aspect-[3/2] rounded-2xl overflow-hidden shadow-xl border-4 border-white/20">
@@ -195,16 +196,16 @@ export default async function BlackFridayFlashSalePage({ searchParams }: Props) 
             <p className="text-xs font-bold uppercase tracking-widest opacity-90">
               Starts Black Friday
             </p>
-            <p className="text-2xl font-extrabold">Fri Nov 27, 2026</p>
+            <p className="text-2xl font-extrabold">{BF_START_DISPLAY}</p>
           </div>
           <span className="text-2xl font-extrabold hidden sm:block" aria-hidden="true">
             →
           </span>
           <div>
             <p className="text-xs font-bold uppercase tracking-widest opacity-90">
-              Ends Sunday
+              Ends {BF_END_WEEKDAY}
             </p>
-            <p className="text-2xl font-extrabold">Sun Dec 14, 2026</p>
+            <p className="text-2xl font-extrabold">{BF_END_DISPLAY}</p>
           </div>
         </div>
       </section>
@@ -364,8 +365,8 @@ export default async function BlackFridayFlashSalePage({ searchParams }: Props) 
           </h2>
           <ul className="list-disc pl-5 space-y-2 text-sm text-gray-700">
             <li>
-              Offer runs Friday, November 27, 2026 through Sunday, December 14,
-              2026 at 11:59 PM ET.
+              Offer runs {BF_START_DISPLAY} through {BF_END_DISPLAY} at 11:59 PM
+              ET.
             </li>
             <li>
               $50 per student covers training through December 31, 2026, with a

@@ -3,15 +3,17 @@ import { getActivePromo, getPreviewPromo } from "@/lib/promo";
 
 // /kids-trial offer wording, driven by the lib/promo.ts windows so it switches with the
 // promo card (no rebuild; pages revalidate hourly):
-//   oct-50   = October $50 first month (through 2026-10-31 23:59:59 ET)
-//   nov-bogo = November Buy One Month, Get One Free (2026-11-01 00:00 to 11-25 23:59:59 ET; Black Friday week Nov 26-30 falls back to none - TODO BF wording)
-//   none     = plain free-trial wording (no promo active)
-export type TrialOfferKey = "oct-50" | "nov-bogo" | "none";
+//   oct-50         = October $50 first month (CURRENT_PROMO window in lib/promo.ts)
+//   nov-bogo       = November Buy One Month, Get One Free (NOV_BOGO_START through NOV_BOGO_END)
+//   black-friday   = $50 per student to train through Dec 31 (BLACK_FRIDAY_START through BLACK_FRIDAY_END)
+//   none           = plain free-trial wording (no promo active)
+export type TrialOfferKey = "oct-50" | "nov-bogo" | "black-friday" | "none";
 export type TrialOfferSlot = "badge" | "hero" | "step3" | "form";
 
 function keyForPromoId(id: string | undefined): TrialOfferKey {
   if (!id) return "none";
   if (id.startsWith("oct-2026")) return "oct-50";
+  if (id.startsWith("black-friday")) return "black-friday";
   if (id.startsWith("nov-2026-bogo")) return "nov-bogo";
   return "none";
 }
@@ -20,7 +22,7 @@ export function getTrialOfferKey(now: Date = new Date()): TrialOfferKey {
   return keyForPromoId(getActivePromo(now)?.id);
 }
 
-// ?promoPreview=nov -> November wording (client-side preview only).
+// ?promoPreview=nov | bf -> that offer's wording (client-side preview only).
 export function getPreviewTrialOfferKey(param: string | null | undefined): TrialOfferKey | null {
   const p = getPreviewPromo(param);
   return p ? keyForPromoId(p.id) : null;
@@ -38,6 +40,12 @@ export const TRIAL_META: Record<TrialOfferKey, { description: string; ogDescript
       "Book a free Tang Soo Do trial class for preschool and kids in Prospect, CT. Buy one month, get one free: join in November, and your second month of Tang Soo Do is free.",
     ogDescription:
       "Free trial class for Little Tigers, Little Dragons, and kids. Join in November, and your second month of Tang Soo Do is free. Prospect, CT.",
+  },
+  "black-friday": {
+    description:
+      "Book a free Tang Soo Do trial class in Prospect, CT. $50 per student to train through December 31, uniform included, plus the usual card-processing fee. Offer ends December 14.",
+    ogDescription:
+      "Free trial class, then $50 per student to train through December 31, uniform included. Prospect, CT. Offer ends December 14.",
   },
   none: {
     description:
@@ -87,6 +95,29 @@ export const TRIAL_COPY: Record<TrialOfferKey, Record<TrialOfferSlot, ReactNode>
       </>
     ),
     form: <>Free trial first · following month free when you sign up in November ·</>,
+  },
+  "black-friday": {
+    badge: <>Black Friday Offer · Preschool &amp; Kids</>,
+    hero: (
+      <>
+        Train through December 31 for{" "}
+        <span className="text-yellow-300">$50</span>
+        <span className="font-normal text-blue-100">
+          {" "}
+          per student, uniform included, plus the usual card-processing fee. Book
+          a free first class today — nothing to pay to book.
+        </span>
+      </>
+    ),
+    step3: (
+      <>
+        <strong className="text-pma-navy">Love it? Train through December 31 for $50.</strong>{" "}
+        A uniform is included, and the usual card-processing fee is added on
+        top. For new students and former students gone more than three months.
+        Cannot combine with November buy-one-get-one.
+      </>
+    ),
+    form: <>Free trial first · $50 per student to train through Dec 31, uniform included ·</>,
   },
   none: {
     badge: <>Free Trial · Preschool &amp; Kids</>,

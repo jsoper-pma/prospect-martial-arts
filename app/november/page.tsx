@@ -5,9 +5,10 @@ import ClassPhotos from "@/components/ClassPhotos";
 import { isBfLive, isNovBogoLive, showNovBogo } from "@/lib/promo";
 import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 
-// November BOGO landing page. Hidden (404) before Nov 1 00:00 ET and again from Nov 26
-// (Black Friday week, redirect) unless ?promoPreview=nov. noindex until the offer is live.
-// Nov 26-30 (Black Friday week) /november redirects to /black-friday; ?promoPreview=bf previews that.
+// November BOGO landing page. Hidden (404) before NOV_BOGO_START and again once
+// the Black Friday window in lib/promo.ts is live (redirect) unless ?promoPreview=nov.
+// noindex until the offer is live. While isBfLive(), /november redirects to
+// /black-friday; ?promoPreview=bf previews that.
 const CTA = "/kids-trial?utm_source=website&utm_campaign=nov-bogo";
 
 type Props = { searchParams: Promise<Record<string, string | string[] | undefined>> };
