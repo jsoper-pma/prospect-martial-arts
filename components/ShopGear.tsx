@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { ExternalLink } from "lucide-react";
-import { MERCH_STORE_URL } from "@/lib/site";
+import Link from "next/link";
 
 // Quiet homepage merch block. One product photo, short school-voice copy,
-// and a single button to the Printify store. Sits after the final trial CTA
-// so it does not compete with the promo card or the free-class close.
+// and a single button to /merch (redirects to the shop). Sits after the
+// final trial CTA so it does not compete with the promo card or the
+// free-class close.
 export default function ShopGear() {
   return (
     <section className="py-16 px-4 bg-pma-cream" aria-labelledby="shop-gear-heading">
@@ -26,16 +26,12 @@ export default function ShopGear() {
             We made school gear for our students and families — a zip hoodie, a mug, and a
             logo sticker with the Prospect Martial Arts name on them.
           </p>
-          <a
-            href={MERCH_STORE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-pma-red text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:opacity-90 transition-opacity"
+          <Link
+            href="/merch"
+            className="inline-block bg-pma-red text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg hover:opacity-90 transition-opacity"
           >
             Shop merch
-            <ExternalLink className="w-4 h-4" aria-hidden />
-            <span className="sr-only"> (opens in a new tab)</span>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

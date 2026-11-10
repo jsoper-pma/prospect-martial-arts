@@ -53,5 +53,3 @@ export const REVIEWS = {
   count: 64,
 };
 
-// Official merch shop (Printify pop-up store). /merch redirects here.
-export const MERCH_STORE_URL = "https://prospect-martial-arts.printify.me/";
