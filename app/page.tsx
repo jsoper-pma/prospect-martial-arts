@@ -7,6 +7,7 @@ import { CheckCircle2, Users, Medal, Sparkles, Swords } from "lucide-react";
 import TrialSplit from "@/components/TrialSplit";
 import ScheduleTable from "@/components/ScheduleTable";
 import SchoolNotices from "@/components/SchoolNotices";
+import ShopGear from "@/components/ShopGear";
 
 export const revalidate = 300; // re-check promo dates every 5 min (closing banner checks in the browser)
 
@@ -403,6 +404,9 @@ export default function HomePage() {
           Book Your Free Trial Now
         </a>
       </section>
+
+      {/* ── SCHOOL STORE ──────────────────────────────────────── */}
+      <ShopGear />
     </>
   );
 }

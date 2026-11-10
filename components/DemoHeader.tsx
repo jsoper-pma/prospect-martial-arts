@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { mainLinks, programLinks } from "@/lib/nav";
+import { mainLinks, programLinks, storeLinks } from "@/lib/nav";
 import { BOOKING_URL, PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 
 // Site navigation for the Demo Team page, styled from the demo page's own
@@ -13,14 +13,22 @@ import { BOOKING_URL, PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 export default function DemoHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [programsOpen, setProgramsOpen] = useState(false);
+  const [storeOpen, setStoreOpen] = useState(false);
   const pathname = usePathname();
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const storeRef = useRef<HTMLDivElement>(null);
+  const programsButtonRef = useRef<HTMLButtonElement>(null);
+  const storeButtonRef = useRef<HTMLButtonElement>(null);
 
   // Close desktop dropdown on outside click
   useEffect(() => {
     function onClick(e: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+      const t = e.target as Node;
+      if (dropdownRef.current && !dropdownRef.current.contains(t)) {
         setProgramsOpen(false);
+      }
+      if (storeRef.current && !storeRef.current.contains(t)) {
+        setStoreOpen(false);
       }
     }
     document.addEventListener("mousedown", onClick);
@@ -31,7 +39,30 @@ export default function DemoHeader() {
   useEffect(() => {
     setMenuOpen(false);
     setProgramsOpen(false);
+    setStoreOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (e.key !== "Escape") return;
+      if (programsOpen) {
+        setProgramsOpen(false);
+        programsButtonRef.current?.focus();
+        return;
+      }
+      if (storeOpen) {
+        setStoreOpen(false);
+        storeButtonRef.current?.focus();
+        return;
+      }
+      if (menuOpen) setMenuOpen(false);
+    }
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [programsOpen, storeOpen, menuOpen]);
+
+  const midLinks = mainLinks.slice(3, 5);
+  const postStoreLinks = mainLinks.slice(5);
 
   return (
     <header className="demo-header">
@@ -63,10 +94,15 @@ export default function DemoHeader() {
           {/* Programs dropdown */}
           <div className="demo-dropdown" ref={dropdownRef}>
             <button
+              ref={programsButtonRef}
               type="button"
-              onClick={() => setProgramsOpen(!programsOpen)}
+              onClick={() => {
+                setProgramsOpen((open) => !open);
+                setStoreOpen(false);
+              }}
               aria-expanded={programsOpen}
               aria-haspopup="true"
+              aria-controls="demo-programs-menu"
               className="demo-dropdown-toggle"
             >
               Programs
@@ -79,7 +115,7 @@ export default function DemoHeader() {
               </svg>
             </button>
             {programsOpen && (
-              <div className="demo-dropdown-panel">
+              <div id="demo-programs-menu" className="demo-dropdown-panel">
                 {programLinks.map((p) => (
                   <Link
                     key={p.href}
@@ -94,7 +130,54 @@ export default function DemoHeader() {
             )}
           </div>
 
-          {mainLinks.slice(3).map((link) => (
+          {midLinks.map((link) => (
+            <Link key={link.href} href={link.href} className="demo-nav-link">
+              {link.label}
+            </Link>
+          ))}
+
+          <div className="demo-dropdown" ref={storeRef}>
+            <button
+              ref={storeButtonRef}
+              type="button"
+              onClick={() => {
+                setStoreOpen((open) => !open);
+                setProgramsOpen(false);
+              }}
+              aria-expanded={storeOpen}
+              aria-haspopup="true"
+              aria-controls="demo-store-menu"
+              className="demo-dropdown-toggle"
+            >
+              Store
+              <svg
+                className={`demo-chevron${storeOpen ? " is-open" : ""}`}
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            {storeOpen && (
+              <div id="demo-store-menu" className="demo-dropdown-panel">
+                {storeLinks.map((item) => (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setStoreOpen(false)}
+                    className="demo-dropdown-item"
+                  >
+                    {item.label}
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {postStoreLinks.map((link) => (
             <Link key={link.href} href={link.href} className="demo-nav-link">
               {link.label}
             </Link>
@@ -163,7 +246,54 @@ export default function DemoHeader() {
               </Link>
             ))}
 
-            {mainLinks.slice(3).map((link) => (
+            {midLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className="demo-mobile-link"
+              >
+                {link.label}
+              </Link>
+            ))}
+
+            <button
+              type="button"
+              onClick={() => setStoreOpen((open) => !open)}
+              aria-expanded={storeOpen}
+              aria-controls="demo-mobile-store-menu"
+              className="demo-mobile-link"
+            >
+              Store
+              <svg
+                className={`demo-chevron${storeOpen ? " is-open" : ""}`}
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                width="16"
+                height="16"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            {storeOpen && (
+              <div id="demo-mobile-store-menu">
+                {storeLinks.map((item) => (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setMenuOpen(false)}
+                    className="demo-mobile-link is-nested"
+                  >
+                    {item.label}
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                ))}
+              </div>
+            )}
+
+            {postStoreLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}

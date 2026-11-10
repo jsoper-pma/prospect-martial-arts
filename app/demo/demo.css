@@ -404,6 +404,8 @@ body:has(.demo-page) {
   border-top: 1px solid var(--border);
   background: var(--bg-elevated);
   padding: 0.5rem 0 1.25rem;
+  max-height: calc(100dvh - 4.5rem);
+  overflow-y: auto;
 }
 
 @media (min-width: 1080px) {
@@ -435,6 +437,19 @@ body:has(.demo-page) {
 
 .demo-page .demo-mobile-link.is-nested {
   padding-left: 0.85rem;
+}
+
+.demo-page button.demo-mobile-link {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  color: var(--text-muted);
 }
 
 .demo-page .demo-mobile-heading {
