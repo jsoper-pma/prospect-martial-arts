@@ -33,19 +33,20 @@ export const CURRENT_PROMO: Promo = {
 // November BOGO (Marketing 10/12 + 10/20 launch brief). Card/banner links to the /november
 // landing page. Note: DST ends Nov 1 at 2am, so Nov 1 00:00 is still -04:00; later dates -05:00.
 //
-// NOV_BOGO_END is the single switch for when buy-one-get-one stops. It is currently
-// Thursday, November 26, 2026 at 11:59 PM ET. Change this one value if Jason wants
-// Wednesday, November 25 instead. Black Friday still starts Friday, November 27
-// (BLACK_FRIDAY_START below), so a Nov 25 end would leave Thanksgiving as a gap.
+// NOV_BOGO_END is the single switch for when buy-one-get-one stops.
+// Jason's Black Friday window starts Thursday, November 26, 2026 at 12:00 AM ET.
+// Leaving NOV_BOGO_END at Nov 26 11:59 PM ET would overlap the first day of
+// the sale, so BOGO now ends Wednesday, November 25, 2026 at 11:59 PM ET.
+// Handoff: BOGO through Wed Nov 25 11:59:59 PM ET; Black Friday from
+// Thu Nov 26 12:00 AM ET through Mon Dec 14 11:59:59 PM ET. No overlap, no gap.
 export const NOV_BOGO_START = "2026-11-01T00:00:00-04:00";
-export const NOV_BOGO_END = "2026-11-26T23:59:59-05:00";
+export const NOV_BOGO_END = "2026-11-25T23:59:59-05:00";
 
-// Black Friday $50 offer: Friday, November 27, 2026 12:00 AM ET through
-// Monday, December 14, 2026 11:59 PM ET. (Dec 14, 2026 is a Monday; the
-// public-copy draft had said Sunday — weekdays here are formatted from
-// these ISO constants.) All banners, redirects, ad pages, and /black-friday
+// Black Friday $50 offer: Thursday, November 26, 2026 12:00 AM ET through
+// Monday, December 14, 2026 11:59 PM ET. Weekdays here are formatted from
+// these ISO constants. All banners, redirects, ad pages, and /black-friday
 // read these two constants (and the formatted labels below).
-export const BLACK_FRIDAY_START = "2026-11-27T00:00:00-05:00";
+export const BLACK_FRIDAY_START = "2026-11-26T00:00:00-05:00";
 export const BLACK_FRIDAY_END = "2026-12-14T23:59:59-05:00";
 
 const ET = "America/New_York";
@@ -78,17 +79,21 @@ function monthDay(iso: string): string {
   return `${get("month")} ${get("day")}`;
 }
 
-/** e.g. "Fri Nov 27, 2026" */
+/** e.g. "Thu Nov 26, 2026" */
 export const BF_START_DISPLAY = formatEt(BLACK_FRIDAY_START, "short", "short");
 /** e.g. "Mon Dec 14, 2026" */
 export const BF_END_DISPLAY = formatEt(BLACK_FRIDAY_END, "short", "short");
 /** e.g. "Monday December 14, 2026" */
 export const BF_END_DISPLAY_LONG = formatEt(BLACK_FRIDAY_END, "long", "long");
+export const BF_START_WEEKDAY = new Intl.DateTimeFormat("en-US", {
+  timeZone: ET,
+  weekday: "long",
+}).format(new Date(BLACK_FRIDAY_START));
 export const BF_END_WEEKDAY = new Intl.DateTimeFormat("en-US", {
   timeZone: ET,
   weekday: "long",
 }).format(new Date(BLACK_FRIDAY_END));
-/** e.g. "Nov 27–Dec 14" */
+/** e.g. "Nov 26–Dec 14" */
 export const BF_WINDOW_SHORT = `${monthDay(BLACK_FRIDAY_START)}–${monthDay(BLACK_FRIDAY_END)}`;
 
 /** First instant after BLACK_FRIDAY_END; use as the exclusive close / countdown target. */
@@ -99,7 +104,7 @@ export function blackFridayClosesAt(): Date {
 export const BF_META = {
   title: "Black Friday Offer: Train through December 31 for $50",
   description:
-    "Train in Tang Soo Do at Prospect Martial Arts through December 31 for $50 per student, uniform included, plus the usual card-processing fee. New students and former students gone more than three months. Offer ends December 14.",
+    "Train in Tang Soo Do at Prospect Martial Arts through December 31 for $50 per student, uniform included. A family of four pays only $200. New students and former students gone more than three months. Offer ends December 14.",
 };
 
 // Shared public wording for the banner, promo cards, ad pages, and /black-friday.
@@ -110,10 +115,10 @@ export const BF_COPY = {
   headline: "Train through December 31 for $50",
   headlineEmphasis: "$50",
   text:
-    "$50 per student to train in Tang Soo Do through December 31, uniform included, plus the usual card-processing fee. For new students and former students gone more than three months. Cannot combine with November buy-one-get-one.",
+    "$50 per student to train in Tang Soo Do through December 31, uniform included. A family of four pays only $200. For new students and former students gone more than three months. Cannot combine with November buy-one-get-one.",
   subhead:
-    "Tang Soo Do at Prospect Martial Arts — uniform included. New students and former students gone more than three months.",
-  finePrint: `Offer ${BF_WINDOW_SHORT} · $50 per student · usual card fee added · cannot combine with November buy-one-get-one`,
+    "Tang Soo Do at Prospect Martial Arts — uniform included. A family of four pays only $200. New students and former students gone more than three months.",
+  finePrint: `Offer ${BF_WINDOW_SHORT} · $50 per student · a family of four pays only $200 · cannot combine with November buy-one-get-one`,
   endsLine: `Sale ends ${BF_END_DISPLAY} at 11:59 PM ET.`,
   ctaLabel: "Start now",
   ctaHref: "/black-friday",

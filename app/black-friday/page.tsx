@@ -7,6 +7,7 @@ import {
   BF_END_DISPLAY_LONG,
   BF_META,
   BF_START_DISPLAY,
+  BF_START_WEEKDAY,
   showBf,
 } from "@/lib/promo";
 import Image from "next/image";
@@ -25,6 +26,8 @@ import { ADDRESS, EMAIL, PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 // - Public copy from /workspace/pma-promos/bf-50-offer/public-copy.md
 //   (Chuck, Nov 9, 2026). Offer and sale window come from lib/promo.ts
 //   (BLACK_FRIDAY_START / BLACK_FRIDAY_END and BF_COPY / BF_META).
+
+export const revalidate = 3600; // re-check the sale window hourly
 
 export const metadata: Metadata = {
   title: BF_META.title,
@@ -76,11 +79,11 @@ const tuitionRows = [
 const steps = [
   {
     title: `Check out by ${BF_END_DISPLAY}`,
-    body: "$50 per student to train through December 31, plus the usual card-processing fee. A uniform is included.",
+    body: "$50 per student to train through December 31, uniform included. A family of four pays only $200.",
   },
   {
     title: "Choose your plan",
-    body: "Pick Silver, Gold, or the plan that fits when you register. Gold students receive Gold’s usual uniform.",
+    body: "Pick Silver, Gold, or the plan that fits when you register.",
   },
   {
     title: "We get you started",
@@ -103,19 +106,15 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "What uniform do I get?",
-    a: "The standard uniform for your plan. Gold students receive Gold’s usual uniform.",
+    a: "A uniform is included. You get the standard uniform for the plan you choose.",
   },
   {
     q: "Do I pick Silver or Gold now?",
     a: "Yes. You choose your membership plan at registration. Regular tuition for that plan begins January 1.",
   },
   {
-    q: "Is there a card fee?",
-    a: "Yes. The usual card-processing fee is added on top of the $50.",
-  },
-  {
     q: "Can my whole family join?",
-    a: "Yes. Each student is $50. A family of four pays $200 for the offer period.",
+    a: "Yes. Each student is $50. A family of four pays only $200 for the offer period.",
   },
   {
     q: "Can I combine this with November’s buy-one-month-get-one-free?",
@@ -194,7 +193,7 @@ export default async function BlackFridayFlashSalePage({ searchParams }: Props) 
         <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 text-center">
           <div>
             <p className="text-xs font-bold uppercase tracking-widest opacity-90">
-              Starts Black Friday
+              Starts {BF_START_WEEKDAY}
             </p>
             <p className="text-2xl font-extrabold">{BF_START_DISPLAY}</p>
           </div>
@@ -217,10 +216,10 @@ export default async function BlackFridayFlashSalePage({ searchParams }: Props) 
             For a limited time, join us for{" "}
             <strong className="text-pma-navy">$50 per student</strong> and train
             through <strong className="text-pma-navy">December 31</strong>. A
-            uniform is included (Gold students receive Gold’s usual uniform).
-            Choose your plan when you register; regular tuition starts{" "}
+            uniform is included. Choose your plan when you register; regular
+            tuition starts{" "}
             <strong className="text-pma-navy">January 1</strong>, with our usual
-            family discounts from then. A family of four pays{" "}
+            family discounts from then. A family of four pays only{" "}
             <strong className="text-pma-navy">$200</strong>.
           </p>
         </div>
@@ -293,9 +292,9 @@ export default async function BlackFridayFlashSalePage({ searchParams }: Props) 
             Start now
           </h2>
           <p className="text-center text-gray-600 mb-8">
-            $50 per student to train through December 31, uniform included,
-            plus the usual card-processing fee. Choose your plan at
-            registration. Regular tuition starts January 1.
+            $50 per student to train through December 31, uniform included. A
+            family of four pays only $200. Choose your plan at registration.
+            Regular tuition starts January 1.
           </p>
           <SaleWindow />
         </div>
@@ -370,8 +369,8 @@ export default async function BlackFridayFlashSalePage({ searchParams }: Props) 
             </li>
             <li>
               $50 per student covers training through December 31, 2026, with a
-              uniform included. The usual card-processing fee is added on top
-              of the $50. A family of four pays $200 for the offer period.
+              uniform included. A family of four pays only $200 for the offer
+              period.
             </li>
             <li>
               You choose your membership plan at registration. Regular monthly

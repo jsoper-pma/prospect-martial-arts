@@ -14,9 +14,9 @@ type Row = { label: string; iso: string; expect: "nov-2026-bogo" | "black-friday
 
 const rows: Row[] = [
   { label: "Nov 25 11:59 PM ET", iso: "2026-11-25T23:59:59-05:00", expect: "nov-2026-bogo" },
-  { label: "Nov 26 12:00 AM ET", iso: "2026-11-26T00:00:00-05:00", expect: "nov-2026-bogo" },
-  { label: "Nov 26 12:00 PM ET", iso: "2026-11-26T12:00:00-05:00", expect: "nov-2026-bogo" },
-  { label: "Nov 26 11:59:59 PM ET", iso: "2026-11-26T23:59:59-05:00", expect: "nov-2026-bogo" },
+  { label: "Nov 26 12:00 AM ET", iso: "2026-11-26T00:00:00-05:00", expect: "black-friday-2026" },
+  { label: "Nov 26 12:00 PM ET", iso: "2026-11-26T12:00:00-05:00", expect: "black-friday-2026" },
+  { label: "Nov 26 11:59:59 PM ET", iso: "2026-11-26T23:59:59-05:00", expect: "black-friday-2026" },
   { label: "Nov 27 12:00 AM ET", iso: "2026-11-27T00:00:00-05:00", expect: "black-friday-2026" },
   { label: "Dec 14 12:00 PM ET", iso: "2026-12-14T12:00:00-05:00", expect: "black-friday-2026" },
   { label: "Dec 14 11:59:59 PM ET", iso: "2026-12-14T23:59:59-05:00", expect: "black-friday-2026" },

@@ -43,9 +43,9 @@ export const TRIAL_META: Record<TrialOfferKey, { description: string; ogDescript
   },
   "black-friday": {
     description:
-      "Book a free Tang Soo Do trial class in Prospect, CT. $50 per student to train through December 31, uniform included, plus the usual card-processing fee. Offer ends December 14.",
+      "Book a free Tang Soo Do trial class in Prospect, CT. $50 per student to train through December 31, uniform included. A family of four pays only $200. Offer ends December 14.",
     ogDescription:
-      "Free trial class, then $50 per student to train through December 31, uniform included. Prospect, CT. Offer ends December 14.",
+      "Free trial class, then $50 per student to train through December 31, uniform included. A family of four pays only $200. Prospect, CT. Offer ends December 14.",
   },
   none: {
     description:
@@ -104,7 +104,7 @@ export const TRIAL_COPY: Record<TrialOfferKey, Record<TrialOfferSlot, ReactNode>
         <span className="text-yellow-300">$50</span>
         <span className="font-normal text-blue-100">
           {" "}
-          per student, uniform included, plus the usual card-processing fee. Book
+          per student, uniform included. A family of four pays only $200. Book
           a free first class today — nothing to pay to book.
         </span>
       </>
@@ -112,9 +112,9 @@ export const TRIAL_COPY: Record<TrialOfferKey, Record<TrialOfferSlot, ReactNode>
     step3: (
       <>
         <strong className="text-pma-navy">Love it? Train through December 31 for $50.</strong>{" "}
-        A uniform is included, and the usual card-processing fee is added on
-        top. For new students and former students gone more than three months.
-        Cannot combine with November buy-one-get-one.
+        A uniform is included. A family of four pays only $200. For new
+        students and former students gone more than three months. Cannot
+        combine with November buy-one-get-one.
       </>
     ),
     form: <>Free trial first · $50 per student to train through Dec 31, uniform included ·</>,

@@ -138,7 +138,7 @@ export default function SaleWindow() {
           Sale not open yet
         </p>
         <h3 className="text-2xl font-extrabold text-pma-navy mb-5">
-          Checkout opens Black Friday morning, {BF_START_DISPLAY}
+          Checkout opens {BF_START_DISPLAY}
         </h3>
         <Countdown target={SALE_OPENS} now={now} />
         <p className="mt-6 text-gray-600">
@@ -198,27 +198,32 @@ export default function SaleWindow() {
             Start now: $50
           </a>
           <p className="mt-3 text-xs text-gray-500">
-            Secure checkout on our Gymdesk sign-up form. The usual
-            card-processing fee is added on top of the $50. You&apos;ll come
-            right back here when you&apos;re done.
+            Secure checkout on our Gymdesk sign-up form. A family of four
+            pays only $200. You&apos;ll come right back here when you&apos;re
+            done.
           </p>
         </>
       ) : (
-        // ── GYMDESK CHECKOUT SLOT (placeholder) ────────────────────────
-        // Replace with the Black Friday 2026 Gymdesk website sign-up form
-        // link (BF_SIGNUP_URL above). Form should show only the Black
-        // Friday plan option(s), collect the card, and redirect back to
+        // ── GYMDESK CHECKOUT SLOT ──────────────────────────────────────
+        // Paste the Black Friday 2026 Gymdesk website sign-up form link
+        // into BF_SIGNUP_URL above. Until that URL is set, this button
+        // stays disabled so it never falls back to the free-trial booking
+        // form. Form should show only the Black Friday plan option(s),
+        // collect the card, and redirect back to
         // https://prospectma.com/black-friday?done=1
-        <div className="mx-auto max-w-xl rounded-xl border-2 border-dashed border-pma-navy/40 bg-pma-light px-6 py-10 text-pma-navy">
-          <p className="font-extrabold text-lg mb-1">
-            Gymdesk checkout goes here
+        <>
+          <span
+            role="button"
+            aria-disabled="true"
+            className="inline-block bg-pma-red/50 text-white font-bold text-lg px-10 py-4 rounded-full cursor-not-allowed shadow-lg"
+          >
+            Sign up coming soon
+          </span>
+          <p className="mt-3 text-xs text-gray-500">
+            Checkout opens here once the sign-up link is ready. A family of
+            four pays only $200.
           </p>
-          <p className="text-sm">
-            Placeholder: waiting on the Black Friday 2026 sign-up form link
-            from Gymdesk. No payment is collected on this draft. The usual
-            card-processing fee will be added on top of the $50 at checkout.
-          </p>
-        </div>
+        </>
       )}
 
       <p className="mt-6 text-gray-600 text-sm">

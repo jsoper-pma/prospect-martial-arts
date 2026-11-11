@@ -9,8 +9,6 @@ import {
   BF_COPY,
   BF_META,
   NOV_BOGO_START,
-  isBfLive,
-  isNovBogoLive,
   showBf,
   showNovBogo,
 } from "@/lib/promo";
@@ -22,12 +20,17 @@ import { ADDRESS, PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 // Hidden (404) before NOV_BOGO_START unless ?promoPreview=nov or bf. After the
 // Black Friday window: plain free-trial wording.
 
-export function getAdLandingMetadata(): Metadata {
+export function getAdLandingMetadata(
+  preview?: string | string[] | undefined
+): Metadata {
   const robots = { index: false as const, follow: false as const };
-  if (isBfLive()) {
+  // Use showBf / showNovBogo so ?promoPreview=bf names the Black Friday
+  // offer in the tab title before the live window, and so hourly
+  // revalidation can switch the title when the sale starts.
+  if (showBf(preview)) {
     return { title: BF_META.title, description: BF_META.description, robots };
   }
-  if (isNovBogoLive()) {
+  if (showNovBogo(preview)) {
     return {
       title: "November Offer: Buy One Month, Get One Free | Prospect Martial Arts",
       description:
