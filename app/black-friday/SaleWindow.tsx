@@ -38,7 +38,7 @@ const SALE_CLOSES = blackFridayClosesAt();
 // booking, schedule, lead-form, and popup widgets, not a paid sign-up.
 // The existing GymDeskWidget (/kids-trial) is the free-trial BOOKING
 // widget (gym AngPo / form Ayw2q) and must not be reused for this.
-const BF_SIGNUP_URL: string = "";
+const BF_SIGNUP_URL: string = "https://prospect-martial-arts.gymdesk.com/signup/v/D0Vnm";
 
 type Phase = "loading" | "before" | "open" | "ended";
 
