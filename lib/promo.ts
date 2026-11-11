@@ -34,13 +34,13 @@ export const CURRENT_PROMO: Promo = {
 // landing page. Note: DST ends Nov 1 at 2am, so Nov 1 00:00 is still -04:00; later dates -05:00.
 //
 // NOV_BOGO_END is the single switch for when buy-one-get-one stops.
-// Jason's Black Friday window starts Thursday, November 26, 2026 at 12:00 AM ET.
-// Leaving NOV_BOGO_END at Nov 26 11:59 PM ET would overlap the first day of
-// the sale, so BOGO now ends Wednesday, November 25, 2026 at 11:59 PM ET.
-// Handoff: BOGO through Wed Nov 25 11:59:59 PM ET; Black Friday from
-// Thu Nov 26 12:00 AM ET through Mon Dec 14 11:59:59 PM ET. No overlap, no gap.
+// Jason locked Thursday, November 26, 2026 at 11:59 PM ET on Nov 9, and the leads
+// email already announced Nov 26, so BOGO overlaps the first day of Black Friday.
+// The offers can't be combined. On Nov 26 banners and ad pages show Black Friday
+// (it is listed first in UPCOMING_PROMOS), while /november stays up through
+// NOV_BOGO_END for anyone following the email link (see isInNovBogoWindow).
 export const NOV_BOGO_START = "2026-11-01T00:00:00-04:00";
-export const NOV_BOGO_END = "2026-11-25T23:59:59-05:00";
+export const NOV_BOGO_END = "2026-11-26T23:59:59-05:00";
 
 // Black Friday $50 offer: Thursday, November 26, 2026 12:00 AM ET through
 // Monday, December 14, 2026 11:59 PM ET. Weekdays here are formatted from
@@ -169,6 +169,12 @@ export function getActivePromo(now: Date = new Date()): Promo | null {
       (p) => p.active && t >= new Date(p.start).getTime() && t <= new Date(p.end).getTime()
     ) ?? null
   );
+}
+
+/** True from NOV_BOGO_START through NOV_BOGO_END, even when Black Friday also runs (Nov 26). */
+export function isInNovBogoWindow(now: Date = new Date()): boolean {
+  const t = now.getTime();
+  return t >= new Date(NOV_BOGO_START).getTime() && t <= new Date(NOV_BOGO_END).getTime();
 }
 
 /** True while the November BOGO is the live offer (NOV_BOGO_START through NOV_BOGO_END). */

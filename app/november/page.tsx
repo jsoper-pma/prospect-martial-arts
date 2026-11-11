@@ -2,19 +2,19 @@ import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 import NovBogoOffer from "@/components/NovBogoOffer";
 import ClassPhotos from "@/components/ClassPhotos";
-import { isBfLive, isNovBogoLive, showNovBogo } from "@/lib/promo";
+import { isBfLive, isInNovBogoWindow, showNovBogo } from "@/lib/promo";
 import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/site";
 
 // November BOGO landing page. Hidden (404) before NOV_BOGO_START and again once
 // the Black Friday window in lib/promo.ts is live (redirect) unless ?promoPreview=nov.
-// noindex until the offer is live. While isBfLive(), /november redirects to
-// /black-friday; ?promoPreview=bf previews that.
+// noindex until the offer is live. Once BOGO ends (after Nov 26 11:59 PM ET) and Black Friday is live, /november
+// redirects to /black-friday; it stays up on the Nov 26 overlap day; ?promoPreview=bf previews that.
 const CTA = "/kids-trial?utm_source=website&utm_campaign=nov-bogo";
 
 type Props = { searchParams: Promise<Record<string, string | string[] | undefined>> };
 
 export async function generateMetadata(): Promise<Metadata> {
-  const live = isNovBogoLive();
+  const live = isInNovBogoWindow();
   return {
     title: "November Offer: Buy One Month, Get One Free | Prospect Martial Arts",
     description:
@@ -28,8 +28,9 @@ export default async function NovemberPage({ searchParams }: Props) {
   const sp = await searchParams;
   const pv = Array.isArray(sp.promoPreview) ? sp.promoPreview[0] : sp.promoPreview;
   if (pv === "bf") redirect("/black-friday?promoPreview=bf");
-  if (isBfLive()) redirect("/black-friday");
-  if (!showNovBogo(sp.promoPreview)) notFound();
+  const inNov = isInNovBogoWindow();
+  if (isBfLive() && !inNov) redirect("/black-friday");
+  if (!inNov && !showNovBogo(sp.promoPreview)) notFound();
   return (
     <>
       <section className="py-20 px-4 text-center text-white bg-pma-navy">
