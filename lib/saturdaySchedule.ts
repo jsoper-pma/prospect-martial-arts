@@ -29,10 +29,9 @@ export type SaturdayDateEntry = {
 
 /**
  * Rolling window: exactly the next 4 Saturdays (refresh weekly).
- * Rolled 2026-11-16: Nov 21 Open; Nov 28 No classes (Thanksgiving weekend, master schedule Closed Thu–Sat Nov 26–28); Dec 5 Open (Week 7 Weapons; PNO is Friday Dec 4); Dec 12 Open (no known closure or tournament).
+ * Rolled 2026-11-23: Nov 28 No classes (Thanksgiving weekend, master schedule Closed Thu–Sat Nov 26–28); Dec 5 Open; Dec 12 Open; Dec 19 Open (evaluation week Dec 13–19 does not close Saturday; holiday closures start Dec 24).
  */
 export const saturdayUpcoming: SaturdayDateEntry[] = [
-  { date: "2026-11-21", label: "November 21, 2026", status: "Open" },
   {
     date: "2026-11-28",
     label: "November 28, 2026",
@@ -41,6 +40,7 @@ export const saturdayUpcoming: SaturdayDateEntry[] = [
   },
   { date: "2026-12-05", label: "December 5, 2026", status: "Open" },
   { date: "2026-12-12", label: "December 12, 2026", status: "Open" },
+  { date: "2026-12-19", label: "December 19, 2026", status: "Open" },
 ];
 
 /** @deprecated Use saturdayUpcoming — kept as alias for older imports. */
