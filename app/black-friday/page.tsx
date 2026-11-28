@@ -12,6 +12,7 @@ import {
 } from "@/lib/promo";
 import Image from "next/image";
 import ClassPhotos from "@/components/ClassPhotos";
+import TrialConversion from "@/components/TrialConversion";
 import SaleWindow from "./SaleWindow";
 import {
   adultFoundersTier,
@@ -144,6 +145,7 @@ export default async function BlackFridayFlashSalePage({ searchParams }: Props) 
   if (!showBf(sp.promoPreview) && !sp.preview) notFound();
   return (
     <>
+      <TrialConversion />
       {/* ── HERO ──────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-pma-navy text-white px-4 pt-20 pb-28 md:py-20">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">

@@ -4,9 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { META_PIXEL_ID } from "@/lib/site";
 
 // Google Ads conversion (site-wide gtag is loaded in app/layout.tsx).
-// TODO(Marketing): replace TRIAL_LABEL_PLACEHOLDER with the conversion label
-// from Google Ads > Goals > Conversions for the kids trial booking.
-const GOOGLE_ADS_SEND_TO = "AW-17438681850/TRIAL_LABEL_PLACEHOLDER";
+const GOOGLE_ADS_SEND_TO = "AW-17438681850/SdsnCNj_rIobEPrVtPtA";
 
 declare global {
   interface Window {
@@ -46,8 +44,7 @@ export default function TrialConversion() {
     fireLead();
 
     if (typeof window.gtag === "function") {
-      // enable when Marketing provides the trial conversion label
-      // window.gtag("event", "conversion", { send_to: GOOGLE_ADS_SEND_TO });
+      window.gtag("event", "conversion", { send_to: GOOGLE_ADS_SEND_TO });
       window.gtag("event", "generate_lead");
     }
   }, []);
